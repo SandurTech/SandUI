@@ -1,0 +1,17 @@
+@use "../styles/tokens" as *;
+
+.button {
+  background-color: var(--sandui-accent);
+  color: var(--sandui-secondary);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

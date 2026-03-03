@@ -1,0 +1,9 @@
+@use "../styles/tokens" as *;
+
+.box {
+  background-color: var(--sandui-secondary);
+  display: block;
+  font-family: inherit;
+  
+  // Variations or strict utilities could go here
+}

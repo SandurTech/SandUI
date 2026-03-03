@@ -1,0 +1,15 @@
+@use "../styles/tokens" as *;
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid rgba($color-primary, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+
+  &:hover {
+    border-color: var(--sandui-accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+}

@@ -1,0 +1,16 @@
+@use "../styles/tokens" as *;
+
+.navbar {
+  background-color: var(--sandui-primary);
+  color: var(--sandui-secondary);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    color: var(--sandui-accent);
+    margin: 0;
+    font-size: 1.5rem;
+  }
+}
