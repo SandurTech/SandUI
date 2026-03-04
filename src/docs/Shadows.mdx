@@ -1,0 +1,94 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="01. Foundations/Shadows" />
+
+# Shadows
+
+SandUI provides three shadow levels for elevation hierarchy.
+
+<div
+  style={{
+    fontFamily: "Inter, sans-serif",
+    display: "flex",
+    gap: "24px",
+    flexWrap: "wrap",
+    marginTop: "24px",
+  }}
+>
+  {[
+    {
+      name: "Small",
+      token: "$shadow-sm",
+      value: "0 4px 12px rgba(0,0,0,0.05)",
+    },
+    {
+      name: "Medium",
+      token: "$shadow-md",
+      value: "0 12px 30px rgba(0,0,0,0.1)",
+    },
+    {
+      name: "Large",
+      token: "$shadow-lg",
+      value: "0 20px 40px rgba(0,0,0,0.15)",
+    },
+  ].map(({ name, token, value }) => (
+    <div
+      key={name}
+      style={{
+        width: "200px",
+        height: "120px",
+        backgroundColor: "#fff",
+        borderRadius: "8px",
+        boxShadow: value,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "4px",
+      }}
+    >
+      <strong style={{ fontSize: "15px" }}>{name}</strong>
+      <code style={{ fontSize: "12px", color: "#888" }}>{token}</code>
+    </div>
+  ))}
+</div>
+
+## Usage
+
+```scss
+@use "styles/variables" as *;
+
+.card {
+  box-shadow: $shadow-sm;
+}
+.card:hover {
+  box-shadow: $shadow-md;
+}
+.modal {
+  box-shadow: $shadow-lg;
+}
+```
+
+## Glow Effect
+
+For accent-highlighted elements, use the `$glow` token:
+
+<div style={{ marginTop: "16px" }}>
+  <div
+    style={{
+      width: "200px",
+      height: "60px",
+      backgroundColor: "orange",
+      borderRadius: "8px",
+      boxShadow: "0 8px 20px rgba(255,165,0,0.3)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      color: "#fff",
+      fontWeight: 600,
+      fontSize: "14px",
+    }}
+  >
+    $glow
+  </div>
+</div>

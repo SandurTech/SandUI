@@ -3,8 +3,10 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig(({ command }) => ({
+  base: '/SandUI/',
   plugins: [react()],
   build: {
+    outDir: 'dist',
     lib: {
       entry: 'src/index.js',
       name: 'SandUI',

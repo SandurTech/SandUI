@@ -33,6 +33,7 @@
     "prop-types": "^15.8.1",
     "sass": "^1.97.1",
     "storybook": "^8.6.17",
+    "storybook-dark-mode": "^4.0.2",
     "vite": "^7.2.4"
   },
   "main": "dist/index.js",
@@ -40,5 +41,11 @@
   "exports": {
     "import": "./dist/index.js",
     "require": "./dist/index.cjs"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not IE 11"
+  ]
 }

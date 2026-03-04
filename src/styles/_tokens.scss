@@ -1,9 +1,70 @@
-$color-primary: #262626;
-$color-accent: orange;
-$color-secondary: #F2F2F2;
+@use "variables" as *;
+
+// ==========================================
+// SANDUI TOKEN LAYER
+// ==========================================
+// Static brand tokens (always available as CSS vars)
+// Dynamic theme tokens (light/dark via data-theme attribute)
+// ==========================================
 
 :root {
-  --sandui-primary: #{$color-primary};
-  --sandui-accent: #{$color-accent};
+  // --- Static Brand Tokens ---
+  --sandui-primary:   #{$color-primary};
+  --sandui-accent:    #{$color-accent};
   --sandui-secondary: #{$color-secondary};
+
+  --sandui-accent-dark: #{$color-accent-dark};
+  --sandui-accent-light: #{$color-accent-light};
+  --sandui-accent-soft: #{$color-accent-soft};
+  --sandui-accent-glow: #{$color-accent-glow};
+
+  --sandui-primary-dark: #{$color-primary-dark};
+  --sandui-primary-light: #{$color-primary-light};
+  --sandui-primary-muted: #{$color-primary-muted};
+  --sandui-secondary-dark: #{$color-secondary-dark};
+  --sandui-secondary-light: #{$color-secondary-light};
+  
+  --sandui-success: #{$color-success};
+  --sandui-warning: #{$color-warning};
+  --sandui-error:   #{$color-error};
+  --sandui-info:    #{$color-info};
+
+  --sandui-shadow-sm: #{$shadow-sm};
+  --sandui-shadow-md: #{$shadow-md};
+
+  // --- Light Theme (default) ---
+  --theme-bg:               #{$color-secondary}; // #F2F2F2
+  --theme-surface:          #{$color-secondary-light}; // #FFFFFF
+  --theme-surface-variant:  #{$color-secondary-dark};
+  --theme-text:             #{$color-primary}; // #262626
+  --theme-text-muted:       #{rgba($color-primary, 0.65)};
+  --theme-border:           #{rgba($color-primary, 0.12)};
+  
+  // Specific Component backgrounds mapped to theme
+  --theme-input-bg:         #{$color-secondary-light};
+  --theme-button-bg:        #{$color-primary};
+  --theme-button-text:      #{$color-secondary-light};
+
+  --theme-footer-bg:        #{$color-primary};
+  --theme-footer-text:      #{rgba($color-secondary-light, 0.8)};
+  --theme-footer-heading:   #{$color-secondary-light};
+  --theme-header-bg:        #{rgba($color-secondary-light, 0.85)};
+}
+
+[data-theme='dark'] {
+  --theme-bg:               #111111; // Deepest dark
+  --theme-surface:          #{$color-primary}; // #262626 for cards/modals
+  --theme-surface-variant:  #{$color-primary-light}; // Lighter gray for hover states
+  --theme-text:             #{$color-secondary-light}; // #FFFFFF
+  --theme-text-muted:       #{rgba($color-secondary-light, 0.6)};
+  --theme-border:           #{rgba($color-secondary-light, 0.1)};
+  
+  --theme-input-bg:         rgba(0, 0, 0, 0.2); // Slightly inset/darker for dark mode inputs
+  --theme-button-bg:        #{$color-secondary-light}; // White buttons in dark mode
+  --theme-button-text:      #{$color-primary}; // Read text on white buttons
+
+  --theme-footer-bg:        #0a0a0a;
+  --theme-footer-text:      #{rgba($color-secondary-light, 0.6)};
+  --theme-footer-heading:   #{$color-secondary-light};
+  --theme-header-bg:        #{rgba(38, 38, 38, 0.85)}; // $color-primary with opacity
 }

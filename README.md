@@ -1,16 +1,85 @@
-# React + Vite
+<p align="center">
+  <strong>SandUI</strong><br/>
+  The design system powering the SandurTech ecosystem.
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+SandUI is a modern, Inter-font based React component library built for consistency across every SandurTech microservice. It follows the **Atomic Design** methodology — organizing components from Atoms to Templates — and ships with a comprehensive Storybook for documentation and visual testing.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Layer | Technology |
+|---|---|
+| **Framework** | React 18+ |
+| **Build Tool** | Vite 7 |
+| **Styling** | SCSS Modules |
+| **Documentation** | Storybook 8 |
+| **Architecture** | Atomic Design |
+| **Typography** | Inter (Google Fonts) |
+| **Icons** | Material Symbols Rounded |
+| **CI/CD** | GitHub Actions → GitHub Pages |
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+# Install
+npm install @sandurtech/sandui
+
+# Development
+npm run dev
+
+# Build library
+npm run build
+
+# Run Storybook
+npm run storybook
+
+# Build Storybook for deployment
+npm run build-storybook
+```
+
+## Component Inventory
+
+| Layer | Components |
+|---|---|
+| **Atoms** | `SandButton`, `SandLink`, `SandBadge`, `SandIcon` |
+| **Molecules** | `SandInputGroup`, `SandCard`, `SandToast`, `SandBox` |
+| **Organisms** | `SandNavbar`, `SandSidebar`, `SandFooter` |
+| **Templates** | `StandardLayout`, `AuthLayout` |
+| **Context** | `SandThemeProvider`, `useSandTheme` |
+
+## Usage
+
+```jsx
+import { SandButton, SandCard, SandThemeProvider } from '@sandurtech/sandui';
+
+function App() {
+  return (
+    <SandThemeProvider>
+      <SandCard>
+        <h2>Welcome</h2>
+        <SandButton variant="primary">Get Started</SandButton>
+      </SandCard>
+    </SandThemeProvider>
+  );
+}
+```
+
+## Design Tokens
+
+- **Colors**: Primary `#262626`, Accent `orange`, Background `#F2F2F2`
+- **Spacing**: Strict 8px grid (`8, 16, 24, 32, 40, 48`)
+- **Radius**: `4px`, `6px`, `8px`, `12px`, `9999px`
+- **Shadows**: `sm`, `md`, `lg` + `glow`
+- **Fonts**: Inter (body), Outfit (display)
+
+## Keywords
+
+React 18, Vite, SCSS Modules, Design System, Atomic Design, Component Library, UI Kit, Storybook, Material Icons, Inter Font, SandurTech, GitHub Pages, Glassmorphism, Theme System, Dark Mode, Light Mode
+
+## License
+
+MIT — Built by [Amogha Raj Sandur](https://www.linkedin.com/in/amogharajsandur/) | [SandurTech](https://sandurtech.vercel.app)

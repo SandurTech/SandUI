@@ -1,0 +1,28 @@
+@use "../styles/variables" as *;
+
+.toast {
+  display: flex; align-items: center; gap: $space-1;
+  padding: ($space-1 + 2px) $space-2;
+  border-radius: $radius-lg;
+  font-family: $font-main; font-size: $font-size-sm;
+  box-shadow: $shadow-md;
+  animation: slideIn 0.25s ease;
+}
+
+.message { flex: 1; }
+
+.close {
+  display: flex; cursor: pointer; background: none; border: none;
+  color: inherit; opacity: 0.6; padding: 2px;
+  &:hover { opacity: 1; }
+}
+
+.info    { background: var(--theme-surface); color: var(--theme-text); border: 1px solid var(--theme-border); border-left: 4px solid var(--sandui-info); }
+.success { background: var(--theme-surface); color: var(--theme-text); border: 1px solid var(--theme-border); border-left: 4px solid var(--sandui-success); }
+.warning { background: var(--theme-surface); color: var(--theme-text); border: 1px solid var(--theme-border); border-left: 4px solid var(--sandui-warning); }
+.error   { background: var(--theme-surface); color: var(--theme-text); border: 1px solid var(--theme-border); border-left: 4px solid var(--sandui-error); }
+
+@keyframes slideIn {
+  from { transform: translateY(-8px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}

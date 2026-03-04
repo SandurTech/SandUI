@@ -1,17 +1,80 @@
-@use "../styles/tokens" as *;
+@use "../styles/variables" as *;
+@use "../styles/tokens";
+
+// ==================================================
+// SandButton — Grauity Standard
+// ==================================================
 
 .button {
-  background-color: var(--sandui-accent);
-  color: var(--sandui-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-1;
   border: none;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  font-family: inherit;
-  font-weight: 600;
+  border-radius: $radius-md;
+  padding: ($space-1 + 2px) $space-2;
+  font-family: $font-main;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  user-select: none;
+  transition: $transition;
+
+  // Premium scale animation on click
+  &:active {
+    transform: scale(0.98);
+    transition-duration: 0.1s;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--sandui-accent);
+    outline-offset: 3px;
+  }
+
+  &:disabled,
+  &[disabled] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// -- Primary (Orange) --
+.primary {
+  background-color: var(--sandui-accent);
+  color: $color-secondary-light;
+  box-shadow: $shadow-sm;
 
   &:hover {
-    opacity: 0.8;
+    background-color: var(--sandui-accent-dark);
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+  }
+}
+
+// -- Secondary (#262626) --
+.secondary {
+  background-color: var(--sandui-primary);
+  color: $color-secondary-light;
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    background-color: var(--sandui-primary-light);
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+  }
+}
+
+// -- Ghost (transparent) --
+.ghost {
+  background-color: transparent;
+  color: var(--theme-text);
+  border: 1px solid var(--theme-border);
+
+  &:hover {
+    background-color: var(--sandui-accent-soft);
+    border-color: var(--sandui-accent);
+    color: var(--sandui-accent);
   }
 }

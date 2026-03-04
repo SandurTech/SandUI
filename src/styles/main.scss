@@ -1,0 +1,17 @@
+// ==================================================
+// SandUI — main.scss
+// ==================================================
+// Single-import entry point for consuming apps.
+// ==================================================
+
+// 1. Design variables (colors, fonts, shadows, etc.)
+@use "./variables" as *;
+
+// 2. CSS custom properties + theme engine (light/dark)
+@use "./tokens";
+
+// 3. Global reset, base typography, element styles
+@use "./global";
+
+// 4. Mixins for reusable patterns
+@use "./mixins";

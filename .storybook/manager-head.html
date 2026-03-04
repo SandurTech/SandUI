@@ -1,0 +1,56 @@
+<!-- SandUI Storybook: SEO & OpenGraph -->
+<title>SandUI | Modern React Design System by Sandur Tech</title>
+<meta name="description" content="A high-performance, Inter-font based UI library for React microservices. Built for speed, scalability, and consistent developer experience." />
+<meta name="robots" content="index, follow" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SandUI | Modern React Design System by Sandur Tech" />
+<meta property="og:description" content="A high-performance, Inter-font based UI library for React microservices. Built for speed, scalability, and consistent developer experience." />
+<meta property="og:url" content="https://amogharajsandur.github.io/SandUI/" />
+<meta property="og:image" content="https://amogharajsandur.github.io/SandUI/og-image.png" />
+
+<!-- Inter + Outfit fonts for Storybook shell UI -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* Apply Inter to ALL Storybook manager UI elements */
+  body, .sidebar-header, .os-content, [class*="sidebar"], [class*="search"] {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  }
+
+  /* Custom Logo Injection for SandurTech replacing text-only logo */
+  .sidebar-header a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    text-decoration: none !important;
+  }
+
+  .sidebar-header a::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url('/SandurTech-Logo-SVG.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SandUI",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "A high-performance, Inter-font based UI library for React microservices.",
+  "url": "https://amogharajsandur.github.io/SandUI/",
+  "author": { "@type": "Person", "name": "Amogha Raj Sandur" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>

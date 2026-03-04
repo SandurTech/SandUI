@@ -1,0 +1,23 @@
+@use "../styles/variables" as *;
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-code;
+  font-size: $font-size-xs;
+  line-height: 1;
+  padding: 4px 6px;
+  color: var(--theme-text);
+  background-color: var(--theme-surface-variant);
+  border: 1px solid var(--theme-border);
+  border-bottom-width: 2px;
+  border-radius: $radius-md;
+  white-space: nowrap;
+
+  // Tiny subtle lift on active just to feel like a real key
+  &:active {
+    border-bottom-width: 1px;
+    transform: translateY(1px);
+  }
+}

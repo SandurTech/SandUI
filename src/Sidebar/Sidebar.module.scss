@@ -1,0 +1,23 @@
+@use "../styles/variables" as *;
+
+.sidebar {
+  width: 240px; min-height: 100vh;
+  background: var(--theme-surface);
+  border-right: 1px solid var(--theme-border);
+  padding: $space-2 0;
+  font-family: $font-main;
+}
+
+.item {
+  display: flex; align-items: center; gap: $space-1;
+  padding: $space-1 $space-2;
+  color: var(--theme-text-muted);
+  text-decoration: none; font-size: $font-size-sm;
+  transition: $transition; border-left: 3px solid transparent;
+
+  &:hover { background: var(--sandui-accent-soft); color: var(--theme-text); }
+  &.active {
+    color: var(--sandui-accent); font-weight: $font-weight-semibold;
+    border-left-color: var(--sandui-accent); background: var(--sandui-accent-soft);
+  }
+}

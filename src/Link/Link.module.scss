@@ -1,0 +1,17 @@
+@use "../styles/variables" as *;
+
+.link {
+  font-family: $font-main;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover { text-decoration: underline; }
+  &:focus-visible { outline: 2px solid var(--sandui-accent); outline-offset: 2px; }
+}
+
+.default { color: var(--sandui-accent); }
+.muted   { color: var(--theme-text-muted); &:hover { color: var(--theme-text); } }
+.accent  { color: var(--sandui-accent); font-weight: $font-weight-semibold; }

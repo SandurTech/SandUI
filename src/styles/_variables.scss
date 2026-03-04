@@ -1,0 +1,104 @@
+@use "sass:color";
+
+// ==========================================
+// CORE BRAND PALETTE
+// ==========================================
+$color-accent: orange;    // Brand Orange
+$color-primary: #262626;   // Dark Slate/Charcoal
+$color-secondary: #F2F2F2; // Light Gray/Silver
+
+// ==========================================
+// DERIVED COLORS (Lighter & Darker shades for depth)
+// ==========================================
+$color-accent-dark: color.adjust($color-accent, $lightness: -10%);
+$color-accent-light: color.adjust($color-accent, $lightness: 10%);
+$color-accent-soft: rgba($color-accent, 0.15);
+$color-accent-glow: rgba($color-accent, 0.4);
+
+// ==========================================
+// SEMANTIC COLORS
+// ==========================================
+$color-success: #10B981; // Emerald
+$color-warning: #F59E0B; // Amber
+$color-error:   #EF4444; // Red
+$color-info:    #3B82F6; // Blue
+
+// Primary Variations (Dark tones)
+$color-primary-dark: color.adjust($color-primary, $lightness: -5%); 
+$color-primary-light: color.adjust($color-primary, $lightness: 10%);
+$color-primary-muted: rgba($color-primary, 0.6);
+
+// Secondary Variations (Light tones)
+$color-secondary-dark: color.adjust($color-secondary, $lightness: -8%); // e.g., #dedede
+$color-secondary-light: #FFFFFF;
+
+// ==========================================
+// 8px SPACING SCALE (Grauity Standard)
+// ==========================================
+$space-0: 0;
+$space-1: 8px;
+$space-2: 16px;
+$space-3: 24px;
+$space-4: 32px;
+$space-5: 40px;
+$space-6: 48px;
+$space-8: 64px;
+$space-10: 80px;
+$space-12: 96px;
+
+// ==========================================
+// TYPOGRAPHY
+// ==========================================
+$font-main: 'Inter', system-ui, -apple-system, sans-serif;
+$font-display: 'Outfit', 'Inter', system-ui, sans-serif;
+$font-code: 'JetBrains Mono', 'Fira Code', monospace;
+
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-2xl: 1.5rem;    // 24px
+$font-size-3xl: 2rem;      // 32px
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// ==========================================
+// BORDER RADIUS
+// ==========================================
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 8px;
+$radius-xl: 12px;
+$radius-2xl: 20px;
+$radius-full: 9999px;
+
+// ==========================================
+// DESIGN SYSTEM CONSTANTS
+// ==========================================
+$transition: all 0.3s ease;
+$transition-fast: all 0.15s ease;
+$transition-slow: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+$container-width: 1100px;
+
+$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 12px 30px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+$glow: 0 8px 20px $color-accent-glow;
+
+$gradient-brand: linear-gradient(135deg, $color-accent 0%, $color-accent-dark 100%);
+$gradient-hero: linear-gradient(to bottom, var(--theme-surface-variant) 0%, var(--theme-bg) 85%, var(--theme-bg) 100%);
+
+// ==========================================
+// GLASSMORPHISM
+// ==========================================
+$glass-blur: blur(12px);
+$glass-border: 1px solid rgba(255, 255, 255, 0.1);
+$glass-bg-dark: rgba($color-primary, 0.8);
+$glass-bg-light: rgba($color-secondary-light, 0.6);

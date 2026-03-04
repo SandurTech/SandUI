@@ -2,21 +2,41 @@ import React from 'react';
 import styles from './Navbar.module.scss';
 import PropTypes from 'prop-types';
 
-const Navbar = React.forwardRef(({ className, title, children, ...props }, ref) => {
+const SandNavbar = React.forwardRef(({ 
+  className, 
+  title, 
+  logo, 
+  fixed = false, 
+  children, 
+  ...props 
+}, ref) => {
+  const classes = [
+    styles.navbar,
+    fixed ? styles.fixed : '',
+    'sandui-globals',
+    className || '',
+  ].filter(Boolean).join(' ');
+
   return (
-    <nav ref={ref} className={`${styles.navbar} sandui-globals ${className || ''}`} {...props}>
-      {title && <h1>{title}</h1>}
+    <nav ref={ref} className={classes} {...props}>
+      <div className={styles.logo}>
+        {logo && <img src={logo} alt={`${title || 'SandUI'} logo`} />}
+        {title && <h1>{title}</h1>}
+      </div>
       <div>{children}</div>
     </nav>
   );
 });
 
-Navbar.propTypes = {
+SandNavbar.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
+  logo: PropTypes.string,
+  fixed: PropTypes.bool,
   children: PropTypes.node,
 };
 
-Navbar.displayName = 'Navbar';
+SandNavbar.displayName = 'SandNavbar';
 
-export default Navbar;
+export { SandNavbar };
+export default SandNavbar;

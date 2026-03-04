@@ -7,6 +7,7 @@ const config = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
+    "storybook-dark-mode",
   ],
   framework: {
     name: "@storybook/react-vite",
@@ -15,5 +16,6 @@ const config = {
   docs: {
     autodocs: "tag",
   },
+  staticDirs: ['../public'],
 };
 export default config;

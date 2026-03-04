@@ -1,1 +1,1 @@
-export { default as Box } from './Box';
+export { SandBox, default } from './Box';

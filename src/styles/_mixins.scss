@@ -1,0 +1,67 @@
+@use "./variables" as *;
+
+// ==================================================
+// SandUI Mixins (Grauity Standard)
+// ==================================================
+
+// Micro-interaction for interactive elements
+@mixin micro-interaction($duration: 0.3s, $easing: ease) {
+  transition: color $duration $easing,
+              background-color $duration $easing,
+              border-color $duration $easing,
+              box-shadow $duration $easing,
+              transform $duration $easing,
+              opacity $duration $easing;
+}
+
+// Glassmorphism
+@mixin glassmorphism($bg: $glass-bg-dark) {
+  background-color: $bg;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border: $glass-border;
+}
+
+// Responsive breakpoints
+@mixin mobile {
+  @media (max-width: 768px) { @content; }
+}
+
+@mixin tablet {
+  @media (max-width: 1024px) { @content; }
+}
+
+@mixin desktop {
+  @media (min-width: 1025px) { @content; }
+}
+
+// Container utility
+@mixin container($max-width: $container-width) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $space-2;
+}
+
+// Focus ring (accessibility)
+@mixin focus-ring($color: $color-accent) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 3px;
+  }
+}
+
+// Typography presets
+@mixin heading($size: $font-size-2xl, $weight: $font-weight-semibold) {
+  font-family: $font-display;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height-tight;
+  letter-spacing: -0.01em;
+}
+
+@mixin body-text($size: $font-size-base) {
+  font-family: $font-main;
+  font-size: $size;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+}

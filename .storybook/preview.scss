@@ -1,2 +1,12 @@
-// Imports the fundamental design system variables and typography settings.
-@use "../src/styles/global.scss";
+// Imports the complete SandUI design system
+@use "../src/styles/main";
+
+// Storybook-specific global overrides
+// Ensures all docs, controls, and canvas content use Inter
+.docs-story,
+.sb-show-main,
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

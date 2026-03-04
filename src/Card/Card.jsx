@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Card.module.scss';
-import '../styles/_global.scss'; // Ensures inherit typings
 
-const Card = React.forwardRef(({ className, children, ...props }, ref) => {
+const SandCard = React.forwardRef(({ className, children, ...props }, ref) => {
   return (
     <div
       ref={ref}
@@ -15,11 +14,12 @@ const Card = React.forwardRef(({ className, children, ...props }, ref) => {
   );
 });
 
-Card.propTypes = {
+SandCard.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
 };
 
-Card.displayName = 'Card';
+SandCard.displayName = 'SandCard';
 
-export default Card;
+export { SandCard };
+export default SandCard;

@@ -1,0 +1,61 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="01. Foundations/Spacing" />
+
+# Spacing System
+
+SandUI uses a strict **8px grid** for all spacing. This ensures visual consistency across every component and layout.
+
+## Scale
+
+<div style={{ fontFamily: "Inter, sans-serif" }}>
+  {[
+    { token: "$space-1", value: "8px" },
+    { token: "$space-2", value: "16px" },
+    { token: "$space-3", value: "24px" },
+    { token: "$space-4", value: "32px" },
+    { token: "$space-5", value: "40px" },
+    { token: "$space-6", value: "48px" },
+  ].map(({ token, value }) => (
+    <div
+      key={token}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "16px",
+        marginBottom: "12px",
+      }}
+    >
+      <code style={{ width: "100px", fontSize: "13px" }}>{token}</code>
+      <span style={{ width: "48px", fontSize: "13px", color: "#666" }}>
+        {value}
+      </span>
+      <div
+        style={{
+          width: value,
+          height: "24px",
+          backgroundColor: "orange",
+          borderRadius: "4px",
+          opacity: 0.8,
+        }}
+      />
+    </div>
+  ))}
+</div>
+
+## Usage
+
+```scss
+@use "styles/variables" as *;
+
+.component {
+  padding: $space-2; // 16px
+  margin-bottom: $space-3; // 24px
+  gap: $space-1; // 8px
+}
+```
+
+## Why 8px?
+
+The 8px grid is the industry standard used by Material Design, Ant Design, and most professional design systems.
+It scales cleanly across device densities and makes spacing decisions systematic rather than arbitrary.
