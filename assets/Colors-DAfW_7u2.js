@@ -1,0 +1,13 @@
+import{j as e}from"./jsx-runtime-u17CrQMm.js";import{useMDXComponents as d}from"./index-vuvGCCVO.js";import{M as a,C as h,a as s}from"./index-8rLfRsGp.js";import"./index-CqIc3cxq.js";import"./iframe-IQPjzxL5.js";import"./index-Cj_otjQe.js";import"./index-DFVzyPiA.js";import"./index-CcR1FEzS.js";import"./index-DrFu-skq.js";function n(r){const t={code:"code",h1:"h1",h2:"h2",p:"p",strong:"strong",td:"td",tr:"tr",...d(),...r.components};return e.jsxs(e.Fragment,{children:[e.jsx(a,{title:"01. Foundations/Colors"}),`
+`,e.jsx(t.h1,{id:"color-system",children:"Color System"}),`
+`,e.jsx(t.p,{children:`SandUI's color system is built around three brand colors from the SandurTech ecosystem,
+designed for both light and dark themes.`}),`
+`,e.jsx(t.h2,{id:"brand-palette",children:"Brand Palette"}),`
+`,e.jsxs(h,{children:[e.jsx(s,{title:"Accent (The Sandur Action)",subtitle:"$color-accent",colors:{Orange:"orange",Dark:"#cc8400"}}),e.jsx(s,{title:"Primary (The Sandur Dark)",subtitle:"$color-primary",colors:{Charcoal:"#262626",Light:"#4d4d4d"}}),e.jsx(s,{title:"Secondary (The Sandur Light)",subtitle:"$color-secondary",colors:{Silver:"#F2F2F2",White:"#FFFFFF"}})]}),`
+`,e.jsx(t.h2,{id:"theme-tokens",children:"Theme Tokens"}),`
+`,e.jsxs(t.p,{children:["These CSS custom properties switch automatically when ",e.jsx(t.code,{children:"data-theme"})," toggles:"]}),`
+`,e.jsxs("table",{style:{width:"100%",borderCollapse:"collapse",fontFamily:"Inter, sans-serif",fontSize:"14px"},children:[e.jsx("thead",{children:e.jsxs("tr",{style:{borderBottom:"2px solid #e0e0e0",textAlign:"left"},children:[e.jsx("th",{style:{padding:"10px 12px"},children:"Token"}),e.jsx("th",{style:{padding:"10px 12px"},children:"Light"}),e.jsx("th",{style:{padding:"10px 12px"},children:"Dark"})]})}),e.jsx("tbody",{children:[["--theme-bg","#F2F2F2","#111111"],["--theme-surface","#FFFFFF","#1a1a1a"],["--theme-text","#262626","#F2F2F2"],["--theme-border","rgba(38,38,38,0.12)","rgba(255,255,255,0.1)"]].map(([o,i,l])=>e.jsxs(t.tr,{style:{borderBottom:"1px solid #eee"},children:[e.jsx(t.td,{style:{padding:"8px 12px"},children:e.jsx(t.code,{children:o})}),e.jsx(t.td,{style:{padding:"8px 12px"},children:i}),e.jsx(t.td,{style:{padding:"8px 12px"},children:l})]},o))})]}),`
+`,e.jsx(t.h2,{id:"why-these-colors",children:"Why These Colors?"}),`
+`,e.jsxs(t.p,{children:["The palette is deliberately minimal: ",e.jsx(t.strong,{children:"three colors"}),` that work across all SandurTech products.
+The accent orange provides energy, the charcoal primary ensures readability, and the silver
+secondary gives breathing room.`]})]})}function b(r={}){const{wrapper:t}={...d(),...r.components};return t?e.jsx(t,{...r,children:e.jsx(n,{...r})}):n(r)}export{b as default};
