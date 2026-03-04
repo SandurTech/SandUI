@@ -22,10 +22,12 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Install and Build 🔧
-        run: |
-          npm ci
-          npm run build-storybook
+      - name: Install Dependencies 🔧
+        # We use --legacy-peer-deps to ignore the Vite 6 vs Vite 7 conflict
+        run: npm install --legacy-peer-deps
+
+      - name: Build Storybook 🏗️
+        run: npm run build-storybook
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
