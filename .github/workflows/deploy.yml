@@ -1,11 +1,13 @@
-name: Deploy SandUI to GitHub Pages
+name: Deploy SandUI
 
 on:
   push:
-    branches: [main] # Runs every time you push to main
+    branches: [main]
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
@@ -14,14 +16,19 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
+      - name: Set up Node.js ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
       - name: Install and Build 🔧
         run: |
-          npm install
-          npm run build
-          npm run build-storybook # This ensures your docs are built too
+          npm ci
+          npm run build-storybook
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: storybook-static # This deploys your Storybook docs
-          branch: gh-pages # This will CREATE the branch for you automatically
+          folder: storybook-static
+          branch: gh-pages
