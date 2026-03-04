@@ -1,33 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Main Home -->
     <url>
         <loc>https://sandurtech.github.io/SandUI/</loc>
         <lastmod>2026-03-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
+
+    <!-- Introductory Docs -->
     <url>
         <loc>https://sandurtech.github.io/SandUI/?path=/docs/introduction--docs</loc>
         <lastmod>2026-03-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+
+    <!-- Foundations -->
     <url>
-        <loc>https://sandurtechmogharajsandur.github.io/SandUI/?path=/docs/01-foundations-colors--docs</loc>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/01-foundations-colors--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/01-foundations-typography--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/01-foundations-spacing--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/01-foundations-shadows--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/01-foundations-theme--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Atoms -->
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/02-atoms-sandbutton--docs</loc>
         <lastmod>2026-03-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://sandurtechmogharajsandur.github.io/SandUI/?path=/docs/02-atoms-sandbutton--docs</loc>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/02-atoms-sandlink--docs</loc>
         <lastmod>2026-03-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/02-atoms-sandbadge--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/02-atoms-sandicon--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/02-atoms-sandkbd--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Molecules -->
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/03-molecules-sandinputgroup--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/03-molecules-sandcard--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/03-molecules-sandtoast--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/03-molecules-sandbox--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Organisms -->
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/04-organisms-sandnavbar--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/04-organisms-sandsidebar--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/04-organisms-sandfooter--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Templates -->
+    <url>
+        <loc>https://sandurtech.github.io/SandUI/?path=/docs/05-templates-standardlayout--docs</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
     </url>
     <url>
         <loc>https://sandurtech.github.io/SandUI/?path=/docs/05-templates-authlayout--docs</loc>
         <lastmod>2026-03-04</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.5</priority>
     </url>
 </urlset>
