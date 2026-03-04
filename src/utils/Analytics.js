@@ -34,7 +34,7 @@ export function initGA4() {
  * Replace 'xxxxxxxxxx' with your Clarity Project ID.
  */
 export function initClarity() {
-  const CLARITY_ID = 'xxxxxxxxxx'; // <-- Replace with your Clarity ID
+  const CLARITY_ID = 'vqejz5qd92'; // <-- Replace with your Clarity ID
 
   if (typeof window === 'undefined' || CLARITY_ID === 'xxxxxxxxxx') return;
 
