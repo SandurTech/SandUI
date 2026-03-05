@@ -23,6 +23,14 @@ export const Default = {
   args: { title: 'SandurTech' },
 };
 
+export const Active = {
+  args: { title: 'SandurTech (Active)', className: 'active' },
+};
+
+export const Disabled = {
+  args: { title: 'SandurTech', style: { opacity: 0.5, pointerEvents: 'none' } },
+};
+
 export const WithLogo = {
   args: {
     title: 'SandurTech',

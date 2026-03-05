@@ -12,6 +12,18 @@ export const Default = {
   render: () => <SandFooter brandLogo="/SandurTech-Logo-SVG.svg" />,
 };
 
+export const Active = {
+  render: () => <SandFooter brandLogo="/SandurTech-Logo-SVG.svg" className="active" />,
+};
+
+export const Disabled = {
+  render: () => (
+    <div style={{ opacity: 0.5, pointerEvents: 'none' }}>
+      <SandFooter brandLogo="/SandurTech-Logo-SVG.svg" />
+    </div>
+  ),
+};
+
 export const CustomLinks = {
   name: 'Custom Content',
   render: () => (

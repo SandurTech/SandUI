@@ -3,10 +3,20 @@ import PropTypes from 'prop-types';
 
 /**
  * SandIcon - Renders a Google Material Symbols Rounded icon.
- * @param {string} name - Material icon name (e.g. 'settings', 'dark_mode').
- * @param {number} size - Icon size in px (default: 20).
- * @param {boolean} filled - Use filled variant (default: true).
- * @param {string} className - Additional CSS class for overrides.
+ *
+ * @component
+ * @param {Object} props
+ * @param {string} props.name - Material icon name (e.g. 'settings', 'dark_mode').
+ * @param {number} [props.size=20] - Icon size in px.
+ * @param {boolean} [props.filled=true] - Use filled variant.
+ * @param {string} [props.className] - Additional CSS class for overrides.
+ * @param {Object} [props.style] - Additional inline styles.
+ * @returns {React.ReactElement} The rendered icon component.
+ *
+ * @example
+ * return (
+ *   <SandIcon name="settings" size={24} filled={false} />
+ * )
  */
 const SandIcon = React.forwardRef(({ name, size = 20, filled = true, className, style, ...props }, ref) => (
   <span

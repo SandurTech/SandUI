@@ -17,6 +17,20 @@ export const Default = {
   },
 };
 
+export const Active = {
+  args: {
+    children: 'Active card state.',
+    className: 'active',
+  },
+};
+
+export const Disabled = {
+  args: {
+    children: 'Disabled card state.',
+    style: { opacity: 0.5, pointerEvents: 'none' },
+  },
+};
+
 export const RichContent = {
   name: 'Rich Content',
   render: () => (

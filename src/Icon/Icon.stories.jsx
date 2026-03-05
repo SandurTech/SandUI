@@ -20,6 +20,15 @@ export default {
 };
 
 export const Default = { args: { name: 'settings' } };
+
+export const Active = {
+  args: { name: 'settings', style: { color: 'var(--sandui-primary)' } },
+};
+
+export const Disabled = {
+  args: { name: 'settings', style: { opacity: 0.5 } },
+};
+
 export const Large = { args: { name: 'rocket_launch', size: 36 } };
 export const Outlined = { args: { name: 'favorite', size: 24, filled: false } };
 

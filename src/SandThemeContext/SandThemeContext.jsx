@@ -21,8 +21,19 @@ const SandThemeContext = createContext({
  * All SandUI CSS-variable based tokens respond to `data-theme` on <html>,
  * so this context controls the entire color scheme.
  *
- * @param {string}  defaultTheme  - 'light' | 'dark' (default: 'light')
- * @param {boolean} persist       - Save preference to localStorage (default: true)
+ * @component
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - The child components to wrap.
+ * @param {string} [props.defaultTheme='light'] - 'light' | 'dark'
+ * @param {boolean} [props.persist=true] - Save preference to localStorage
+ * @returns {React.ReactElement} The provider component.
+ *
+ * @example
+ * return (
+ *   <SandThemeProvider defaultTheme="light">
+ *     <App />
+ *   </SandThemeProvider>
+ * )
  */
 export function SandThemeProvider({ 
   children, 

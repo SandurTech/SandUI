@@ -13,6 +13,20 @@ export const Default = {
   },
 };
 
+export const Active = {
+  args: {
+    children: '⌘',
+    style: { background: 'var(--sandui-primary)', color: 'white' }
+  },
+};
+
+export const Disabled = {
+  args: {
+    children: '⌘',
+    style: { opacity: 0.5 }
+  },
+};
+
 export const Shortcut = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--theme-text)', fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>

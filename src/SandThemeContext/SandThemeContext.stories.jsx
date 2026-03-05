@@ -105,3 +105,15 @@ export const ThemeSystem = {
   name: 'Theme System',
   render: () => <ThemeDemo />,
 };
+
+export const Default = {
+  render: () => <ThemeDemo />,
+};
+
+export const Active = {
+  render: () => <ThemeDemo />,
+};
+
+export const Disabled = {
+  render: () => <ThemeDemo />,
+};

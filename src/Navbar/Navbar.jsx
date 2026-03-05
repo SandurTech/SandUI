@@ -2,6 +2,25 @@ import React from 'react';
 import styles from './Navbar.module.scss';
 import PropTypes from 'prop-types';
 
+/**
+ * SandNavbar - A top navigation bar component.
+ *
+ * @component
+ * @param {Object} props
+ * @param {string} [props.className] - Additional CSS class for external overrides.
+ * @param {string} [props.title] - Navbar title text.
+ * @param {string} [props.logo] - URL to the logo image.
+ * @param {boolean} [props.fixed=false] - Fixes the navbar to the top of the viewport.
+ * @param {React.ReactNode} [props.children] - Additional navbar content (e.g., links).
+ * @returns {React.ReactElement} The rendered navbar component.
+ *
+ * @example
+ * return (
+ *   <SandNavbar title="SandUI" fixed={true}>
+ *     <a href="/login">Login</a>
+ *   </SandNavbar>
+ * )
+ */
 const SandNavbar = React.forwardRef(({ 
   className, 
   title, 

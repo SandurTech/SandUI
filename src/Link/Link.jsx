@@ -4,10 +4,22 @@ import styles from './Link.module.scss';
 
 /**
  * SandLink - A styled anchor element.
- * @param {string} href - Destination URL.
- * @param {string} variant - 'default' | 'muted' | 'accent'.
- * @param {boolean} external - Opens in new tab when true.
- * @param {string} className - Additional CSS class for overrides.
+ *
+ * @component
+ * @param {Object} props
+ * @param {string} [props.className] - Additional CSS class for overrides.
+ * @param {string} [props.href] - Destination URL.
+ * @param {string} [props.variant='default'] - Visual style: 'default', 'muted', or 'accent'.
+ * @param {boolean} [props.external=false] - Opens in new tab when true.
+ * @param {React.ReactNode} props.children - Link text or content.
+ * @returns {React.ReactElement} The rendered link component.
+ *
+ * @example
+ * return (
+ *   <SandLink href="https://example.com" external variant="accent">
+ *     Visit Example
+ *   </SandLink>
+ * )
  */
 const SandLink = React.forwardRef(({
   className,

@@ -8,9 +8,20 @@ import PropTypes from 'prop-types';
  * Supports three visual variants and an active press animation (scale 0.98).
  * All buttons use the Inter font and follow the 8px spacing grid.
  *
- * @param {string} variant - Visual style: 'primary' (orange), 'secondary' (charcoal), or 'ghost' (transparent).
- * @param {boolean} disabled - Disables interaction and reduces opacity.
- * @param {string} className - Additional CSS class for external overrides.
+ * @component
+ * @param {Object} props
+ * @param {string} [props.className] - Additional CSS class for external overrides.
+ * @param {string} [props.variant='primary'] - Visual style: 'primary', 'secondary', or 'ghost'.
+ * @param {React.ReactNode} props.children - Button content.
+ * @param {boolean} [props.disabled=false] - Disables interaction and reduces opacity.
+ * @returns {React.ReactElement} The rendered button component.
+ *
+ * @example
+ * return (
+ *   <SandButton variant="primary" disabled={false}>
+ *     Click Me
+ *   </SandButton>
+ * )
  */
 const SandButton = React.forwardRef(({
   className,

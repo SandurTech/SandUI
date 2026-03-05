@@ -12,6 +12,50 @@ export default {
   parameters: { layout: 'fullscreen' },
 };
 
+export const Active = {
+  name: 'StandardLayout Active',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--theme-bg)' }}>
+      <SandNavbar title="SandurTech">
+        <SandLink href="#">Products</SandLink>
+        <SandLink href="#">Docs</SandLink>
+        <SandButton variant="primary"><SandIcon name="login" size={16} /> Sign In</SandButton>
+      </SandNavbar>
+
+      <div style={{ display: 'flex', flex: 1 }}>
+        <SandSidebar items={[
+          { icon: 'dashboard', label: 'Dashboard', active: true },
+          { icon: 'bar_chart', label: 'Analytics' },
+          { icon: 'settings', label: 'Settings' },
+        ]} />
+      </div>
+      <SandFooter brandLogo="/SandurTech-Logo-SVG.svg" />
+    </div>
+  )
+};
+
+export const Disabled = {
+  name: 'StandardLayout Disabled',
+  render: () => (
+    <div style={{ opacity: 0.5, pointerEvents: 'none', display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--theme-bg)' }}>
+      <SandNavbar title="SandurTech">
+        <SandLink href="#">Products</SandLink>
+        <SandLink href="#">Docs</SandLink>
+        <SandButton variant="primary" disabled><SandIcon name="login" size={16} /> Sign In</SandButton>
+      </SandNavbar>
+
+      <div style={{ display: 'flex', flex: 1 }}>
+        <SandSidebar items={[
+          { icon: 'dashboard', label: 'Dashboard', active: true },
+          { icon: 'bar_chart', label: 'Analytics' },
+          { icon: 'settings', label: 'Settings' },
+        ]} />
+      </div>
+      <SandFooter brandLogo="/SandurTech-Logo-SVG.svg" />
+    </div>
+  )
+};
+
 export const Default = {
   name: 'StandardLayout',
   render: () => (

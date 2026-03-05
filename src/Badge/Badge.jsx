@@ -4,8 +4,18 @@ import styles from './Badge.module.scss';
 
 /**
  * SandBadge - A small status label.
- * @param {string} variant - 'default' | 'success' | 'warning' | 'error'.
- * @param {string} className - Additional CSS class for overrides.
+ *
+ * @component
+ * @param {Object} props
+ * @param {string} [props.className] - Additional CSS class for overrides.
+ * @param {string} [props.variant='default'] - Visual style: 'default', 'success', 'warning', or 'error'.
+ * @param {React.ReactNode} props.children - Badge content.
+ * @returns {React.ReactElement} The rendered badge component.
+ *
+ * @example
+ * return (
+ *   <SandBadge variant="success">New</SandBadge>
+ * )
  */
 const SandBadge = React.forwardRef(({ className, variant = 'default', children, ...props }, ref) => {
   const classes = [styles.badge, styles[variant], className || ''].filter(Boolean).join(' ');

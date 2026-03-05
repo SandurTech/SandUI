@@ -5,12 +5,21 @@ import SandIcon from '../Icon/Icon';
 
 /**
  * SandToast - A temporary notification message.
- * @param {string} variant - 'info' | 'success' | 'warning' | 'error'.
- * @param {string} message - Toast message text.
- * @param {number} duration - Auto-dismiss time in ms (default: 4000, 0 = sticky).
- * @param {boolean} visible - Controls visibility.
- * @param {function} onClose - Callback when toast is dismissed.
- * @param {string} className - Additional CSS class for overrides.
+ *
+ * @component
+ * @param {Object} props
+ * @param {string} [props.className] - Additional CSS class for overrides.
+ * @param {string} [props.variant='info'] - Visual style: 'info', 'success', 'warning', or 'error'.
+ * @param {string} props.message - Toast message text.
+ * @param {number} [props.duration=4000] - Auto-dismiss time in ms (0 = sticky).
+ * @param {boolean} [props.visible=true] - Controls visibility.
+ * @param {function} [props.onClose] - Callback when toast is dismissed.
+ * @returns {React.ReactElement|null} The rendered toast component or null if not visible.
+ *
+ * @example
+ * return (
+ *   <SandToast variant="success" message="Operation successful!" duration={3000} />
+ * )
  */
 const SandToast = ({ className, variant = 'info', message, duration = 4000, visible = true, onClose, ...props }) => {
   const [show, setShow] = useState(visible);
