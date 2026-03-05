@@ -1,8 +1,0 @@
-import{j as d}from"./jsx-runtime-u17CrQMm.js";import{R as p}from"./index-CqIc3cxq.js";import{P as e}from"./index-CbwltWip.js";const c="_button_1vhs7_51",u="_primary_1vhs7_81",m="_secondary_1vhs7_92",y="_ghost_1vhs7_103",t={button:c,primary:u,secondary:m,ghost:y},a=p.forwardRef(({className:s,variant:n="primary",children:r,...o},i)=>{const l=[t.button,t[n],"sandui-globals",s||""].filter(Boolean).join(" ");return d.jsx("button",{ref:i,className:l,...o,children:r})});a.propTypes={className:e.string,variant:e.oneOf(["primary","secondary","ghost"]),children:e.node.isRequired,disabled:e.bool};a.displayName="SandButton";a.__docgenInfo={description:`SandButton - The primary interactive element in SandUI.
-
-Supports three visual variants and an active press animation (scale 0.98).
-All buttons use the Inter font and follow the 8px spacing grid.
-
-@param {string} variant - Visual style: 'primary' (orange), 'secondary' (charcoal), or 'ghost' (transparent).
-@param {boolean} disabled - Disables interaction and reduces opacity.
-@param {string} className - Additional CSS class for external overrides.`,methods:[],displayName:"SandButton",props:{variant:{defaultValue:{value:"'primary'",computed:!1},description:"Visual style variant",type:{name:"enum",value:[{value:"'primary'",computed:!1},{value:"'secondary'",computed:!1},{value:"'ghost'",computed:!1}]},required:!1},className:{description:"Additional CSS class for external overrides",type:{name:"string"},required:!1},children:{description:"Button content",type:{name:"node"},required:!0},disabled:{description:"Disables the button",type:{name:"bool"},required:!1}}};export{a as S};

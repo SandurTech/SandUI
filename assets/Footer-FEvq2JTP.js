@@ -1,0 +1,31 @@
+import{j as e}from"./jsx-runtime-u17CrQMm.js";import{R as b}from"./index-CqIc3cxq.js";import{P as r}from"./index-CbwltWip.js";import{S as _}from"./Icon-DPzMwpZZ.js";const j="_footer_ujqx6_1",x="_main_ujqx6_8",k="_brandCol_ujqx6_17",v="_brandLink_ujqx6_23",y="_brandLogoImage_ujqx6_30",q="_brandName_ujqx6_37",N="_brandAccent_ujqx6_44",w="_description_ujqx6_48",L="_linkCol_ujqx6_56",S="_colTitle_ujqx6_62",T="_footerLink_ujqx6_71",A="_bottom_ujqx6_81",R="_copyright_ujqx6_91",C="_socials_ujqx6_104",I="_socialIcon_ujqx6_109",B="_watermark_ujqx6_127",a={footer:j,main:x,brandCol:k,brandLink:v,brandLogoImage:y,brandName:q,brandAccent:N,description:w,linkCol:L,colTitle:S,footerLink:T,bottom:A,copyright:R,socials:C,socialIcon:I,watermark:B},o=b.forwardRef(({className:l,brandLogo:i,brand:c="SandurTech",brandUrl:t="https://sandurtech.vercel.app",description:d="SandurTech is a solo-venture project dedicated to creating lightweight, efficient, and user-centric microservices that solve everyday digital problems.",navLinks:p=[{label:"Home",href:"#"},{label:"Products",href:"#"},{label:"About",href:"#"},{label:"Blog",href:"#"}],supportLinks:m=[{label:"Connect Directly",href:"https://www.linkedin.com/in/amogharajsandur/"},{label:"Review on Google Business?",href:"#"}],socials:h=[{icon:"code",href:"https://github.com/amogharajsandur",label:"GitHub"},{icon:"link",href:"https://www.linkedin.com/in/amogharajsandur/",label:"LinkedIn"},{icon:"mail",href:"mailto:contact@sandurtech.com",label:"Email"}],children:u,...f},g)=>e.jsxs("footer",{ref:g,className:`${a.footer} ${l||""}`,...f,children:[e.jsxs("div",{className:a.main,children:[e.jsxs("div",{className:a.brandCol,children:[e.jsxs("a",{href:t,target:"_blank",rel:"noopener noreferrer",className:a.brandLink,children:[i&&e.jsx("img",{src:i,alt:c,className:a.brandLogoImage}),e.jsxs("span",{className:a.brandName,children:[e.jsx("span",{className:a.brandAccent,children:"Sandur"}),"Tech"]})]}),e.jsx("p",{className:a.description,children:d})]}),e.jsxs("div",{className:a.linkCol,children:[e.jsx("h4",{className:a.colTitle,children:"Navigation"}),p.map((n,s)=>e.jsx("a",{href:n.href,className:a.footerLink,target:"_blank",rel:"noopener noreferrer",children:n.label},s))]}),e.jsxs("div",{className:a.linkCol,children:[e.jsx("h4",{className:a.colTitle,children:"Legal & Support"}),m.map((n,s)=>e.jsx("a",{href:n.href,className:a.footerLink,target:"_blank",rel:"noopener noreferrer",children:n.label},s))]}),u]}),e.jsxs("div",{className:a.bottom,children:[e.jsxs("span",{className:a.copyright,children:["© ",new Date().getFullYear()," ",e.jsx("a",{href:"https://www.linkedin.com/in/amogharajsandur/",target:"_blank",rel:"noopener noreferrer",children:"Amogha Raj Sandur"})," & ",e.jsx("a",{href:t,target:"_blank",rel:"noopener noreferrer",children:"SandurTech"})," (Sandur Technologies)."]}),e.jsx("div",{className:a.socials,children:h.map((n,s)=>e.jsx("a",{href:n.href,target:"_blank",rel:"noopener noreferrer",className:a.socialIcon,"aria-label":n.label,children:e.jsx(_,{name:n.icon,size:18})},s))})]}),e.jsx("div",{className:a.watermark,children:"SANDURTECH"})]}));o.propTypes={className:r.string,brand:r.string,brandUrl:r.string,description:r.string,navLinks:r.arrayOf(r.shape({label:r.string,href:r.string})),supportLinks:r.arrayOf(r.shape({label:r.string,href:r.string})),socials:r.arrayOf(r.shape({icon:r.string,href:r.string,label:r.string})),children:r.node};o.displayName="SandFooter";o.__docgenInfo={description:`SandFooter - A premium page footer matching the SandurTech design.
+
+@component
+@param {Object} props
+@param {string} [props.className] - Additional CSS class for overrides.
+@param {string} [props.brandLogo] - URL to the brand logo image.
+@param {string} [props.brand='SandurTech'] - Brand name text.
+@param {string} [props.brandUrl='https://sandurtech.vercel.app'] - URL the brand name links to.
+@param {string} [props.description] - Brand description text.
+@param {Array<{label: string, href: string}>} [props.navLinks] - Array of links for navigation column.
+@param {Array<{label: string, href: string}>} [props.supportLinks] - Array of links for support column.
+@param {Array<{icon: string, href: string, label: string}>} [props.socials] - Array of social icons.
+@param {React.ReactNode} [props.children] - Additional footer content.
+@returns {React.ReactElement} The rendered footer component.
+
+@example
+return (
+  <SandFooter brand="My Brand" description="My brand description." />
+)`,methods:[],displayName:"SandFooter",props:{brand:{defaultValue:{value:"'SandurTech'",computed:!1},description:"",type:{name:"string"},required:!1},brandUrl:{defaultValue:{value:"'https://sandurtech.vercel.app'",computed:!1},description:"",type:{name:"string"},required:!1},description:{defaultValue:{value:"'SandurTech is a solo-venture project dedicated to creating lightweight, efficient, and user-centric microservices that solve everyday digital problems.'",computed:!1},description:"",type:{name:"string"},required:!1},navLinks:{defaultValue:{value:`[
+  { label: 'Home', href: '#' },
+  { label: 'Products', href: '#' },
+  { label: 'About', href: '#' },
+  { label: 'Blog', href: '#' },
+]`,computed:!1},description:"",type:{name:"arrayOf",value:{name:"shape",value:{label:{name:"string",required:!1},href:{name:"string",required:!1}}}},required:!1},supportLinks:{defaultValue:{value:`[
+  { label: 'Connect Directly', href: 'https://www.linkedin.com/in/amogharajsandur/' },
+  { label: 'Review on Google Business?', href: '#' },
+]`,computed:!1},description:"",type:{name:"arrayOf",value:{name:"shape",value:{label:{name:"string",required:!1},href:{name:"string",required:!1}}}},required:!1},socials:{defaultValue:{value:`[
+  { icon: 'code', href: 'https://github.com/amogharajsandur', label: 'GitHub' },
+  { icon: 'link', href: 'https://www.linkedin.com/in/amogharajsandur/', label: 'LinkedIn' },
+  { icon: 'mail', href: 'mailto:contact@sandurtech.com', label: 'Email' },
+]`,computed:!1},description:"",type:{name:"arrayOf",value:{name:"shape",value:{icon:{name:"string",required:!1},href:{name:"string",required:!1},label:{name:"string",required:!1}}}},required:!1},className:{description:"",type:{name:"string"},required:!1},children:{description:"",type:{name:"node"},required:!1}}};export{o as S};
