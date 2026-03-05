@@ -21,6 +21,20 @@ export const Default = {
   },
 };
 
+export const Active = {
+  args: {
+    children: 'Active box state',
+    style: { background: 'var(--theme-surface-variant)' },
+  },
+};
+
+export const Disabled = {
+  args: {
+    children: 'Disabled box state',
+    style: { opacity: 0.5 },
+  },
+};
+
 export const AsSection = {
   name: 'As <section>',
   args: {

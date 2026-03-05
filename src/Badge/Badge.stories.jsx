@@ -12,7 +12,9 @@ export default {
 };
 
 export const Default = { args: { children: 'Default' } };
-export const Success = { args: { variant: 'success', children: 'Active' } };
+export const Active = { args: { variant: 'success', children: 'Active' } };
+export const Disabled = { args: { children: 'Disabled', style: { opacity: 0.5 } } };
+export const Success = { args: { variant: 'success', children: 'Success' } };
 export const Warning = { args: { variant: 'warning', children: 'Pending' } };
 export const Error = { args: { variant: 'error', children: 'Failed' } };
 

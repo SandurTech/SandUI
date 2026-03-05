@@ -5,13 +5,24 @@ import SandIcon from '../Icon/Icon';
 
 /**
  * SandFooter - A premium page footer matching the SandurTech design.
- * @param {string} brand - Brand name text.
- * @param {string} brandUrl - URL the brand name links to.
- * @param {string} description - Brand description text.
- * @param {Array} navLinks - Array of { label, href } for navigation column.
- * @param {Array} supportLinks - Array of { label, href } for support column.
- * @param {Array} socials - Array of { icon, href, label } for social icons.
- * @param {string} className - Additional CSS class for overrides.
+ *
+ * @component
+ * @param {Object} props
+ * @param {string} [props.className] - Additional CSS class for overrides.
+ * @param {string} [props.brandLogo] - URL to the brand logo image.
+ * @param {string} [props.brand='SandurTech'] - Brand name text.
+ * @param {string} [props.brandUrl='https://sandurtech.vercel.app'] - URL the brand name links to.
+ * @param {string} [props.description] - Brand description text.
+ * @param {Array<{label: string, href: string}>} [props.navLinks] - Array of links for navigation column.
+ * @param {Array<{label: string, href: string}>} [props.supportLinks] - Array of links for support column.
+ * @param {Array<{icon: string, href: string, label: string}>} [props.socials] - Array of social icons.
+ * @param {React.ReactNode} [props.children] - Additional footer content.
+ * @returns {React.ReactElement} The rendered footer component.
+ *
+ * @example
+ * return (
+ *   <SandFooter brand="My Brand" description="My brand description." />
+ * )
  */
 const SandFooter = React.forwardRef(({
   className,

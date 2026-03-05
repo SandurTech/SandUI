@@ -5,8 +5,23 @@ import SandIcon from '../Icon/Icon';
 
 /**
  * SandSidebar - A vertical navigation organism.
- * @param {Array} items - Array of { icon, label, href, active }.
- * @param {string} className - Additional CSS class for overrides.
+ *
+ * @component
+ * @param {Object} props
+ * @param {string} [props.className] - Additional CSS class for overrides.
+ * @param {Array<{icon?: string, label: string, href?: string, active?: boolean}>} [props.items=[]] - Array of sidebar items.
+ * @param {React.ReactNode} [props.children] - Additional sidebar content.
+ * @returns {React.ReactElement} The rendered sidebar component.
+ *
+ * @example
+ * return (
+ *   <SandSidebar
+ *     items={[
+ *       { label: 'Dashboard', icon: 'dashboard', active: true },
+ *       { label: 'Settings', icon: 'settings' }
+ *     ]}
+ *   />
+ * )
  */
 const SandSidebar = React.forwardRef(({ className, items = [], children, ...props }, ref) => (
   <aside ref={ref} className={`${styles.sidebar} sandui-globals ${className || ''}`} {...props}>

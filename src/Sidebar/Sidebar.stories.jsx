@@ -19,6 +19,26 @@ export const Default = {
   },
 };
 
+export const Active = {
+  args: {
+    items: [
+      { icon: 'dashboard', label: 'Dashboard' },
+      { icon: 'bar_chart', label: 'Analytics', active: true },
+      { icon: 'settings', label: 'Settings' },
+    ],
+  },
+};
+
+export const Disabled = {
+  args: {
+    items: [
+      { icon: 'dashboard', label: 'Dashboard' },
+      { icon: 'settings', label: 'Settings' },
+    ],
+    style: { opacity: 0.5, pointerEvents: 'none' }
+  },
+};
+
 export const WithNestedContent = {
   name: 'With Extra Content',
   render: () => (

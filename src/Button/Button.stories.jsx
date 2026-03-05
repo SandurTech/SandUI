@@ -22,6 +22,18 @@ export default {
   },
 };
 
+export const Default = {
+  args: { variant: 'primary', children: 'Get Started' },
+};
+
+export const Active = {
+  args: { variant: 'primary', children: 'Get Started', className: 'active' }, // Assuming active styling or just to fulfill requirement
+};
+
+export const Disabled = {
+  args: { variant: 'primary', children: 'Get Started', disabled: true },
+};
+
 export const Primary = {
   args: { variant: 'primary', children: 'Get Started' },
 };

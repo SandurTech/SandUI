@@ -21,6 +21,14 @@ export const Default = {
   },
 };
 
+export const Active = {
+  args: {
+    label: 'Email Address',
+    placeholder: 'you@sandurtech.com',
+    autoFocus: true,
+  },
+};
+
 export const WithError = {
   name: 'With Error',
   args: {

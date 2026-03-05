@@ -36,12 +36,8 @@
   }
 
   &:hover:not(:disabled) {
-    border-color: rgba($color-primary, 0.3);
-  }
-
-  // Dark mode hover adjustment
-  :global([data-theme='dark']) &:hover:not(:disabled) {
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--theme-border);
+    opacity: 0.8;
   }
 
   &:focus {
@@ -60,7 +56,7 @@
     border-color: var(--sandui-error);
 
     &:focus {
-      box-shadow: 0 0 0 3px rgba($color-error, 0.15);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15); // Hardcoded fallback for now if no token is mapped for error-soft
     }
   }
 }

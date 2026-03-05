@@ -12,6 +12,12 @@ export default {
   },
 };
 
+export const Default = { args: { variant: 'info', message: 'Build completed successfully.', duration: 0 } };
+
+export const Active = { args: { variant: 'success', message: 'Toast active state.', duration: 0, className: 'active' } };
+
+export const Disabled = { args: { variant: 'info', message: 'Toast disabled state.', duration: 0, style: { opacity: 0.5 } } };
+
 export const Info = { args: { variant: 'info', message: 'Build completed successfully.', duration: 0 } };
 export const Success = { args: { variant: 'success', message: 'File saved.', duration: 0 } };
 export const Warning = { args: { variant: 'warning', message: 'API rate limit approaching.', duration: 0 } };

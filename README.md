@@ -24,10 +24,36 @@ SandUI is a modern, Inter-font based React component library built for consisten
 
 ## Getting Started
 
+To use SandUI in your React project, install the package via npm:
+
 ```bash
 # Install
 npm install @sandurtech/sandui
+```
 
+Then, you can import and use the components, like the `<Button />` component, as shown below:
+
+```jsx
+import React from 'react';
+import { SandButton, SandThemeProvider } from '@sandurtech/sandui';
+import '@sandurtech/sandui/dist/style.css'; // Make sure to import the styles!
+
+function App() {
+  return (
+    <SandThemeProvider defaultTheme="light">
+      <SandButton variant="primary" onClick={() => alert('Clicked!')}>
+        Click Me
+      </SandButton>
+    </SandThemeProvider>
+  );
+}
+
+export default App;
+```
+
+### Development Scripts
+
+```bash
 # Development
 npm run dev
 
