@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="public/SandurTech-Logo-SVG.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sand UI | Component Catalog & Reference</title>
+    <meta name="description" content="Official Sand UI design system for SandurTech microservices. Built with React, TypeScript, and SASS." />
+    <meta name="author" content="Amogha Raj Sandur" />
+    <meta name="theme-color" content="#262626" />
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-55MDBLSS');</script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" rel="stylesheet">
+
+    <style>
+      /* =========================================
+         1. Design Tokens
+         ========================================= */
+      :root {
+        /* Base Palette */
+        --sand-accent: orange;
+        --sand-accent-dark: #cc8400;
+        --sand-accent-soft: rgba(255, 165, 0, 0.1);
+        --sand-accent-glow: rgba(255, 165, 0, 0.3);
+
+        --sand-primary: #262626;
+        --sand-primary-light: #3a3a3a;
+        --sand-primary-muted: rgba(38, 38, 38, 0.6);
+
+        --sand-secondary: #F2F2F2;
+        --sand-secondary-dark: #e6e6e6;
+        --sand-secondary-light: #ffffff;
+
+        /* Semantic Mapping (Light) */
+        --theme-bg: var(--sand-secondary);
+        --theme-surface: var(--sand-secondary-light);
+        --theme-surface-variant: var(--sand-secondary-dark);
+        --theme-text: var(--sand-primary);
+        --theme-text-muted: var(--sand-primary-muted);
+        --theme-border: var(--sand-secondary-dark);
+        --theme-footer-bg: var(--sand-primary);
+        --theme-footer-text: var(--sand-secondary);
+
+        /* Functional States */
+        --color-error: #e53935;
+        --color-error-soft: rgba(229, 57, 53, 0.1);
+
+        /* Typography */
+        --font-main: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+        --font-mono: 'Fira Code', 'ui-monospace', monospace;
+
+        /* Spacing */
+        --space-1: 0.25rem;
+        --space-2: 0.5rem;
+        --space-4: 1rem;
+        --space-8: 2rem;
+        --space-12: 3rem;
+
+        /* Constants */
+        --radius-lg: 20px;
+        --radius-md: 12px;
+        --radius-sm: 6px;
+        --radius-full: 9999px;
+
+        --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+        --glow: 0 0 20px var(--sand-accent-glow);
+
+        --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        --container-max: 1100px;
+      }
+
+      [data-theme="dark"] {
+        --theme-bg: #0d0d0d;
+        --theme-surface: #1a1a1a;
+        --theme-surface-variant: #262626;
+        --theme-text: var(--sand-secondary);
+        --theme-text-muted: rgba(242, 242, 242, 0.6);
+        --theme-border: rgba(255, 255, 255, 0.1);
+        --theme-footer-bg: #000000;
+        --theme-footer-text: var(--sand-secondary);
+      }
+
+      /* =========================================
+         2. Base Styles
+         ========================================= */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: var(--font-main);
+        background-color: var(--theme-bg);
+        color: var(--theme-text);
+        line-height: 1.6;
+        display: flex;
+        transition: background-color 0.4s ease;
+      }
+
+      /* Documentation Specific Styles */
+      .docs-sidebar {
+        width: 300px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        background-color: var(--theme-surface);
+        border-right: 1px solid var(--theme-border);
+        padding: 2.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        z-index: 100;
+      }
+      .docs-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 3rem;
+        color: var(--theme-text);
+        text-decoration: none;
+      }
+      .docs-logo span { color: var(--sand-accent); }
+      .docs-nav-group { margin-bottom: 2.5rem; }
+      .docs-nav-title {
+        font-size: 0.65rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--theme-text-muted);
+        margin-bottom: 0.75rem;
+        padding-left: 0.75rem;
+      }
+      .docs-nav-link {
+        display: flex; align-items: center; gap: 10px;
+        padding: 0.65rem 0.85rem; color: var(--theme-text);
+        font-weight: 500; text-decoration: none;
+        border-radius: 12px; transition: var(--transition);
+        font-size: 0.9rem;
+      }
+      .docs-nav-link:hover, .docs-nav-link.active {
+        background-color: var(--sand-accent-soft);
+        color: var(--sand-accent);
+      }
+      .docs-main { flex: 1; padding: 4rem 5rem; max-width: var(--container-max); margin: 0 auto; }
+      .docs-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6rem; }
+      .docs-title { font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; line-height: 1.1; }
+      .docs-section { margin-bottom: 10rem; scroll-margin-top: 4rem; }
+      .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem; }
+      .section-title::after { content: ''; flex: 1; height: 2px; background: var(--theme-border); }
+
+      /* Component Documentation Patterns */
+      .sand-comp-doc { margin-bottom: 8rem; }
+      .sand-comp-name { font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; }
+      .sand-comp-desc { font-size: 1.1rem; color: var(--theme-text-muted); margin-bottom: 2rem; max-width: 800px; }
+      .sand-preview-area {
+        background: var(--theme-surface); border: 1px solid var(--theme-border);
+        border-radius: var(--radius-lg); padding: 4rem; display: flex;
+        flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center;
+        margin-bottom: 2rem; position: relative;
+      }
+      .sand-preview-area::before {
+        content: 'PREVIEW'; position: absolute; top: 1rem; left: 1.5rem;
+        font-size: 0.6rem; font-weight: 900; letter-spacing: 2px; opacity: 0.4;
+      }
+      .sand-usage-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+      .sand-usage-item h4 { font-size: 0.8rem; text-transform: uppercase; color: var(--sand-accent); margin-bottom: 0.5rem; }
+      .sand-usage-item p { font-size: 0.9rem; }
+
+      /* Code Block Styles */
+      .sand-code-tabs { background: var(--sand-primary); border-radius: var(--radius-lg); overflow: hidden; margin-top: 1rem; border: 1px solid var(--theme-border); }
+      .sand-tab-headers { display: flex; background: var(--sand-primary-light); padding: 0 1rem; }
+      .sand-tab-btn {
+        padding: 1rem 1.5rem; background: none; border: none;
+        color: rgba(242, 242, 242, 0.5); font-family: var(--font-main);
+        font-weight: 700; font-size: 0.8rem; cursor: pointer;
+        position: relative; transition: var(--transition);
+      }
+      .sand-tab-btn.active { color: #fff; }
+      .sand-tab-btn.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--sand-accent); }
+      .sand-tab-content { display: none; position: relative; }
+      .sand-tab-content.active { display: block; }
+      .sand-code-block { margin: 0; padding: 2rem; font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.7; color: #d1d5db; overflow-x: auto; }
+      .sand-copy-btn {
+        position: absolute; top: 1rem; right: 1rem;
+        background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+        color: var(--sand-secondary-dark); padding: 0.5rem 0.75rem; border-radius: 8px;
+        cursor: pointer; font-size: 0.7rem; font-weight: 700;
+        display: flex; align-items: center; gap: 6px; transition: var(--transition);
+      }
+      .sand-copy-btn:hover { border-color: var(--sand-accent); color: #fff; }
+
+      /* Syntax Highlighting */
+      .sand-code-block .tag { color: var(--sand-accent); }
+      .sand-code-block .attr { color: var(--sand-secondary-dark); opacity: 0.8; }
+      .sand-code-block .val { color: var(--sand-accent-dark); }
+      .sand-code-block .comment { color: var(--sand-primary-muted); font-style: italic; }
+      .sand-code-block .keyword { color: var(--sand-accent); font-weight: 700; }
+
+      /* Token Visuals */
+      .token-card { background: var(--theme-surface); border: 1px solid var(--theme-border); border-radius: 12px; padding: 1.5rem; text-align: center; }
+      .token-color { height: 80px; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--theme-border); }
+      .token-label { font-size: 0.8rem; font-weight: 800; display: block; margin-bottom: 0.25rem; }
+      .token-value { font-family: var(--font-mono); font-size: 0.7rem; color: var(--theme-text-muted); }
+      .token-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; }
+
+      /* =========================================
+         3. Layout Components
+         ========================================= */
+      .sand-container { max-width: var(--container-max); margin: 0 auto; width: 100%; }
+      .sand-header {
+        background: var(--theme-surface); border-bottom: 1px solid var(--theme-border);
+        padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+      }
+      .sand-tool-layout { display: grid; grid-template-columns: 320px 1fr; gap: 1.5rem; align-items: stretch; }
+      .sand-tool-panel {
+        background: var(--theme-surface); border: 1px solid var(--theme-border);
+        border-radius: var(--radius-lg); padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;
+      }
+      .sand-result-panel {
+        background: var(--theme-surface-variant); border-radius: var(--radius-lg);
+        padding: 3rem; min-height: 400px; border: 2px dashed var(--theme-border);
+        display: flex; align-items: center; justify-content: center; color: var(--theme-text-muted);
+      }
+
+      /* =========================================
+         4. UI Components
+         ========================================= */
+
+      /* Buttons */
+      .sand-btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
+        padding: 0.9rem 2rem; border-radius: var(--radius-md);
+        font-weight: 700; font-size: 0.95rem; cursor: pointer;
+        transition: var(--transition); border: 2px solid transparent; font-family: var(--font-main);
+        white-space: nowrap; text-decoration: none;
+      }
+      .sand-btn-primary { background: var(--sand-accent); color: #fff; box-shadow: var(--glow); border-color: var(--sand-accent); }
+      .sand-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 28px var(--sand-accent-glow); background: var(--sand-accent-dark); }
+      .sand-btn-secondary { background-color: var(--sand-primary); color: var(--sand-secondary); }
+      .sand-btn-secondary:hover { background-color: var(--sand-primary-light); transform: translateY(-2px); }
+      .sand-btn-outline { background: transparent; border-color: var(--theme-border); color: var(--theme-text); }
+      .sand-btn-outline:hover { border-color: var(--sand-accent); color: var(--sand-accent); background: var(--sand-accent-soft); }
+      .sand-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+
+      /* Inputs */
+      .sand-form-group { display: flex; flex-direction: column; gap: 0.6rem; width: 100%; }
+      .sand-label { font-size: 0.75rem; font-weight: 800; color: var(--theme-text-muted); text-transform: uppercase; letter-spacing: 1.5px; }
+      .sand-input {
+        width: 100%; background-color: var(--theme-surface); border: 2px solid var(--theme-border);
+        border-radius: var(--radius-md); padding: 1rem 1.25rem; font-family: inherit;
+        color: var(--theme-text); transition: var(--transition); font-size: 1rem;
+      }
+      .sand-input:focus { outline: none; border-color: var(--sand-accent); box-shadow: 0 0 0 5px var(--sand-accent-soft); }
+      .sand-input-error { border-color: var(--color-error); background: var(--color-error-soft); }
+      .sand-input-error:focus { border-color: var(--color-error); box-shadow: 0 0 0 5px var(--color-error-soft); }
+
+      /* Cards */
+      .sand-card {
+        background-color: var(--theme-surface); border: 1px solid var(--theme-border);
+        border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition);
+      }
+      .sand-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: var(--sand-accent); }
+      .sand-card-header { padding: 1.5rem 2rem; border-bottom: 1px solid var(--theme-border); font-weight: 800; font-size: 1.2rem; }
+      .sand-card-body { padding: 2rem; }
+      .sand-card-footer { padding: 1.25rem 2rem; background-color: var(--theme-surface-variant); border-top: 1px solid var(--theme-border); display: flex; gap: 1rem; }
+
+      /* Badges */
+      .sand-badge { display: inline-flex; align-items: center; padding: 0.4rem 1rem; border-radius: var(--radius-full); font-size: 0.65rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+      .sand-badge-primary { background: var(--sand-accent-soft); color: var(--sand-accent); }
+      .sand-badge-secondary { background: var(--theme-surface-variant); color: var(--theme-text-muted); }
+
+      /* Divider */
+      .sand-divider { height: 1px; background: var(--theme-border); width: 100%; margin: 1rem 0; }
+
+      /* =========================================
+         5. Utilities
+         ========================================= */
+      .u-mt-4 { margin-top: 1rem; }
+      .u-mb-4 { margin-bottom: 1rem; }
+
+      /* Theme Toggle Button */
+      .sand-theme-btn {
+        width: 48px; height: 48px; border-radius: 12px; background: var(--theme-surface);
+        border: 1px solid var(--theme-border); display: flex; align-items: center; justify-content: center;
+        cursor: pointer; box-shadow: var(--shadow-sm); transition: var(--transition); color: var(--theme-text);
+      }
+      .sand-theme-btn:hover { border-color: var(--sand-accent); color: var(--sand-accent); transform: scale(1.05); }
+
+    </style>
+  </head>
+  <body>
+    <!-- GTM (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-55MDBLSS"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Sidebar Navigation -->
+    <aside class="docs-sidebar">
+      <a href="#" class="docs-logo">
+        Sand <span>UI</span>
+      </a>
+
+      <nav>
+        <div class="docs-nav-group">
+          <div class="docs-nav-title">Introduction</div>
+          <a href="#intro" class="docs-nav-link"><span class="material-symbols-rounded">info</span>Overview</a>
+          <a href="#microservice-layout" class="docs-nav-link"><span class="material-symbols-rounded">layers</span>Microservice Layout</a>
+        </div>
+
+        <div class="docs-nav-group">
+          <div class="docs-nav-title">Foundations</div>
+          <a href="#tokens" class="docs-nav-link"><span class="material-symbols-rounded">palette</span>Design Tokens</a>
+          <a href="#typography" class="docs-nav-link"><span class="material-symbols-rounded">text_fields</span>Typography</a>
+        </div>
+
+        <div class="docs-nav-group">
+          <div class="docs-nav-title">Components</div>
+          <a href="#buttons" class="docs-nav-link"><span class="material-symbols-rounded">smart_button</span>Buttons</a>
+          <a href="#inputs" class="docs-nav-link"><span class="material-symbols-rounded">input</span>Inputs & Forms</a>
+          <a href="#cards" class="docs-nav-link"><span class="material-symbols-rounded">picture_in_picture</span>Cards</a>
+          <a href="#utilities" class="docs-nav-link"><span class="material-symbols-rounded">build</span>Utilities</a>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="docs-main">
+      <header class="docs-header">
+        <h1 class="docs-title">Component <br>Catalog <span>& Reference</span></h1>
+        <button id="theme-toggle" class="sand-theme-btn" title="Toggle Theme">
+          <span class="material-symbols-rounded">dark_mode</span>
+        </button>
+      </header>
+
+      <!-- SECTION: INTRODUCTION -->
+      <section id="intro" class="docs-section">
+        <h2 class="section-title">Overview</h2>
+        <div class="sand-comp-doc">
+          <p class="sand-comp-desc">
+            Sand UI is a purpose-built component system for <strong>SandurTech</strong> tools. It focuses on a monochromatic primary identity with a high-visibility accent system.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION: MICROSERVICE LAYOUT -->
+      <section id="microservice-layout" class="docs-section">
+        <h2 class="section-title">Sand UI in SandurTech Microservices</h2>
+        <div class="sand-comp-doc">
+          <div class="sand-comp-name">Microservice Layout Example</div>
+          <p class="sand-comp-desc">The typical layout for a SandurTech utility consists of a header, a configuration panel, and a result panel.</p>
+
+          <div class="sand-preview-area" style="background: var(--theme-bg); display: block; padding: 1.5rem;">
+            <!-- Simple Layout Simulation -->
+            <header class="sand-header" style="border-radius: var(--radius-md) var(--radius-md) 0 0; margin-bottom: 1.5rem;">
+              <div style="font-weight: 800; font-size: 0.9rem;">SandurTech Tool</div>
+              <div style="width: 20px; height: 20px; border-radius: 50%; background: var(--sand-accent);"></div>
+            </header>
+            <div class="sand-tool-layout" style="grid-template-columns: 200px 1fr;">
+              <aside class="sand-tool-panel" style="padding: 1.5rem; gap: 1rem;">
+                <div class="sand-form-group"><label class="sand-label" style="font-size: 0.6rem;">Config</label><input type="text" class="sand-input" style="padding: 0.6rem; font-size: 0.8rem;"></div>
+                <button class="sand-btn sand-btn-primary" style="padding: 0.6rem; font-size: 0.8rem;">Action</button>
+              </aside>
+              <main class="sand-result-panel" style="min-height: 200px; font-size: 0.8rem;">Output Area</main>
+            </div>
+          </div>
+
+          <div class="sand-code-tabs">
+            <div class="sand-tab-headers"><button class="sand-tab-btn active">HTML Layout Reference</button></div>
+            <div class="sand-tab-content active">
+              <button class="sand-copy-btn"><span class="material-symbols-rounded">content_copy</span>Copy</button>
+              <pre class="sand-code-block"><code><span class="tag">&lt;header</span> <span class="attr">class</span>=<span class="val">"sand-header"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/header&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"sand-tool-layout"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;aside</span> <span class="attr">class</span>=<span class="val">"sand-tool-panel"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"sand-form-group"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="val">"sand-btn sand-btn-primary"</span><span class="tag">&gt;</span>Generate<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/aside&gt;</span>
+  <span class="tag">&lt;main</span> <span class="attr">class</span>=<span class="val">"sand-result-panel"</span><span class="tag">&gt;</span>
+    {/* Result Output Area */}
+  <span class="tag">&lt;/main&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: DESIGN TOKENS -->
+      <section id="tokens" class="docs-section">
+        <h2 class="section-title">Design Tokens</h2>
+
+        <div class="sand-comp-doc">
+          <h3 class="sand-comp-name">Core Colors</h3>
+          <div class="token-grid">
+            <div class="token-card">
+              <div class="token-color" style="background: orange;"></div>
+              <span class="token-label">Accent</span>
+              <span class="token-value">orange (--sand-accent)</span>
+            </div>
+            <div class="token-card">
+              <div class="token-color" style="background: #262626;"></div>
+              <span class="token-label">Primary</span>
+              <span class="token-value">#262626 (--sand-primary)</span>
+            </div>
+            <div class="token-card">
+              <div class="token-color" style="background: #F2F2F2; border-color: #e6e6e6;"></div>
+              <span class="token-label">Secondary</span>
+              <span class="token-value">#F2F2F2 (--sand-secondary)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sand-comp-doc">
+          <h3 class="sand-comp-name">Spacing Scale</h3>
+          <div class="token-grid">
+            <div class="token-card"><div style="height: 1rem; width: 0.25rem; background: var(--sand-accent); margin: 0 auto 1rem; border-radius: 2px;"></div><span class="token-label">4px</span><span class="token-value">--space-1</span></div>
+            <div class="token-card"><div style="height: 1rem; width: 0.5rem; background: var(--sand-accent); margin: 0 auto 1rem; border-radius: 2px;"></div><span class="token-label">8px</span><span class="token-value">--space-2</span></div>
+            <div class="token-card"><div style="height: 1rem; width: 1rem; background: var(--sand-accent); margin: 0 auto 1rem; border-radius: 2px;"></div><span class="token-label">16px</span><span class="token-value">--space-4</span></div>
+            <div class="token-card"><div style="height: 1rem; width: 2rem; background: var(--sand-accent); margin: 0 auto 1rem; border-radius: 2px;"></div><span class="token-label">32px</span><span class="token-value">--space-8</span></div>
+          </div>
+        </div>
+
+        <div class="sand-comp-doc">
+          <h3 class="sand-comp-name">Border Radius</h3>
+          <div class="token-grid">
+            <div class="token-card"><div style="height: 40px; width: 40px; border: 2px solid var(--sand-accent); border-radius: var(--radius-sm); margin: 0 auto 1rem;"></div><span class="token-label">Small (6px)</span><span class="token-value">--radius-sm</span></div>
+            <div class="token-card"><div style="height: 40px; width: 40px; border: 2px solid var(--sand-accent); border-radius: var(--radius-md); margin: 0 auto 1rem;"></div><span class="token-label">Medium (12px)</span><span class="token-value">--radius-md</span></div>
+            <div class="token-card"><div style="height: 40px; width: 40px; border: 2px solid var(--sand-accent); border-radius: var(--radius-lg); margin: 0 auto 1rem;"></div><span class="token-label">Large (20px)</span><span class="token-value">--radius-lg</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: TYPOGRAPHY -->
+      <section id="typography" class="docs-section">
+        <h2 class="section-title">Typography</h2>
+        <div class="sand-comp-doc">
+          <p class="sand-comp-desc">Headings use 'Outfit' for a modern feel, while body text uses 'Inter' for clarity.</p>
+          <div class="sand-preview-area" style="flex-direction: column; align-items: flex-start; gap: 1.5rem;">
+            <h1 style="font-size: 3.5rem; font-weight: 900; letter-spacing: -2px;">Heading One</h1>
+            <h2 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -1px;">Heading Two</h2>
+            <p style="font-size: 1.05rem; max-width: 650px;">Digital elegance and performance. Handcrafted niche tools designed for the future of the web.</p>
+            <code style="font-family: var(--font-mono); font-size: 0.85rem; background: var(--theme-surface-variant); padding: 0.4rem 0.8rem; border-radius: 6px;">const brand = 'SandurTech';</code>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: BUTTONS -->
+      <section id="buttons" class="docs-section">
+        <h2 class="section-title">Buttons</h2>
+        <div class="sand-comp-doc">
+          <div class="sand-comp-name">Button Component</div>
+
+          <div class="sand-preview-area">
+            <button class="sand-btn sand-btn-primary">Primary Action</button>
+            <button class="sand-btn sand-btn-secondary">Secondary Action</button>
+            <button class="sand-btn sand-btn-outline">Outline Action</button>
+            <button class="sand-btn sand-btn-primary" disabled>Disabled State</button>
+          </div>
+
+          <div class="sand-usage-grid">
+            <div class="sand-usage-item">
+              <h4>Description</h4>
+              <p>Buttons trigger critical actions or events in our microservices.</p>
+            </div>
+            <div class="sand-usage-item">
+              <h4>When to Use</h4>
+              <p>For generating results, submitting forms, or primary UI navigation.</p>
+            </div>
+            <div class="sand-usage-item">
+              <h4>How to Use</h4>
+              <p>Apply <code>sand-btn</code> and a variant like <code>sand-btn-primary</code>.</p>
+            </div>
+          </div>
+
+          <div class="sand-code-tabs">
+            <div class="sand-tab-headers">
+              <button class="sand-tab-btn active" data-tab="react">React (TS)</button>
+              <button class="sand-tab-btn" data-tab="html">HTML Reference</button>
+            </div>
+            <div class="sand-tab-content active" id="btn-react">
+              <button class="sand-copy-btn"><span class="material-symbols-rounded">content_copy</span>Copy</button>
+              <pre class="sand-code-block"><code><span class="keyword">import</span> { Button } <span class="keyword">from</span> <span class="val">'@sandurtech/sand-ui'</span>;
+
+<span class="keyword">const</span> App = () => (
+  <span class="tag">&lt;Button</span> <span class="attr">variant</span>=<span class="val">"primary"</span> <span class="attr">onClick</span>={generate}<span class="tag">&gt;</span>
+    Generate Results
+  <span class="tag">&lt;/Button&gt;</span>
+);</code></pre>
+            </div>
+            <div class="sand-tab-content" id="btn-html">
+              <button class="sand-copy-btn"><span class="material-symbols-rounded">content_copy</span>Copy</button>
+              <pre class="sand-code-block"><code><span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="val">"sand-btn sand-btn-primary"</span><span class="tag">&gt;</span>Primary Action<span class="tag">&lt;/button&gt;</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: INPUTS -->
+      <section id="inputs" class="docs-section">
+        <h2 class="section-title">Inputs & Forms</h2>
+        <div class="sand-comp-doc">
+          <div class="sand-comp-name">Text Input</div>
+
+          <div class="sand-preview-area" style="flex-direction: column; align-items: stretch; max-width: 500px; margin: 0 auto;">
+            <div class="sand-form-group">
+              <label class="sand-label">Default Input</label>
+              <input type="text" class="sand-input" placeholder="Enter text...">
+            </div>
+            <div class="sand-form-group u-mt-4">
+              <label class="sand-label">Error State</label>
+              <input type="text" class="sand-input sand-input-error" value="Invalid data">
+              <span style="color: var(--color-error); font-size: 0.75rem; font-weight: 700;">Please correct this field.</span>
+            </div>
+          </div>
+
+          <div class="sand-usage-grid">
+            <div class="sand-usage-item">
+              <h4>Description</h4>
+              <p>Standardized form fields for user data entry.</p>
+            </div>
+            <div class="sand-usage-item">
+              <h4>When to Use</h4>
+              <p>For configuration parameters, search boxes, and data submission.</p>
+            </div>
+            <div class="sand-usage-item">
+              <h4>How to Use</h4>
+              <p>Wrap <code>sand-input</code> in <code>sand-form-group</code> with a <code>sand-label</code>.</p>
+            </div>
+          </div>
+
+          <div class="sand-code-tabs">
+            <div class="sand-tab-headers">
+              <button class="sand-tab-btn active" data-tab="react">React (TS)</button>
+              <button class="sand-tab-btn" data-tab="html">HTML Reference</button>
+            </div>
+            <div class="sand-tab-content active" id="input-react">
+              <button class="sand-copy-btn"><span class="material-symbols-rounded">content_copy</span>Copy</button>
+              <pre class="sand-code-block"><code><span class="keyword">import</span> { InputGroup } <span class="keyword">from</span> <span class="val">'@sandurtech/sand-ui'</span>;
+
+<span class="keyword">const</span> Form = () => (
+  <span class="tag">&lt;InputGroup</span>
+    <span class="attr">label</span>=<span class="val">"Microservice Name"</span>
+    <span class="attr">error</span>={<span class="keyword">true</span>}
+    <span class="attr">helperText</span>=<span class="val">"Name is required"</span>
+  <span class="tag">/&gt;</span>
+);</code></pre>
+            </div>
+            <div class="sand-tab-content" id="input-html">
+              <button class="sand-copy-btn"><span class="material-symbols-rounded">content_copy</span>Copy</button>
+              <pre class="sand-code-block"><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"sand-form-group"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="attr">class</span>=<span class="val">"sand-label"</span><span class="tag">&gt;</span>Label<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="val">"text"</span> <span class="attr">class</span>=<span class="val">"sand-input"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: CARDS -->
+      <section id="cards" class="docs-section">
+        <h2 class="section-title">Cards</h2>
+        <div class="sand-comp-doc">
+          <div class="sand-comp-name">Standard Card</div>
+
+          <div class="sand-preview-area">
+            <div class="sand-card" style="max-width: 400px;">
+              <div class="sand-card-header">Official Documentation</div>
+              <div class="sand-card-body">
+                <p style="font-size: 0.95rem;">Explore the full potential of Sand UI in our microservice architecture.</p>
+              </div>
+              <div class="sand-card-footer">
+                <button class="sand-btn sand-btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">Read More</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="sand-usage-grid">
+            <div class="sand-usage-item">
+              <h4>Description</h4>
+              <p>Containers that group related content and actions.</p>
+            </div>
+            <div class="sand-usage-item">
+              <h4>Why to Use</h4>
+              <p>Provides visual structure and hierarchy to complex tool interfaces.</p>
+            </div>
+            <div class="sand-usage-item">
+              <h4>How to Use</h4>
+              <p>Use <code>sand-card</code> with optional header and footer blocks.</p>
+            </div>
+          </div>
+
+          <div class="sand-code-tabs">
+            <div class="sand-tab-headers">
+              <button class="sand-tab-btn active" data-tab="react">React (TS)</button>
+              <button class="sand-tab-btn" data-tab="html">HTML Reference</button>
+            </div>
+            <div class="sand-tab-content active" id="card-react">
+              <button class="sand-copy-btn"><span class="material-symbols-rounded">content_copy</span>Copy</button>
+              <pre class="sand-code-block"><code><span class="tag">&lt;Card</span> <span class="attr">header</span>={<span class="val">"Project Alpha"</span>}<span class="tag">&gt;</span>
+  <span class="tag">&lt;p&gt;</span>Content goes here...<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;Button</span> <span class="attr">variant</span>=<span class="val">"secondary"</span><span class="tag">&gt;</span>View<span class="tag">&lt;/Button&gt;</span>
+<span class="tag">&lt;/Card&gt;</span></code></pre>
+            </div>
+            <div class="sand-tab-content" id="card-html">
+              <button class="sand-copy-btn"><span class="material-symbols-rounded">content_copy</span>Copy</button>
+              <pre class="sand-code-block"><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"sand-card"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"sand-card-header"</span><span class="tag">&gt;</span>Header<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"sand-card-body"</span><span class="tag">&gt;</span>Body<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"sand-card-footer"</span><span class="tag">&gt;</span>Footer<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: UTILITIES -->
+      <section id="utilities" class="docs-section">
+        <h2 class="section-title">Utilities</h2>
+
+        <!-- Badges -->
+        <div class="sand-comp-doc">
+          <div class="sand-comp-name">Badges</div>
+          <div class="sand-preview-area">
+            <span class="sand-badge sand-badge-primary">Official</span>
+            <span class="sand-badge sand-badge-secondary">Draft</span>
+          </div>
+          <div class="sand-usage-grid">
+            <div class="sand-usage-item"><h4>Description</h4><p>Status indicators and labels.</p></div>
+            <div class="sand-usage-item"><h4>When to Use</h4><p>To highlight metadata or status states.</p></div>
+            <div class="sand-usage-item"><h4>How to Use</h4><p>Use <code>sand-badge</code> with variant classes.</p></div>
+          </div>
+          <div class="sand-code-tabs">
+            <div class="sand-tab-headers"><button class="sand-tab-btn active">HTML Reference</button></div>
+            <div class="sand-tab-content active">
+              <button class="sand-copy-btn"><span class="material-symbols-rounded">content_copy</span>Copy</button>
+              <pre class="sand-code-block"><code><span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"sand-badge sand-badge-primary"</span><span class="tag">&gt;</span>Official<span class="tag">&lt;/span&gt;</span></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dividers -->
+        <div class="sand-comp-doc">
+          <div class="sand-comp-name">Dividers</div>
+          <div class="sand-preview-area" style="flex-direction: column; gap: 1rem; align-items: stretch;">
+            <p style="font-size: 0.8rem; opacity: 0.6;">Content Above</p>
+            <div class="sand-divider"></div>
+            <p style="font-size: 0.8rem; opacity: 0.6;">Content Below</p>
+          </div>
+          <div class="sand-usage-grid">
+            <div class="sand-usage-item"><h4>Description</h4><p>Visual separators for grouping content.</p></div>
+            <div class="sand-usage-item"><h4>When to Use</h4><p>To create semantic separation between blocks.</p></div>
+            <div class="sand-usage-item"><h4>How to Use</h4><p>Use the <code>sand-divider</code> class.</p></div>
+          </div>
+          <div class="sand-code-tabs">
+            <div class="sand-tab-headers"><button class="sand-tab-btn active">HTML Reference</button></div>
+            <div class="sand-tab-content active">
+              <button class="sand-copy-btn"><span class="material-symbols-rounded">content_copy</span>Copy</button>
+              <pre class="sand-code-block"><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"sand-divider"</span><span class="tag">&gt;&lt;/div&gt;</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer style="background: var(--theme-footer-bg); color: var(--theme-footer-text); padding: 5rem 2rem; text-align: center;">
+      <p style="font-size: 0.9rem; font-weight: 600;">&copy; 2026 SandurTech. All rights reserved. Handcrafted by <strong>Amogha Raj Sandur</strong>.</p>
+    </footer>
+
+    <script>
+      // Theme Toggle Logic
+      const themeToggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+      const icon = themeToggle.querySelector('.material-symbols-rounded');
+
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      html.setAttribute('data-theme', savedTheme);
+      updateThemeIcon(savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      function updateThemeIcon(theme) {
+        icon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
+      }
+
+      // Tab Logic
+      document.querySelectorAll('.sand-tab-headers').forEach(header => {
+        header.addEventListener('click', (e) => {
+          if (!e.target.classList.contains('sand-tab-btn')) return;
+          const container = header.closest('.sand-code-tabs');
+          header.querySelectorAll('.sand-tab-btn').forEach(btn => btn.classList.remove('active'));
+          e.target.classList.add('active');
+          const contents = container.querySelectorAll('.sand-tab-content');
+          contents.forEach(content => content.classList.remove('active'));
+
+          const tabName = e.target.getAttribute('data-tab');
+          if (tabName) {
+            const target = Array.from(contents).find(c => c.id.includes(tabName)) || contents[0];
+            target.classList.add('active');
+          } else {
+            const index = Array.from(header.children).indexOf(e.target);
+            contents[index].classList.add('active');
+          }
+        });
+      });
+
+      // Copy Logic
+      document.querySelectorAll('.sand-copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const code = btn.nextElementSibling.innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-rounded">check</span> Copied';
+            setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+          });
+        });
+      });
+
+      // Navigation Highlighting
+      const sections = document.querySelectorAll('.docs-section');
+      const navLinks = document.querySelectorAll('.docs-nav-link');
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          if (pageYOffset >= (section.offsetTop - 200)) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href').includes(current)) link.classList.add('active');
+        });
+      });
+    </script>
+  </body>
+</html>

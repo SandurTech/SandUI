@@ -1,0 +1,84 @@
+@use "../../styles/tokens";
+
+.sand-code-block {
+  margin: 0;
+  padding: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #d1d5db;
+  overflow-x: auto;
+  background: var(--sand-primary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--theme-border);
+  position: relative;
+}
+
+.sand-copy-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--sand-secondary-dark);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+
+  &:hover {
+    border-color: var(--sand-accent);
+    color: #fff;
+  }
+}
+
+.sand-code-tabs {
+  background: var(--sand-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: 1rem;
+  border: 1px solid var(--theme-border);
+
+  .sand-code-block {
+    border: none;
+    border-radius: 0;
+  }
+}
+
+.sand-tab-headers {
+  display: flex;
+  background: var(--sand-primary-light);
+  padding: 0 1rem;
+}
+
+.sand-tab-btn {
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  color: rgba(242, 242, 242, 0.5);
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition);
+
+  &.active {
+    color: #fff;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--sand-accent);
+    }
+  }
+}

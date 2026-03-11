@@ -1,0 +1,49 @@
+@use "sass:color";
+
+// =========================================
+// Design Tokens
+// =========================================
+
+// Base Colors (Strictly requested colors)
+$color-accent: orange;
+$color-primary: #262626;
+$color-secondary: #F2F2F2;
+
+// Derived Colors
+$color-accent-dark: color.adjust($color-accent, $lightness: -10%);
+$color-accent-soft: rgba($color-accent, 0.1);
+$color-accent-glow: rgba($color-accent, 0.3);
+
+$color-primary-light: color.adjust($color-primary, $lightness: 15%);
+$color-primary-muted: rgba($color-primary, 0.6);
+
+$color-secondary-dark: color.adjust($color-secondary, $lightness: -5%);
+$color-secondary-light: #FFFFFF;
+
+// Functional States
+$color-error: #e53935;
+$color-error-soft: rgba(229, 57, 53, 0.1);
+
+// Typography
+$font-main: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+$font-mono: 'Fira Code', 'ui-monospace', monospace;
+
+// Spacing
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-4: 1rem;
+$space-8: 2rem;
+$space-12: 3rem;
+
+// Border Radius
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 20px;
+$radius-full: 9999px;
+
+// Constants
+$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+$glow: 0 0 20px $color-accent-glow;
+$transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+$container-max: 1100px;

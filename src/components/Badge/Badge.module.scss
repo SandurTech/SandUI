@@ -1,0 +1,22 @@
+@use "../../styles/tokens";
+
+.sand-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.sand-badge-primary {
+  background: var(--sand-accent-soft);
+  color: var(--sand-accent);
+}
+
+.sand-badge-secondary {
+  background: var(--theme-surface-variant);
+  color: var(--theme-text-muted);
+}
