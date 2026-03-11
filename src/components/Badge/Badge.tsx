@@ -2,7 +2,7 @@ import React, { type HTMLAttributes } from 'react';
 import styles from './Badge.module.scss';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'success' | 'failed';
   children: React.ReactNode;
 }
 

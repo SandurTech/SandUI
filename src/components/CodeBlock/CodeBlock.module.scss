@@ -2,7 +2,7 @@
 
 .sand-code-block {
   margin: 0;
-  padding: 2rem;
+  padding: 1.5rem;
   font-family: var(--font-mono);
   font-size: 0.85rem;
   line-height: 1.7;
@@ -35,6 +35,11 @@
     border-color: var(--sand-accent);
     color: #fff;
   }
+
+  &:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--sand-accent) 55%, white);
+    outline-offset: 2px;
+  }
 }
 
 .sand-code-tabs {
@@ -53,11 +58,12 @@
 .sand-tab-headers {
   display: flex;
   background: var(--sand-primary-light);
-  padding: 0 1rem;
+  padding: 0 0.75rem;
+  overflow-x: auto;
 }
 
 .sand-tab-btn {
-  padding: 1rem 1.5rem;
+  padding: 0.9rem 1rem;
   background: none;
   border: none;
   color: rgba(242, 242, 242, 0.5);
@@ -67,6 +73,12 @@
   cursor: pointer;
   position: relative;
   transition: var(--transition);
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--sand-accent) 55%, white);
+    outline-offset: -3px;
+  }
 
   &.active {
     color: #fff;
@@ -80,5 +92,17 @@
       height: 3px;
       background: var(--sand-accent);
     }
+  }
+}
+
+@media (max-width: 640px) {
+  .sand-code-block {
+    padding: 1.1rem;
+    font-size: 0.8rem;
+  }
+
+  .sand-copy-btn {
+    top: 0.75rem;
+    right: 0.75rem;
   }
 }

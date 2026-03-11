@@ -13,6 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .sand-tool-layout {
@@ -42,4 +43,26 @@
   align-items: center;
   justify-content: center;
   color: var(--theme-text-muted);
+}
+
+@media (max-width: 900px) {
+  .sand-tool-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sand-result-panel {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sand-header {
+    padding: 0.9rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .sand-tool-panel,
+  .sand-result-panel {
+    padding: 1rem;
+  }
 }

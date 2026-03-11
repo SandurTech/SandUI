@@ -1,0 +1,45 @@
+@use "../../styles/tokens";
+
+.sand-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sand-page-btn {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  border: 1px solid var(--theme-border);
+  background: var(--theme-surface);
+  color: var(--theme-text);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 700;
+
+  &:hover:not(:disabled) {
+    border-color: var(--sand-accent);
+    color: var(--sand-accent);
+  }
+
+  &:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--sand-accent) 55%, white);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+.sand-page-btn-active {
+  background: var(--sand-accent);
+  border-color: var(--sand-accent);
+  color: #fff;
+}

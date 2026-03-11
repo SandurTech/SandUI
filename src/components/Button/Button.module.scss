@@ -13,14 +13,34 @@
   transition: var(--transition);
   border: 2px solid transparent;
   font-family: var(--font-main);
-  white-space: nowrap;
   text-decoration: none;
+  line-height: 1.2;
+  min-height: 3rem;
+  min-width: 0;
 
   &:disabled {
     opacity: 0.4;
     cursor: not-allowed;
     transform: none !important;
     box-shadow: none !important;
+  }
+
+  &:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--sand-accent) 55%, white);
+    outline-offset: 3px;
+  }
+}
+
+.sand-btn :global(.material-symbols-rounded) {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .sand-btn {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    white-space: normal;
   }
 }
 
@@ -56,5 +76,29 @@
     border-color: var(--sand-accent);
     color: var(--sand-accent);
     background: var(--sand-accent-soft);
+  }
+}
+
+.sand-btn-success {
+  background: var(--color-success);
+  color: #fff;
+  border-color: var(--color-success);
+
+  &:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--color-success) 30%, transparent);
+    filter: brightness(1.04);
+  }
+}
+
+.sand-btn-failed {
+  background: var(--color-error);
+  color: #fff;
+  border-color: var(--color-error);
+
+  &:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--color-error) 28%, transparent);
+    filter: brightness(0.98);
   }
 }

@@ -9,6 +9,13 @@ export const Overview: React.FC = () => (
         <p className="sand-comp-desc">
           Sand UI is a purpose-built component system for <strong>SandurTech</strong> tools. It focuses on a monochromatic primary identity with a high-visibility accent system.
         </p>
+        <div className="docs-install-card">
+          <div className="docs-install-header">
+            <span className="material-symbols-rounded" aria-hidden="true">package_2</span>
+            <span>Install the package</span>
+          </div>
+          <code className="docs-install-command">npm i @sandurtech/sandui</code>
+        </div>
       </div>
     </section>
 
@@ -18,22 +25,25 @@ export const Overview: React.FC = () => (
         <div className="sand-comp-name">Microservice Layout Example</div>
         <p className="sand-comp-desc">The typical layout for a SandurTech utility consists of a header, a configuration panel, and a result panel.</p>
 
-        <div className="sand-preview-area" style={{ background: 'var(--theme-bg)', display: 'block', padding: '1.5rem' }}>
+        <div className="sand-preview-area sand-preview-area-layout">
           <MicroserviceLayout
             header={
-              <Header style={{ borderRadius: 'var(--radius-md) var(--radius-md) 0 0', marginBottom: '1.5rem' }}>
-                <div style={{ fontWeight: 800, fontSize: '0.9rem' }}>SandurTech Tool</div>
-                <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'var(--sand-accent)' }}></div>
+              <Header className="docs-demo-header">
+                <div className="docs-demo-title">SandurTech Tool</div>
+                <span className="material-symbols-rounded docs-accent-icon" aria-hidden="true">deployed_code</span>
               </Header>
             }
             panel={
-              <ToolPanel style={{ padding: '1.5rem', gap: '1rem' }}>
-                <InputGroup label="Config" style={{ padding: '0.6rem', fontSize: '0.8rem' }} />
-                <Button variant="primary" style={{ padding: '0.6rem', fontSize: '0.8rem' }}>Action</Button>
+              <ToolPanel className="docs-demo-panel">
+                <InputGroup label="Config" groupClassName="docs-compact-input" />
+                <Button variant="primary" className="docs-inline-button">
+                  <span className="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+                  Action
+                </Button>
               </ToolPanel>
             }
             result={
-              <ResultPanel style={{ minHeight: '200px', fontSize: '0.8rem' }}>
+              <ResultPanel className="docs-demo-result">
                 Output Area
               </ResultPanel>
             }

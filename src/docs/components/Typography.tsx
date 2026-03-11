@@ -5,11 +5,17 @@ export const Typography: React.FC = () => (
     <h2 className="section-title">Typography</h2>
     <div className="sand-comp-doc">
       <p className="sand-comp-desc">Headings use 'Outfit' for a modern feel, while body text uses 'Inter' for clarity.</p>
-      <div className="sand-preview-area" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '1.5rem' }}>
-        <h1 style={{ fontSize: '3.5rem', fontWeight: 900, letterSpacing: '-2px' }}>Heading One</h1>
-        <h2 style={{ fontSize: '2.2rem', fontWeight: 800, letterSpacing: '-1px' }}>Heading Two</h2>
-        <p style={{ fontSize: '1.05rem', maxWidth: '650px' }}>Digital elegance and performance. Handcrafted niche tools designed for the future of the web.</p>
-        <code style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', background: 'var(--theme-surface-variant)', padding: '0.4rem 0.8rem', borderRadius: '6px' }}>const brand = 'SandurTech';</code>
+      <div className="sand-preview-area sand-preview-area-stack sand-preview-area-copy">
+        <h1 className="docs-display-lg">Heading One</h1>
+        <h2 className="docs-display-md">Heading Two</h2>
+        <h3 className="docs-display-sm">Section Heading</h3>
+        <p className="docs-body-copy docs-body-copy-wide">Digital elegance and performance. Handcrafted niche tools designed for the future of the web.</p>
+        <p className="docs-body-copy docs-body-copy-muted">Secondary copy supports instructions, validation help, and metadata around core actions.</p>
+        <div className="docs-type-row">
+          <span className="docs-kicker">Section label</span>
+          <span className="docs-meta-copy">12px uppercase utility text</span>
+        </div>
+        <code className="docs-inline-code">const brand = 'SandurTech';</code>
       </div>
     </div>
   </section>

@@ -9,11 +9,28 @@ export const CardDocs: React.FC = () => (
 
       <div className="sand-preview-area">
         <Card
-          style={{ maxWidth: '400px' }}
+          className="docs-project-card"
           header="Official Documentation"
-          footer={<Button variant="secondary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.8rem' }}>Read More</Button>}
+          footer={
+            <Button variant="secondary" className="docs-inline-button">
+              <span className="material-symbols-rounded" aria-hidden="true">arrow_outward</span>
+              Read More
+            </Button>
+          }
         >
-          <p style={{ fontSize: '0.95rem' }}>Explore the full potential of Sand UI in our microservice architecture.</p>
+          <p className="docs-body-copy">Explore the full potential of Sand UI in our microservice architecture.</p>
+        </Card>
+        <Card
+          className="docs-project-card"
+          header="System Status"
+          footer={
+            <Button variant="outline" className="docs-inline-button">
+              <span className="material-symbols-rounded" aria-hidden="true">monitoring</span>
+              Inspect
+            </Button>
+          }
+        >
+          <p className="docs-body-copy">Track deployment health, release readiness, and design adoption metrics from a single surface.</p>
         </Card>
       </div>
 
@@ -36,12 +53,19 @@ export const CardDocs: React.FC = () => (
         tabs={[
           {
             name: 'React (TS)',
-            code: `import { Card, Button } from '@sandurtech/sand-ui';
+            code: `import { Card, Button } from '@sandurtech/sandui';
 
 <Card header="Project Alpha">
   <p>Content goes here...</p>
-  <Button variant="secondary">View</Button>
+  <Button variant="secondary">
+    <span className="material-symbols-rounded" aria-hidden="true">visibility</span>
+    View
+  </Button>
 </Card>`
+          },
+          {
+            name: 'Install',
+            code: `npm i @sandurtech/sandui`
           }
         ]}
       />

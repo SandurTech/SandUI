@@ -7,8 +7,13 @@ export const InputDocs: React.FC = () => (
     <div className="sand-comp-doc">
       <div className="sand-comp-name">Text Input</div>
 
-      <div className="sand-preview-area" style={{ flexDirection: 'column', alignItems: 'stretch', maxWidth: '500px', margin: '0 auto' }}>
+      <div className="sand-preview-area sand-preview-area-stack sand-preview-area-form">
         <InputGroup label="Default Input" placeholder="Enter text..." />
+        <InputGroup
+          label="Prefilled Input"
+          defaultValue="sandurtech/design-system"
+          helperText="Use a clear, human-readable resource name."
+        />
         <InputGroup
           label="Error State"
           error
@@ -37,7 +42,7 @@ export const InputDocs: React.FC = () => (
         tabs={[
           {
             name: 'React (TS)',
-            code: `import { InputGroup } from '@sandurtech/sand-ui';
+            code: `import { InputGroup } from '@sandurtech/sandui';
 
 const Form = () => (
   <InputGroup
@@ -46,6 +51,10 @@ const Form = () => (
     helperText="Name is required"
   />
 );`
+          },
+          {
+            name: 'Install',
+            code: `npm i @sandurtech/sandui`
           }
         ]}
       />

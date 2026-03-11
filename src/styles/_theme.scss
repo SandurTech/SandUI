@@ -20,6 +20,7 @@
   --sand-accent-dark: #{tokens.$color-accent-dark};
   --sand-accent-soft: #{tokens.$color-accent-soft};
   --sand-accent-glow: #{tokens.$color-accent-glow};
+  --sand-accent-muted: #{tokens.$color-accent-muted};
 
   --sand-primary: #{tokens.$color-primary};
   --sand-primary-light: #{tokens.$color-primary-light};
@@ -29,6 +30,8 @@
   --sand-secondary-dark: #{tokens.$color-secondary-dark};
   --sand-secondary-light: #{tokens.$color-secondary-light};
 
+  --color-success: #{tokens.$color-success};
+  --color-success-soft: #{tokens.$color-success-soft};
   --color-error: #{tokens.$color-error};
   --color-error-soft: #{tokens.$color-error-soft};
 
@@ -48,12 +51,17 @@
 }
 
 [data-theme="dark"] {
-  --theme-bg: #0d0d0d;
-  --theme-surface: #1a1a1a;
-  --theme-surface-variant: #262626;
+  --theme-bg: #101112;
+  --theme-surface: #17191c;
+  --theme-surface-variant: #20242a;
   --theme-text: #{tokens.$color-secondary};
-  --theme-text-muted: rgba(242, 242, 242, 0.6); // Based on secondary
-  --theme-border: rgba(255, 255, 255, 0.1);
-  --theme-footer-bg: #000000;
+  --theme-text-muted: rgba(242, 242, 242, 0.68); // Based on secondary
+  --theme-border: rgba(255, 255, 255, 0.12);
+  --theme-footer-bg: #0a0b0c;
   --theme-footer-text: #{tokens.$color-secondary};
+  --sand-accent-soft: rgba(255, 165, 0, 0.14);
+  --sand-accent-muted: rgba(255, 165, 0, 0.22);
+  --sand-accent-glow: rgba(255, 165, 0, 0.18);
+  --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 22px 60px rgba(0, 0, 0, 0.38);
 }

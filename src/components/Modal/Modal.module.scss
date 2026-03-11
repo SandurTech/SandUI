@@ -1,0 +1,109 @@
+@use "../../styles/tokens";
+
+.sand-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.sand-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52);
+  backdrop-filter: blur(8px);
+}
+
+.sand-modal-panel {
+  position: relative;
+  width: min(100%, 38rem);
+  max-height: min(88vh, 48rem);
+  overflow: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--theme-border);
+  background: var(--theme-surface);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+.sand-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--theme-border);
+}
+
+.sand-modal-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.sand-modal-description {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--theme-text-muted);
+  line-height: 1.5;
+}
+
+.sand-modal-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--theme-border);
+  background: var(--theme-surface-variant);
+  color: var(--theme-text);
+  cursor: pointer;
+  transition: var(--transition);
+
+  &:hover {
+    color: var(--sand-accent);
+    border-color: var(--sand-accent);
+  }
+
+  &:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--sand-accent) 55%, white);
+    outline-offset: 2px;
+  }
+}
+
+.sand-modal-body {
+  padding: 1.25rem;
+}
+
+.sand-modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 0 1.25rem 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .sand-modal-root {
+    padding: 0.85rem;
+    align-items: flex-end;
+  }
+
+  .sand-modal-panel {
+    width: 100%;
+    max-height: 92vh;
+  }
+
+  .sand-modal-header,
+  .sand-modal-body,
+  .sand-modal-footer {
+    padding-inline: 1rem;
+  }
+
+  .sand-modal-footer > * {
+    width: 100%;
+  }
+}

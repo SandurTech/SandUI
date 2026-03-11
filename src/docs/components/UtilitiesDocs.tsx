@@ -10,6 +10,16 @@ export const UtilitiesDocs: React.FC = () => (
       <div className="sand-preview-area">
         <Badge variant="primary">Official</Badge>
         <Badge variant="secondary">Draft</Badge>
+        <Badge variant="primary">Live</Badge>
+        <Badge variant="secondary">Internal</Badge>
+        <Badge variant="success">
+          <span className="material-symbols-rounded" aria-hidden="true">check_circle</span>
+          Success
+        </Badge>
+        <Badge variant="failed">
+          <span className="material-symbols-rounded" aria-hidden="true">cancel</span>
+          Failed
+        </Badge>
       </div>
       <div className="sand-usage-grid">
         <div className="sand-usage-item"><h4>Description</h4><p>Status indicators and labels.</p></div>
@@ -17,16 +27,19 @@ export const UtilitiesDocs: React.FC = () => (
         <div className="sand-usage-item"><h4>How to Use</h4><p>Use <code>&lt;Badge variant="primary"&gt;</code>.</p></div>
       </div>
       <CodeTabs
-        tabs={[{ name: 'React (TS)', code: `<Badge variant="primary">Official</Badge>` }]}
+        tabs={[
+          { name: 'React (TS)', code: `import { Badge } from '@sandurtech/sandui';\n\n<Badge variant="success">Success</Badge>\n<Badge variant="failed">Failed</Badge>` },
+          { name: 'Install', code: `npm i @sandurtech/sandui` },
+        ]}
       />
     </div>
 
     <div className="sand-comp-doc">
       <div className="sand-comp-name">Dividers</div>
-      <div className="sand-preview-area" style={{ flexDirection: 'column', gap: '1rem', alignItems: 'stretch' }}>
-        <p style={{ fontSize: '0.8rem', opacity: 0.6 }}>Content Above</p>
+      <div className="sand-preview-area sand-preview-area-stack">
+        <p className="docs-meta-copy">Content Above</p>
         <Divider />
-        <p style={{ fontSize: '0.8rem', opacity: 0.6 }}>Content Below</p>
+        <p className="docs-meta-copy">Content Below</p>
       </div>
       <div className="sand-usage-grid">
         <div className="sand-usage-item"><h4>Description</h4><p>Visual separators for grouping content.</p></div>
