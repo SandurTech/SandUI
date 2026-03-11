@@ -1,0 +1,59 @@
+@use "tokens";
+
+// =========================================
+// CSS Variables & Theme (Light / Dark)
+// =========================================
+
+:root {
+  // Pass tokens to CSS variables for dynamic switching
+  --theme-bg: #{tokens.$color-secondary};
+  --theme-surface: #{tokens.$color-secondary-light};
+  --theme-surface-variant: #{tokens.$color-secondary-dark};
+  --theme-text: #{tokens.$color-primary};
+  --theme-text-muted: #{tokens.$color-primary-muted};
+  --theme-border: #{tokens.$color-secondary-dark};
+  --theme-footer-bg: #{tokens.$color-primary};
+  --theme-footer-text: #{tokens.$color-secondary};
+
+  // Keep colors available as variables for components that need them
+  --sand-accent: #{tokens.$color-accent};
+  --sand-accent-dark: #{tokens.$color-accent-dark};
+  --sand-accent-soft: #{tokens.$color-accent-soft};
+  --sand-accent-glow: #{tokens.$color-accent-glow};
+
+  --sand-primary: #{tokens.$color-primary};
+  --sand-primary-light: #{tokens.$color-primary-light};
+  --sand-primary-muted: #{tokens.$color-primary-muted};
+
+  --sand-secondary: #{tokens.$color-secondary};
+  --sand-secondary-dark: #{tokens.$color-secondary-dark};
+  --sand-secondary-light: #{tokens.$color-secondary-light};
+
+  --color-error: #{tokens.$color-error};
+  --color-error-soft: #{tokens.$color-error-soft};
+
+  --font-main: #{tokens.$font-main};
+  --font-mono: #{tokens.$font-mono};
+
+  --radius-sm: #{tokens.$radius-sm};
+  --radius-md: #{tokens.$radius-md};
+  --radius-lg: #{tokens.$radius-lg};
+  --radius-full: #{tokens.$radius-full};
+
+  --shadow-sm: #{tokens.$shadow-sm};
+  --shadow-md: #{tokens.$shadow-md};
+  --glow: #{tokens.$glow};
+  --transition: #{tokens.$transition};
+  --container-max: #{tokens.$container-max};
+}
+
+[data-theme="dark"] {
+  --theme-bg: #0d0d0d;
+  --theme-surface: #1a1a1a;
+  --theme-surface-variant: #262626;
+  --theme-text: #{tokens.$color-secondary};
+  --theme-text-muted: rgba(242, 242, 242, 0.6); // Based on secondary
+  --theme-border: rgba(255, 255, 255, 0.1);
+  --theme-footer-bg: #000000;
+  --theme-footer-text: #{tokens.$color-secondary};
+}

@@ -1,0 +1,45 @@
+@use "../../styles/tokens";
+
+.sand-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.sand-header {
+  background: var(--theme-surface);
+  border-bottom: 1px solid var(--theme-border);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sand-tool-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.sand-tool-panel {
+  background: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sand-result-panel {
+  background: var(--theme-surface-variant);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  min-height: 400px;
+  border: 2px dashed var(--theme-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme-text-muted);
+}

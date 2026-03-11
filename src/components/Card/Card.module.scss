@@ -1,0 +1,34 @@
+@use "../../styles/tokens";
+
+.sand-card {
+  background-color: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition);
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--sand-accent);
+  }
+}
+
+.sand-card-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--theme-border);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.sand-card-body {
+  padding: 2rem;
+}
+
+.sand-card-footer {
+  padding: 1.25rem 2rem;
+  background-color: var(--theme-surface-variant);
+  border-top: 1px solid var(--theme-border);
+  display: flex;
+  gap: 1rem;
+}

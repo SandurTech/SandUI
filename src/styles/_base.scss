@@ -1,0 +1,28 @@
+@use "tokens";
+@use "theme";
+
+// =========================================
+// Base Styles
+// =========================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  line-height: 1.6;
+  display: flex;
+  transition: background-color 0.4s ease;
+}
+
+// Utilities (based on tokens)
+.u-mt-4 { margin-top: #{tokens.$space-4}; }
+.u-mb-4 { margin-bottom: #{tokens.$space-4}; }

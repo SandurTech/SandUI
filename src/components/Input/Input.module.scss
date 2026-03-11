@@ -1,0 +1,50 @@
+@use "../../styles/tokens";
+
+.sand-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.sand-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--theme-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.sand-input {
+  width: 100%;
+  background-color: var(--theme-surface);
+  border: 2px solid var(--theme-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  font-family: inherit;
+  color: var(--theme-text);
+  transition: var(--transition);
+  font-size: 1rem;
+
+  &:focus {
+    outline: none;
+    border-color: var(--sand-accent);
+    box-shadow: 0 0 0 5px var(--sand-accent-soft);
+  }
+}
+
+.sand-input-error {
+  border-color: var(--color-error);
+  background: var(--color-error-soft);
+
+  &:focus {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 5px var(--color-error-soft);
+  }
+}
+
+.sand-helper-text-error {
+  color: var(--color-error);
+  font-size: 0.75rem;
+  font-weight: 700;
+}

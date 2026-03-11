@@ -1,0 +1,8 @@
+@use "../../styles/tokens";
+
+.sand-divider {
+  height: 1px;
+  background: var(--theme-border);
+  width: 100%;
+  margin: 1rem 0;
+}
