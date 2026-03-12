@@ -9,6 +9,7 @@ import {
 } from 'react';
 import styles from './CodeBlock.module.scss';
 import { cn, handleHorizontalArrowNavigation } from '../utils';
+import { highlightCode } from './highlighter';
 
 export interface SandCodeBlockProps extends ComponentPropsWithoutRef<'pre'> {
   /** Source string rendered inside the code block. */
@@ -28,6 +29,8 @@ export const SandCodeBlock = forwardRef<HTMLPreElement, SandCodeBlockProps>(func
     });
   }, [code]);
 
+  const highlighted = useMemo(() => highlightCode(code), [code]);
+
   return (
     <pre ref={ref} className={cn(styles['sand-code-block'], className)} {...props}>
       <button
@@ -38,7 +41,7 @@ export const SandCodeBlock = forwardRef<HTMLPreElement, SandCodeBlockProps>(func
       >
         {copied ? 'Copied' : 'Copy'}
       </button>
-      <code>{code}</code>
+      <code dangerouslySetInnerHTML={{ __html: highlighted }} />
     </pre>
   );
 });

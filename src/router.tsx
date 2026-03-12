@@ -53,6 +53,12 @@ const typographyRoute = createRoute({
   component: lazyRouteComponent(() => import('./routes/typography')),
 });
 
+const layoutRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'layout',
+  component: lazyRouteComponent(() => import('./routes/layout')),
+});
+
 const kbdRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'kbd',
@@ -89,16 +95,52 @@ const navigationRoute = createRoute({
   component: lazyRouteComponent(() => import('./routes/navigation')),
 });
 
-const feedbackRoute = createRoute({
+const tableRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'feedback',
-  component: lazyRouteComponent(() => import('./routes/feedback')),
+  path: 'table',
+  component: lazyRouteComponent(() => import('./routes/table')),
+});
+
+const tabsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'tabs',
+  component: lazyRouteComponent(() => import('./routes/tabs')),
+});
+
+const accordionRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'accordion',
+  component: lazyRouteComponent(() => import('./routes/accordion')),
+});
+
+const codeRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'code',
+  component: lazyRouteComponent(() => import('./routes/code')),
+});
+
+const statusRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'status',
+  component: lazyRouteComponent(() => import('./routes/status')),
+});
+
+const notificationsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'notifications',
+  component: lazyRouteComponent(() => import('./routes/notifications')),
 });
 
 const modalsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'modals',
   component: lazyRouteComponent(() => import('./routes/modals')),
+});
+
+const overlaysRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: 'overlays',
+  component: lazyRouteComponent(() => import('./routes/overlays')),
 });
 
 const utilitiesRoute = createRoute({
@@ -111,16 +153,24 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   designTokensRoute,
   typographyRoute,
+  layoutRoute,
   kbdRoute,
   buttonsRoute,
   inputsRoute,
   cardsRoute,
   selectionRoute,
   navigationRoute,
-  feedbackRoute,
+  tableRoute,
+  tabsRoute,
+  accordionRoute,
+  codeRoute,
+  statusRoute,
+  notificationsRoute,
   modalsRoute,
+  overlaysRoute,
   utilitiesRoute,
 ]);
+
 
 export function createAppRouter(queryClient: QueryClient) {
   return createRouter({

@@ -1,0 +1,40 @@
+.track {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--theme-surface-variant) 72%, transparent);
+}
+
+.bar {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--sand-gradient-brand);
+  transition: width var(--transition);
+}
+
+.ring {
+  transform: rotate(-90deg);
+}
+
+.ringTrack {
+  fill: none;
+  stroke: color-mix(in srgb, var(--theme-surface-variant) 72%, transparent);
+}
+
+.ringValue {
+  fill: none;
+  stroke: var(--sand-accent);
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--transition);
+  filter: drop-shadow(0 0 8px var(--sand-accent-glow));
+}
+
+.label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--theme-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+}

@@ -3,34 +3,37 @@
 .sand-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.4rem 1rem;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
   border-radius: var(--radius-full);
-  font-size: 0.65rem;
-  font-weight: 900;
-  letter-spacing: 1px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
   text-transform: uppercase;
   border: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .sand-badge-primary {
   background: var(--sand-accent-soft);
   color: var(--sand-accent);
+  border-color: var(--sand-accent-muted);
 }
 
 .sand-badge-secondary {
   background: var(--theme-surface-variant);
   color: var(--theme-text-muted);
+  border-color: var(--theme-border);
 }
 
 .sand-badge-success {
   background: var(--color-success-soft);
   color: var(--color-success);
-  border-color: color-mix(in srgb, var(--color-success) 24%, transparent);
+  border-color: rgba(tokens.$color-success, 0.2);
 }
 
 .sand-badge-failed {
   background: var(--color-error-soft);
   color: var(--color-error);
-  border-color: color-mix(in srgb, var(--color-error) 24%, transparent);
+  border-color: rgba(tokens.$color-error, 0.2);
 }

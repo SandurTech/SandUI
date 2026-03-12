@@ -1,12 +1,15 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Link, Outlet, useRouterState } from '@tanstack/react-router';
 import './Docs.scss';
 import { navGroups, navItems } from './navigation';
 import { useAppShell } from './useAppShell';
+import { DocNavigation } from '../docs/components/DocNavigation';
+import { SandDrawer, SandIcon } from '../components';
 
 const logoSrc = `${import.meta.env.BASE_URL}SandurTech-Logo-SVG.svg`;
 
 export function AppShell() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
@@ -146,13 +149,13 @@ export function AppShell() {
                     }}
                   >
                     <span className="docs-nav-link-main">
-                      <span className="docs-nav-icon material-symbols-rounded" aria-hidden="true">{item.icon}</span>
+                      <SandIcon icon={item.icon} className="docs-nav-icon" />
                       <span className="docs-nav-copy">
                         <span>{item.label}</span>
                         <span className="docs-nav-description">{item.description}</span>
                       </span>
                     </span>
-                    <span className="docs-nav-arrow material-symbols-rounded" aria-hidden="true">chevron_right</span>
+                    <SandIcon icon="chevron_right" className="docs-nav-arrow" />
                   </Link>
                 ))}
               </div>
@@ -170,22 +173,32 @@ export function AppShell() {
 
       <main className="docs-main" id="main-content" tabIndex={-1}>
         <header className="docs-header">
-          <div>
-            <p className="docs-route-overline">SandUI Library Catalogue</p>
-            <h1 className="docs-title">{currentItem.label} <span>Reference</span></h1>
-            <p className="docs-route-description">{currentItem.seoDescription}</p>
+          <div className="docs-header-main">
+            <button
+              className="docs-mobile-menu-btn"
+              onClick={() => setIsDrawerOpen(true)}
+              aria-label="Open navigation menu"
+            >
+              <SandIcon icon="menu" size={24} />
+            </button>
+            <div>
+              <p className="docs-route-overline">SandUI Library Catalogue</p>
+              <h1 className="docs-title">{currentItem.label} <span>Reference</span></h1>
+            </div>
           </div>
 
-          <button
-            className="sand-theme-btn"
-            onClick={toggleTheme}
-            title="Toggle Theme"
-            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-          >
-            <span className="material-symbols-rounded" aria-hidden="true">
-              {theme === 'dark' ? 'light_mode' : 'dark_mode'}
-            </span>
-          </button>
+          <div className="docs-header-actions">
+            <button
+              className="sand-theme-btn"
+              onClick={toggleTheme}
+              title="Toggle Theme"
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+            >
+              <span className="material-symbols-rounded" aria-hidden="true">
+                {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+              </span>
+            </button>
+          </div>
         </header>
 
         <Suspense
@@ -198,9 +211,62 @@ export function AppShell() {
         >
           <div className="docs-page-content">
             <Outlet />
+            <DocNavigation />
           </div>
         </Suspense>
       </main>
+
+      <SandDrawer
+        open={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        title="Documentation"
+      >
+        <div className="docs-drawer-content">
+          <div className="docs-drawer-theme-toggle">
+            <span>Theme Mode</span>
+            <button
+              className="sand-theme-btn"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+            >
+              <span className="material-symbols-rounded" aria-hidden="true">
+                {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+              </span>
+            </button>
+          </div>
+
+          <nav className="docs-nav" aria-label="Mobile navigation">
+            {navGroups.map((group) => (
+              <div key={group.title} className="docs-nav-group u-mb-4">
+                <div className="docs-nav-title">{group.title}</div>
+                <div className="docs-nav-list">
+                  {group.items.map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className="docs-nav-link"
+                      onClick={() => setIsDrawerOpen(false)}
+                      activeProps={{
+                        className: 'docs-nav-link active',
+                        'aria-current': 'page',
+                      }}
+                    >
+                      <span className="docs-nav-link-main">
+                        <SandIcon icon={item.icon} className="docs-nav-icon" />
+                        <span className="docs-nav-copy">
+                          <span>{item.label}</span>
+                          <span className="docs-nav-description">{item.description}</span>
+                        </span>
+                      </span>
+                      <SandIcon icon="chevron_right" className="docs-nav-arrow" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </nav>
+        </div>
+      </SandDrawer>
     </div>
   );
 }

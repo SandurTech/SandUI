@@ -1,52 +1,49 @@
 @use "sass:color";
 
-// =========================================
-// Design Tokens
-// =========================================
-
-// Base Colors (Strictly requested colors)
 $color-accent: orange;
 $color-primary: #262626;
 $color-secondary: #F2F2F2;
 
-// Derived Colors
-$color-accent-dark: color.adjust($color-accent, $lightness: -10%);
-$color-accent-soft: rgba($color-accent, 0.1);
-$color-accent-glow: rgba($color-accent, 0.3);
-$color-accent-muted: rgba($color-accent, 0.18);
+$color-brand: $color-accent;
+$color-brand-strong: color.adjust($color-accent, $lightness: -10%);
+$color-brand-soft: rgba($color-accent, 0.12);
+$color-brand-glow: rgba($color-accent, 0.2);
+$color-brand-muted: rgba($color-accent, 0.16);
 
-$color-primary-light: color.adjust($color-primary, $lightness: 15%);
-$color-primary-muted: rgba($color-primary, 0.6);
+$color-surface-base: $color-secondary;
+$color-surface-elevated: rgba(255, 255, 255, 0.82);
+$color-surface-raised: color.adjust($color-secondary, $lightness: -4%);
+$color-border: rgba($color-primary, 0.16);
+$color-text: $color-primary;
+$color-text-muted: rgba($color-primary, 0.72);
+$color-text-subtle: rgba($color-primary, 0.52);
 
-$color-secondary-dark: color.adjust($color-secondary, $lightness: -5%);
-$color-secondary-light: #FFFFFF;
+$color-info: hsl(212 95% 56%);
+$color-success: hsl(152 63% 38%);
+$color-warning: hsl(38 96% 50%);
+$color-error: hsl(4 84% 58%);
 
-// Functional States
-$color-success: #1f9d55;
-$color-success-soft: rgba(31, 157, 85, 0.12);
-$color-error: #e53935;
-$color-error-soft: rgba(229, 57, 53, 0.1);
+$font-main: 'Outfit', 'Sora', 'Avenir Next', system-ui, sans-serif;
+$font-mono: 'JetBrains Mono', 'SFMono-Regular', ui-monospace, monospace;
 
-// Typography
-$font-main: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
-$font-mono: 'Fira Code', 'ui-monospace', monospace;
-
-// Spacing
 $space-1: 0.25rem;
 $space-2: 0.5rem;
+$space-3: 0.75rem;
 $space-4: 1rem;
-$space-8: 2rem;
-$space-12: 3rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-7: 2rem;
+$space-8: 2.5rem;
 
-// Border Radius
-$radius-sm: 6px;
-$radius-md: 12px;
-$radius-lg: 20px;
+$radius-sm: 10px;
+$radius-md: 16px;
+$radius-lg: 24px;
+$radius-xl: 32px;
 $radius-full: 9999px;
 
-// Constants
-$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
-$shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-$glow: 0 0 20px $color-accent-glow;
-$transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-$container-max: 1100px;
+$shadow-sm: 0 10px 30px hsl(220 30% 20% / 0.08);
+$shadow-md: 0 18px 48px hsl(220 32% 18% / 0.12);
+$shadow-lg: 0 28px 72px hsl(220 35% 16% / 0.16);
+$glow: 0 0 0 1px $color-brand-muted, 0 18px 42px $color-brand-glow;
+$transition: 0.2s ease-in-out;
+$container-max: 1200px;

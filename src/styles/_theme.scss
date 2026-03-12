@@ -1,67 +1,90 @@
+@use "sass:color";
 @use "tokens";
 
-// =========================================
-// CSS Variables & Theme (Light / Dark)
-// =========================================
-
 :root {
-  // Pass tokens to CSS variables for dynamic switching
-  --theme-bg: #{tokens.$color-secondary};
-  --theme-surface: #{tokens.$color-secondary-light};
-  --theme-surface-variant: #{tokens.$color-secondary-dark};
-  --theme-text: #{tokens.$color-primary};
-  --theme-text-muted: #{tokens.$color-primary-muted};
-  --theme-border: #{tokens.$color-secondary-dark};
-  --theme-footer-bg: #{tokens.$color-primary};
+  --theme-bg: #{tokens.$color-surface-base};
+  --theme-surface: #{tokens.$color-surface-elevated};
+  --theme-surface-variant: #{tokens.$color-surface-raised};
+  --theme-surface-strong: rgba(255, 255, 255, 0.9);
+  --theme-overlay: rgba(38, 38, 38, 0.48);
+  --theme-text: #{tokens.$color-text};
+  --theme-text-muted: #{tokens.$color-text-muted};
+  --theme-text-subtle: #{tokens.$color-text-subtle};
+  --theme-border: #{tokens.$color-border};
+  --theme-border-strong: #{rgba(tokens.$color-primary, 0.24)};
+  --theme-footer-bg: #{color.adjust(tokens.$color-primary, $lightness: -5%)};
   --theme-footer-text: #{tokens.$color-secondary};
 
-  // Keep colors available as variables for components that need them
-  --sand-accent: #{tokens.$color-accent};
-  --sand-accent-dark: #{tokens.$color-accent-dark};
-  --sand-accent-soft: #{tokens.$color-accent-soft};
-  --sand-accent-glow: #{tokens.$color-accent-glow};
-  --sand-accent-muted: #{tokens.$color-accent-muted};
+  --sand-accent: #{tokens.$color-brand};
+  --sand-accent-dark: #{tokens.$color-brand-strong};
+  --sand-accent-soft: #{tokens.$color-brand-soft};
+  --sand-accent-glow: #{tokens.$color-brand-glow};
+  --sand-accent-muted: #{tokens.$color-brand-muted};
 
-  --sand-primary: #{tokens.$color-primary};
-  --sand-primary-light: #{tokens.$color-primary-light};
-  --sand-primary-muted: #{tokens.$color-primary-muted};
+  --sand-primary: #{tokens.$color-text};
+  --sand-primary-light: #{color.adjust(tokens.$color-primary, $lightness: 10%)};
+  --sand-primary-muted: #{rgba(tokens.$color-primary, 0.72)};
 
-  --sand-secondary: #{tokens.$color-secondary};
-  --sand-secondary-dark: #{tokens.$color-secondary-dark};
-  --sand-secondary-light: #{tokens.$color-secondary-light};
+  --sand-secondary: #{tokens.$color-surface-base};
+  --sand-secondary-dark: #{tokens.$color-surface-raised};
+  --sand-secondary-light: #ffffff;
 
+  --color-info: #{tokens.$color-info};
+  --color-info-soft: #{rgba(tokens.$color-info, 0.14)};
   --color-success: #{tokens.$color-success};
-  --color-success-soft: #{tokens.$color-success-soft};
+  --color-success-soft: #{rgba(tokens.$color-success, 0.14)};
+  --color-warning: #{tokens.$color-warning};
+  --color-warning-soft: #{rgba(tokens.$color-warning, 0.16)};
   --color-error: #{tokens.$color-error};
-  --color-error-soft: #{tokens.$color-error-soft};
+  --color-error-soft: #{rgba(tokens.$color-error, 0.14)};
 
   --font-main: #{tokens.$font-main};
   --font-mono: #{tokens.$font-mono};
 
+  --sand-space-1: #{tokens.$space-1};
+  --sand-space-2: #{tokens.$space-2};
+  --sand-space-3: #{tokens.$space-3};
+  --sand-space-4: #{tokens.$space-4};
+  --sand-space-5: #{tokens.$space-5};
+  --sand-space-6: #{tokens.$space-6};
+  --sand-space-7: #{tokens.$space-7};
+  --sand-space-8: #{tokens.$space-8};
+
   --radius-sm: #{tokens.$radius-sm};
   --radius-md: #{tokens.$radius-md};
   --radius-lg: #{tokens.$radius-lg};
+  --radius-xl: #{tokens.$radius-xl};
   --radius-full: #{tokens.$radius-full};
 
   --shadow-sm: #{tokens.$shadow-sm};
   --shadow-md: #{tokens.$shadow-md};
+  --shadow-lg: #{tokens.$shadow-lg};
   --glow: #{tokens.$glow};
-  --transition: #{tokens.$transition};
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --container-max: #{tokens.$container-max};
+  --sand-gradient-brand: linear-gradient(135deg, var(--sand-accent), #{color.adjust(tokens.$color-accent, $hue: -20deg, $lightness: -5%)});
+  --sand-gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(#{tokens.$color-secondary}, 0.95));
+  --sand-glass: saturate(180%) blur(20px);
 }
 
 [data-theme="dark"] {
-  --theme-bg: #101112;
-  --theme-surface: #17191c;
-  --theme-surface-variant: #20242a;
-  --theme-text: #{tokens.$color-secondary};
-  --theme-text-muted: rgba(242, 242, 242, 0.68); // Based on secondary
-  --theme-border: rgba(255, 255, 255, 0.12);
-  --theme-footer-bg: #0a0b0c;
-  --theme-footer-text: #{tokens.$color-secondary};
-  --sand-accent-soft: rgba(255, 165, 0, 0.14);
-  --sand-accent-muted: rgba(255, 165, 0, 0.22);
-  --sand-accent-glow: rgba(255, 165, 0, 0.18);
-  --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.28);
-  --shadow-md: 0 22px 60px rgba(0, 0, 0, 0.38);
+  --theme-bg: #1a1a1a;
+  --theme-surface: #222222;
+  --theme-surface-variant: #2a2a2a;
+  --theme-surface-strong: #333333;
+  --theme-overlay: rgba(0, 0, 0, 0.72);
+  --theme-text: #f5f5f5;
+  --theme-text-muted: rgba(245, 245, 245, 0.72);
+  --theme-text-subtle: rgba(245, 245, 245, 0.52);
+  --theme-border: rgba(255, 255, 255, 0.1);
+  --theme-border-strong: rgba(255, 255, 255, 0.2);
+  
+  --sand-accent-soft: #{rgba(tokens.$color-accent, 0.12)};
+  --sand-accent-muted: #{rgba(tokens.$color-accent, 0.16)};
+  --sand-accent-glow: #{rgba(tokens.$color-accent, 0.14)};
+  
+  --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 18px 48px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 28px 72px rgba(0, 0, 0, 0.5);
+  --sand-gradient-surface: linear-gradient(180deg, #2a2a2a, #222222);
 }

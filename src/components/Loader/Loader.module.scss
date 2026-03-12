@@ -1,0 +1,50 @@
+.loader {
+  width: var(--sand-loader-size, 2rem);
+  height: var(--sand-loader-size, 2rem);
+  border-radius: 50%;
+  border: 2px solid var(--sand-accent-soft);
+  border-top-color: var(--sand-accent);
+  animation: sand-spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--sand-skeleton-radius, var(--radius-sm));
+  background: var(--theme-surface-variant);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  animation: sand-shimmer 2s infinite ease-in-out;
+}
+
+[data-theme="dark"] .skeleton::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.04),
+    transparent
+  );
+}
+
+@keyframes sand-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sand-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}

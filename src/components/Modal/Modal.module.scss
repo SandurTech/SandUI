@@ -7,45 +7,53 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem;
+  padding: 1.5rem;
 }
 
 .sand-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.52);
+  background: var(--theme-overlay);
   backdrop-filter: blur(8px);
+  border: 0;
+  width: 100%;
+  height: 100%;
+  cursor: default;
 }
 
 .sand-modal-panel {
   position: relative;
-  width: min(100%, 38rem);
-  max-height: min(88vh, 48rem);
-  overflow: auto;
+  width: min(100%, 36rem);
+  max-height: min(90vh, 48rem);
+  overflow: hidden;
   border-radius: var(--radius-lg);
   border: 1px solid var(--theme-border);
   background: var(--theme-surface);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  animation: sand-modal-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sand-modal-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1.25rem 1.25rem 1rem;
+  gap: 1.5rem;
+  padding: 1.5rem;
   border-bottom: 1px solid var(--theme-border);
 }
 
 .sand-modal-title {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 800;
   line-height: 1.2;
+  color: var(--theme-text);
 }
 
 .sand-modal-description {
-  margin-top: 0.35rem;
-  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
   color: var(--theme-text-muted);
   line-height: 1.5;
 }
@@ -54,28 +62,28 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 999px;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-md);
   border: 1px solid var(--theme-border);
   background: var(--theme-surface-variant);
-  color: var(--theme-text);
+  color: var(--theme-text-muted);
   cursor: pointer;
-  transition: var(--transition);
+  transition: all var(--transition);
 
   &:hover {
-    color: var(--sand-accent);
+    color: var(--theme-text);
     border-color: var(--sand-accent);
-  }
-
-  &:focus-visible {
-    outline: 3px solid color-mix(in srgb, var(--sand-accent) 55%, white);
-    outline-offset: 2px;
+    background: var(--theme-surface-strong);
   }
 }
 
 .sand-modal-body {
-  padding: 1.25rem;
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+  color: var(--theme-text-muted);
+  line-height: 1.6;
 }
 
 .sand-modal-footer {
@@ -83,27 +91,38 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.75rem;
-  padding: 0 1.25rem 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--theme-surface-variant);
+  border-top: 1px solid var(--theme-border);
+}
+
+@keyframes sand-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 @media (max-width: 640px) {
   .sand-modal-root {
-    padding: 0.85rem;
+    padding: 1rem;
     align-items: flex-end;
   }
 
   .sand-modal-panel {
     width: 100%;
-    max-height: 92vh;
+    max-height: 95vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .sand-modal-header,
   .sand-modal-body,
   .sand-modal-footer {
-    padding-inline: 1rem;
-  }
-
-  .sand-modal-footer > * {
-    width: 100%;
+    padding: 1.25rem;
   }
 }

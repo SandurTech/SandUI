@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import styles from './Layout.module.scss';
 import { cn } from '../utils';
 
@@ -51,27 +51,3 @@ export const SandResultPanel = forwardRef<HTMLElement, SandResultPanelProps>(fun
   return <main ref={ref} className={cn(styles['sand-result-panel'], className)} {...props} />;
 });
 SandResultPanel.displayName = 'SandResultPanel';
-
-export interface SandMicroserviceLayoutProps {
-  /** Header content rendered above the main tool area. */
-  header: ReactNode;
-  /** Left-side configuration panel content. */
-  panel: ReactNode;
-  /** Main result content. */
-  result: ReactNode;
-}
-
-export const SandMicroserviceLayout = forwardRef<HTMLDivElement, SandMicroserviceLayoutProps>(
-  function SandMicroserviceLayout({ header, panel, result }, ref) {
-    return (
-      <>
-        {header}
-        <SandToolLayout ref={ref}>
-          {panel}
-          {result}
-        </SandToolLayout>
-      </>
-    );
-  },
-);
-SandMicroserviceLayout.displayName = 'SandMicroserviceLayout';

@@ -3,7 +3,33 @@ import { SandButton, SandCodeTabs } from '../../components';
 
 export const ButtonDocs: React.FC = () => (
   <section id="buttons" className="docs-section">
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SandButton",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "A high-performance Accessible React Component for user actions, featuring semantic markup, focus management, and TypeScript support.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      })}
+    </script>
     <h2 className="section-title">Buttons</h2>
+    
+    <div className="sand-comp-doc">
+      <p className="sand-comp-desc">
+        SandButton is a foundational Accessible React Component within the SandUI TypeScript UI Library. 
+        Designed for high-performance applications, it provides semantic <code>&lt;button&gt;</code> markup, flawless 
+        keyboard navigation, and robust focus management. Whether you are building complex SaaS forms, 
+        intricate admin dashboards, or primary call-to-actions, SandButton delivers a reliable, fully typed 
+        interface that integrates seamlessly into any modern frontend architecture. It natively supports standard HTML attributes and forwards refs for ultimate flexibility.
+      </p>
+    </div>
+
     <div className="sand-comp-doc">
       <h3 className="sand-comp-name">Button Component</h3>
 

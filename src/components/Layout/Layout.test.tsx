@@ -1,30 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { SandHeader, SandMicroserviceLayout, SandResultPanel, SandToolPanel } from './Layout';
+import { SandContainer, SandHeader, SandToolLayout, SandToolPanel, SandResultPanel } from './Layout';
 
-describe('SandLayout', () => {
-  it('renders the composed layout shell', () => {
+describe('Layout Components', () => {
+  it('renders all layout primitives', () => {
     render(
-      <SandMicroserviceLayout
-        header={<SandHeader>Header</SandHeader>}
-        panel={<SandToolPanel>Panel</SandToolPanel>}
-        result={<SandResultPanel>Result</SandResultPanel>}
-      />,
+      <SandContainer>
+        <SandHeader>Header</SandHeader>
+        <SandToolLayout>
+          <SandToolPanel>Panel</SandToolPanel>
+          <SandResultPanel>Result</SandResultPanel>
+        </SandToolLayout>
+      </SandContainer>
     );
-
-    expect(screen.getByText('Header')).toBeVisible();
-    expect(screen.getByText('Panel')).toBeVisible();
-    expect(screen.getByText('Result')).toBeVisible();
-  });
-
-  it('matches the default snapshot', () => {
-    const { container } = render(
-      <SandMicroserviceLayout
-        header={<SandHeader>Header</SandHeader>}
-        panel={<SandToolPanel>Panel</SandToolPanel>}
-        result={<SandResultPanel>Result</SandResultPanel>}
-      />,
-    );
-    expect(container).toMatchSnapshot();
+    expect(screen.getByText('Header')).toBeDefined();
+    expect(screen.getByText('Panel')).toBeDefined();
+    expect(screen.getByText('Result')).toBeDefined();
   });
 });

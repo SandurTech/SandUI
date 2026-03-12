@@ -2,52 +2,49 @@
 
 .sand-code-block {
   margin: 0;
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  line-height: 1.7;
-  color: #d1d5db;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #e5e7eb;
   overflow-x: auto;
-  background: var(--sand-primary);
+  background: #111111;
   border-radius: var(--radius-lg);
   border: 1px solid var(--theme-border);
   position: relative;
+  tab-size: 2;
+}
+
+[data-theme="dark"] .sand-code-block {
+  background: #0d0d0d;
 }
 
 .sand-copy-btn {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--sand-secondary-dark);
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0.375rem 0.625rem;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 0.7rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: var(--transition);
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all var(--transition);
 
   &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
     border-color: var(--sand-accent);
-    color: #fff;
-  }
-
-  &:focus-visible {
-    outline: 3px solid color-mix(in srgb, var(--sand-accent) 55%, white);
-    outline-offset: 2px;
   }
 }
 
 .sand-code-tabs {
-  background: var(--sand-primary);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  margin-top: 1rem;
   border: 1px solid var(--theme-border);
+  background: #111111;
 
   .sand-code-block {
     border: none;
@@ -57,52 +54,60 @@
 
 .sand-tab-headers {
   display: flex;
-  background: var(--sand-primary-light);
-  padding: 0 0.75rem;
-  overflow-x: auto;
+  background: #1a1a1a;
+  padding: 0 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .sand-tab-btn {
-  padding: 0.9rem 1rem;
+  padding: 0.75rem 1rem;
   background: none;
   border: none;
-  color: rgba(242, 242, 242, 0.5);
+  color: rgba(255, 255, 255, 0.4);
   font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 0.8rem;
+  font-weight: 600;
+  font-size: 0.8125rem;
   cursor: pointer;
   position: relative;
-  transition: var(--transition);
-  white-space: nowrap;
+  transition: all var(--transition);
 
-  &:focus-visible {
-    outline: 3px solid color-mix(in srgb, var(--sand-accent) 55%, white);
-    outline-offset: -3px;
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
   }
 
   &.active {
-    color: #fff;
+    color: #ffffff;
 
     &::after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: -1px;
       left: 0;
       width: 100%;
-      height: 3px;
+      height: 2px;
       background: var(--sand-accent);
     }
   }
 }
 
+// Syntax Highlighting Tokens (Modern VS Code Theme)
+:global {
+  .token-comment { color: #6a9955; font-style: italic; }
+  .token-string { color: #ce9178; }
+  .token-keyword { color: #569cd6; font-weight: 600; }
+  .token-boolean { color: #569cd6; font-weight: 600; }
+  .token-number { color: #b5cea8; }
+  .token-function { color: #dcdcaa; }
+  .token-class { color: #4ec9b0; }
+  .token-component { color: #4ec9b0; font-weight: 600; }
+  .token-tag { color: #569cd6; }
+  .token-attr { color: #9cdcfe; }
+  .token-operator { color: #d4d4d4; }
+}
+
 @media (max-width: 640px) {
   .sand-code-block {
-    padding: 1.1rem;
-    font-size: 0.8rem;
-  }
-
-  .sand-copy-btn {
-    top: 0.75rem;
-    right: 0.75rem;
+    padding: 1rem;
+    font-size: 0.8125rem;
   }
 }
