@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandFeedback > matches the default snapshot 1`] = `
+<div
+  aria-live="polite"
+  class="_sand-feedback_c78039 _sand-feedback-toast_c78039 _sand-feedback-info_c78039"
+  role="status"
+>
+  <div
+    class="_sand-feedback-row_c78039"
+  >
+    <span
+      aria-hidden="true"
+      class="_sand-feedback-icon_c78039 material-symbols-rounded"
+    >
+      info
+    </span>
+    <div
+      class="_sand-feedback-content_c78039"
+    >
+      <span
+        class="_sand-feedback-message_c78039"
+      >
+        Saved.
+      </span>
+    </div>
+  </div>
+</div>
+`;

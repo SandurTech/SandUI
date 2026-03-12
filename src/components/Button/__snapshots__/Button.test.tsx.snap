@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandButton > matches the default snapshot 1`] = `
+<button
+  class="_sand-btn_ee73f7 _sand-btn-primary_ee73f7"
+  type="button"
+>
+  Save
+</button>
+`;

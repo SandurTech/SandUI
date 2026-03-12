@@ -38,13 +38,6 @@ const navGroups: NavGroup[] = [
         description: 'Project summary, package install, and design system purpose.',
         keywords: ['intro', 'install', 'sandui', 'overview'],
       },
-      {
-        href: '#microservice-layout',
-        label: 'Microservice Layout',
-        icon: 'deployed_code',
-        description: 'Reference layout for SandurTech tools and dashboards.',
-        keywords: ['layout', 'tool', 'header', 'panel', 'result'],
-      },
     ],
   },
   {
@@ -165,17 +158,20 @@ const navGroups: NavGroup[] = [
 ];
 
 export const DocsApp: React.FC = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window === 'undefined') {
+      return 'light';
+    }
+
+    return window.localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+  });
   const [activeSection, setActiveSection] = useState('intro');
   const [searchQuery, setSearchQuery] = useState('');
   const logoSrc = `${import.meta.env.BASE_URL}SandurTech-Logo-SVG.svg`;
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const initialTheme = savedTheme || 'light';
-    setTheme(initialTheme);
-    document.documentElement.setAttribute('data-theme', initialTheme);
-  }, []);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     const sections = navGroups

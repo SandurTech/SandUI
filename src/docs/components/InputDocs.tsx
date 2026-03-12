@@ -1,20 +1,20 @@
 import React from 'react';
-import { InputGroup, CodeTabs } from '../../components';
+import { SandCodeTabs, SandInputGroup } from '../../components';
 
 export const InputDocs: React.FC = () => (
   <section id="inputs" className="docs-section">
     <h2 className="section-title">Inputs & Forms</h2>
     <div className="sand-comp-doc">
-      <div className="sand-comp-name">Text Input</div>
+      <h3 className="sand-comp-name">Text Input</h3>
 
       <div className="sand-preview-area sand-preview-area-stack sand-preview-area-form">
-        <InputGroup label="Default Input" placeholder="Enter text..." />
-        <InputGroup
+        <SandInputGroup label="Default Input" placeholder="Enter text..." />
+        <SandInputGroup
           label="Prefilled Input"
           defaultValue="sandurtech/design-system"
           helperText="Use a clear, human-readable resource name."
         />
-        <InputGroup
+        <SandInputGroup
           label="Error State"
           error
           defaultValue="Invalid data"
@@ -34,18 +34,18 @@ export const InputDocs: React.FC = () => (
         </div>
         <div className="sand-usage-item">
           <h4>How to Use</h4>
-          <p>Use <code>&lt;InputGroup /&gt;</code> with a <code>label</code> and optional <code>error</code> and <code>helperText</code>.</p>
+          <p>Use <code>&lt;SandInputGroup /&gt;</code> with a <code>label</code> and optional <code>error</code> and <code>helperText</code>.</p>
         </div>
       </div>
 
-      <CodeTabs
+      <SandCodeTabs
         tabs={[
           {
             name: 'React (TS)',
-            code: `import { InputGroup } from '@sandurtech/sandui';
+            code: `import { SandInputGroup } from '@sandurtech/sandui';
 
 const Form = () => (
-  <InputGroup
+  <SandInputGroup
     label="Microservice Name"
     error={true}
     helperText="Name is required"

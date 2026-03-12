@@ -1,25 +1,24 @@
-import React, { type HTMLAttributes } from 'react';
+import { forwardRef, useMemo, type ComponentPropsWithoutRef } from 'react';
 import styles from './Badge.module.scss';
+import { cn } from '../utils';
 
-export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
+export interface SandBadgeProps extends ComponentPropsWithoutRef<'span'> {
+  /** Visual treatment used to communicate emphasis or status. */
   variant?: 'primary' | 'secondary' | 'success' | 'failed';
-  children: React.ReactNode;
 }
 
-export const Badge: React.FC<BadgeProps> = ({
-  variant = 'primary',
-  children,
-  className = '',
-  ...props
-}) => {
-  const variantClass = styles[`sand-badge-${variant}`];
+export const SandBadge = forwardRef<HTMLSpanElement, SandBadgeProps>(function SandBadge(
+  { variant = 'primary', className = '', ...props },
+  ref,
+) {
+  const variantClass = useMemo(() => styles[`sand-badge-${variant}`], [variant]);
 
   return (
     <span
-      className={`${styles['sand-badge']} ${variantClass} ${className}`.trim()}
+      ref={ref}
+      className={cn(styles['sand-badge'], variantClass, className)}
       {...props}
-    >
-      {children}
-    </span>
+    />
   );
-};
+});
+SandBadge.displayName = 'SandBadge';

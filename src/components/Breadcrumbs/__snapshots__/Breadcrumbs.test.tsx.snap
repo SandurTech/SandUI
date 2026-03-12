@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandBreadcrumbs > matches the default snapshot 1`] = `
+<nav
+  aria-label="Breadcrumb"
+  class="_sand-breadcrumbs_8d0211"
+>
+  <ol>
+    <li
+      class="_sand-breadcrumb-item_8d0211"
+    >
+      <span
+        aria-current="page"
+        class="_sand-breadcrumb-current_8d0211"
+      >
+        Home
+      </span>
+    </li>
+  </ol>
+</nav>
+`;

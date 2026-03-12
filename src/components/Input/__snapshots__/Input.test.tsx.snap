@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandInputGroup > matches the default snapshot 1`] = `
+<div
+  class="_sand-form-group_9af53b"
+>
+  <label
+    class="_sand-label_9af53b"
+    for="_r_1_"
+  >
+    Name
+  </label>
+  <input
+    class="_sand-input_9af53b"
+    id="_r_1_"
+  />
+</div>
+`;

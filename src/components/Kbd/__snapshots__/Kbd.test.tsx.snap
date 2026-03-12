@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandKBD > matches the default snapshot 1`] = `
+<kbd
+  class="_sand-kbd_48e1bb"
+>
+  Cmd
+</kbd>
+`;

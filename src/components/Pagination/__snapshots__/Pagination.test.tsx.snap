@@ -1,0 +1,56 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandPagination > matches the default snapshot 1`] = `
+<nav
+  aria-label="Pagination"
+  class="_sand-pagination_390c1d"
+>
+  <button
+    aria-label="Previous page"
+    class="_sand-page-btn_390c1d"
+    disabled=""
+    type="button"
+  >
+    <span
+      aria-hidden="true"
+      class="material-symbols-rounded"
+    >
+      chevron_left
+    </span>
+  </button>
+  <button
+    aria-current="page"
+    aria-label="Page 1"
+    class="_sand-page-btn_390c1d _sand-page-btn-active_390c1d"
+    type="button"
+  >
+    1
+  </button>
+  <button
+    aria-label="Page 2"
+    class="_sand-page-btn_390c1d"
+    type="button"
+  >
+    2
+  </button>
+  <button
+    aria-label="Page 3"
+    class="_sand-page-btn_390c1d"
+    type="button"
+  >
+    3
+  </button>
+  <button
+    aria-label="Next page"
+    class="_sand-page-btn_390c1d"
+    type="button"
+  >
+    <span
+      aria-hidden="true"
+      class="material-symbols-rounded"
+    >
+      chevron_right
+    </span>
+  </button>
+</nav>
+`;

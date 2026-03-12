@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandLayout > matches the default snapshot 1`] = `
+<div>
+  <header
+    class="_sand-header_2c063b"
+  >
+    Header
+  </header>
+  <div
+    class="_sand-tool-layout_2c063b"
+  >
+    <aside
+      class="_sand-tool-panel_2c063b"
+    >
+      Panel
+    </aside>
+    <main
+      class="_sand-result-panel_2c063b"
+    >
+      Result
+    </main>
+  </div>
+</div>
+`;

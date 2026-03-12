@@ -1,66 +1,85 @@
-import React, { useId, type InputHTMLAttributes } from 'react';
+import { forwardRef, useMemo, useId, type ComponentPropsWithoutRef, type ReactNode } from 'react';
 import styles from './Input.module.scss';
+import { cn } from '../utils';
 
-export interface FormGroupProps {
-  label?: React.ReactNode;
-  children: React.ReactNode;
-  className?: string;
+export interface SandFormGroupProps extends ComponentPropsWithoutRef<'div'> {
+  /** Accessible label content rendered above the field. */
+  label?: ReactNode;
+  /** Optional input id associated with the label element. */
   htmlFor?: string;
 }
 
-export const FormGroup: React.FC<FormGroupProps> = ({ label, children, className = '', htmlFor }) => (
-  <div className={`${styles['sand-form-group']} ${className}`.trim()}>
-    {label && <label className={styles['sand-label']} htmlFor={htmlFor}>{label}</label>}
-    {children}
-  </div>
-);
+export const SandFormGroup = forwardRef<HTMLDivElement, SandFormGroupProps>(function SandFormGroup(
+  { label, children, className = '', htmlFor, ...props },
+  ref,
+) {
+  return (
+    <div ref={ref} className={cn(styles['sand-form-group'], className)} {...props}>
+      {label && <label className={styles['sand-label']} htmlFor={htmlFor}>{label}</label>}
+      {children}
+    </div>
+  );
+});
+SandFormGroup.displayName = 'SandFormGroup';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface SandInputProps extends ComponentPropsWithoutRef<'input'> {
+  /** Toggles error styling and `aria-invalid`. */
   error?: boolean;
 }
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ error, className = '', ...props }, ref) => {
-    return (
-      <input
-        ref={ref}
-        className={`${styles['sand-input']} ${error ? styles['sand-input-error'] : ''} ${className}`.trim()}
-        {...props}
-      />
-    );
-  }
-);
-Input.displayName = 'Input';
+export const SandInput = forwardRef<HTMLInputElement, SandInputProps>(function SandInput(
+  { error, className = '', ...props },
+  ref,
+) {
+  return (
+    <input
+      ref={ref}
+      className={cn(styles['sand-input'], error && styles['sand-input-error'], className)}
+      aria-invalid={error || props['aria-invalid']}
+      {...props}
+    />
+  );
+});
+SandInput.displayName = 'SandInput';
 
-export interface InputGroupProps extends InputProps {
-  label: React.ReactNode;
-  helperText?: React.ReactNode;
+export interface SandInputGroupProps extends SandInputProps {
+  /** Accessible field label rendered above the input. */
+  label: ReactNode;
+  /** Optional helper or validation message rendered below the input. */
+  helperText?: ReactNode;
+  /** Optional class applied to the outer group wrapper. */
+  className?: string;
   groupClassName?: string;
 }
 
-export const InputGroup = React.forwardRef<HTMLInputElement, InputGroupProps>(
-  ({ label, helperText, error, groupClassName, ...props }, ref) => {
-    const generatedId = useId();
-    const inputId = props.id ?? generatedId;
-    const helperTextId = helperText ? `${inputId}-help` : undefined;
+export const SandInputGroup = forwardRef<HTMLInputElement, SandInputGroupProps>(function SandInputGroup(
+  { label, helperText, error, groupClassName, className = '', 'aria-describedby': ariaDescribedBy, ...props },
+  ref,
+) {
+  const generatedId = useId();
+  const inputId = props.id ?? generatedId;
+  const helperTextId = helperText ? `${inputId}-help` : undefined;
+  const describedBy = useMemo(
+    () => [ariaDescribedBy, helperTextId].filter(Boolean).join(' ') || undefined,
+    [ariaDescribedBy, helperTextId],
+  );
 
-    return (
-      <FormGroup label={label} className={groupClassName} htmlFor={inputId}>
-        <Input
-          ref={ref}
-          id={inputId}
-          error={error}
-          aria-invalid={error || undefined}
-          aria-describedby={helperTextId}
-          {...props}
-        />
-        {helperText && (
-          <span id={helperTextId} className={error ? styles['sand-helper-text-error'] : ''}>
-            {helperText}
-          </span>
-        )}
-      </FormGroup>
-    );
-  }
-);
-InputGroup.displayName = 'InputGroup';
+  return (
+    <SandFormGroup label={label} className={groupClassName} htmlFor={inputId}>
+      <SandInput
+        ref={ref}
+        id={inputId}
+        error={error}
+        className={className}
+        aria-describedby={describedBy}
+        {...props}
+      />
+      {helperText && (
+        <span id={helperTextId} className={error ? styles['sand-helper-text-error'] : ''}>
+          {helperText}
+        </span>
+      )}
+    </SandFormGroup>
+  );
+});
+SandInputGroup.displayName = 'SandInputGroup';

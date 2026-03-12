@@ -1,28 +1,28 @@
-import React, { type HTMLAttributes } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
 import styles from './Card.module.scss';
+import { cn } from '../utils';
 
-export interface CardProps extends HTMLAttributes<HTMLDivElement> {
-  header?: React.ReactNode;
-  footer?: React.ReactNode;
-  children: React.ReactNode;
+export interface SandCardProps extends ComponentPropsWithoutRef<'article'> {
+  /** Optional header content rendered in the card header region. */
+  header?: ReactNode;
+  /** Optional footer content rendered in the card footer region. */
+  footer?: ReactNode;
 }
 
-export const Card: React.FC<CardProps> = ({
-  header,
-  footer,
-  children,
-  className = '',
-  ...props
-}) => {
+export const SandCard = forwardRef<HTMLElement, SandCardProps>(function SandCard(
+  { header, footer, children, className = '', ...props },
+  ref,
+) {
   return (
-    <div className={`${styles['sand-card']} ${className}`.trim()} {...props}>
+    <article ref={ref} className={cn(styles['sand-card'], className)} {...props}>
       {header && (
-        <div className={styles['sand-card-header']}>{header}</div>
+        <header className={styles['sand-card-header']}>{header}</header>
       )}
       <div className={styles['sand-card-body']}>{children}</div>
       {footer && (
-        <div className={styles['sand-card-footer']}>{footer}</div>
+        <footer className={styles['sand-card-footer']}>{footer}</footer>
       )}
-    </div>
+    </article>
   );
-};
+});
+SandCard.displayName = 'SandCard';

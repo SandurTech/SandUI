@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, CodeTabs, Snackbar, Toast } from '../../components';
+import { SandButton, SandCodeTabs, SandSnackbar, SandToast } from '../../components';
 
 type FeedbackMode = 'success' | 'failed' | 'info';
 
@@ -28,7 +28,7 @@ export const FeedbackDocs: React.FC = () => {
         <h2 className="section-title">Toast</h2>
 
         <div className="sand-comp-doc">
-          <div className="sand-comp-name">Richer Status Confirmation</div>
+          <h3 className="sand-comp-name">Richer Status Confirmation</h3>
           <div className="sand-preview-area sand-preview-area-stack">
             <div className="docs-segmented-actions" role="group" aria-label="Toast demo variants">
               {(['success', 'failed', 'info'] as const).map((variant) => (
@@ -42,15 +42,15 @@ export const FeedbackDocs: React.FC = () => {
                 </button>
               ))}
             </div>
-            <Toast
+            <SandToast
               variant={mode}
               heading={current.title}
               message={current.message}
               action={
-                <Button variant="outline" className="docs-inline-button">
+                <SandButton variant="outline" className="docs-inline-button">
                   <span className="material-symbols-rounded" aria-hidden="true">open_in_new</span>
                   View site
-                </Button>
+                </SandButton>
               }
             />
           </div>
@@ -59,13 +59,13 @@ export const FeedbackDocs: React.FC = () => {
             <div className="sand-usage-item"><h4>When to Use</h4><p>Use toasts for async completion states, publish results, save confirmations, and actionable system notices.</p></div>
             <div className="sand-usage-item"><h4>How to Use</h4><p>Lead with the outcome, keep the body concise, and only add one action when it changes the next step.</p></div>
           </div>
-          <CodeTabs
+          <SandCodeTabs
             tabs={[
               {
                 name: 'React (TS)',
-                code: `import { Toast } from '@sandurtech/sandui';
+                code: `import { SandToast } from '@sandurtech/sandui';
 
-<Toast variant="success" heading="Saved" message="Your changes are live." />`,
+<SandToast variant="success" heading="Saved" message="Your changes are live." />`,
               },
             ]}
           />
@@ -76,7 +76,7 @@ export const FeedbackDocs: React.FC = () => {
         <h2 className="section-title">Snackbar</h2>
 
         <div className="sand-comp-doc">
-          <div className="sand-comp-name">Lightweight Inline Notification</div>
+          <h3 className="sand-comp-name">Lightweight Inline Notification</h3>
           <div className="sand-preview-area sand-preview-area-stack">
             <div className="docs-segmented-actions" role="group" aria-label="Snackbar demo variants">
               {(['success', 'failed', 'info'] as const).map((variant) => (
@@ -90,7 +90,7 @@ export const FeedbackDocs: React.FC = () => {
                 </button>
               ))}
             </div>
-            <Snackbar
+            <SandSnackbar
               variant={mode === 'failed' ? 'failed' : mode === 'success' ? 'success' : 'info'}
               message={
                 mode === 'failed'
@@ -100,12 +100,12 @@ export const FeedbackDocs: React.FC = () => {
                     : 'Draft saved locally. Sync to publish changes.'
               }
               action={
-                <Button variant={mode === 'failed' ? 'failed' : mode === 'success' ? 'success' : 'secondary'} className="docs-inline-button">
+                <SandButton variant={mode === 'failed' ? 'failed' : mode === 'success' ? 'success' : 'secondary'} className="docs-inline-button">
                   <span className="material-symbols-rounded" aria-hidden="true">
                     {mode === 'failed' ? 'error' : mode === 'success' ? 'check_circle' : 'sync'}
                   </span>
                   {mode === 'failed' ? 'Resolve issues' : mode === 'success' ? 'Open release' : 'Sync now'}
-                </Button>
+                </SandButton>
               }
             />
           </div>
@@ -114,13 +114,13 @@ export const FeedbackDocs: React.FC = () => {
             <div className="sand-usage-item"><h4>When to Use</h4><p>Use snackbars for quick updates, low-friction confirmations, or brief recovery prompts.</p></div>
             <div className="sand-usage-item"><h4>How to Use</h4><p>Keep the message short enough to read instantly and favor a single compact action.</p></div>
           </div>
-          <CodeTabs
+          <SandCodeTabs
             tabs={[
               {
                 name: 'React (TS)',
-                code: `import { Snackbar } from '@sandurtech/sandui';
+                code: `import { SandSnackbar } from '@sandurtech/sandui';
 
-<Snackbar variant="info" message="Connection restored." />`,
+<SandSnackbar variant="info" message="Connection restored." />`,
               },
             ]}
           />

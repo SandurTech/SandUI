@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Breadcrumbs, CodeTabs, Pagination } from '../../components';
+import { SandBreadcrumbs, SandCodeTabs, SandPagination } from '../../components';
 
 export const NavigationDocs: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(2);
@@ -10,9 +10,9 @@ export const NavigationDocs: React.FC = () => {
       <section id="breadcrumbs" className="docs-section">
         <h2 className="section-title">Breadcrumbs</h2>
         <div className="sand-comp-doc">
-          <div className="sand-comp-name">Hierarchy and Location</div>
+          <h3 className="sand-comp-name">Hierarchy and Location</h3>
           <div className="sand-preview-area sand-preview-area-stack">
-            <Breadcrumbs
+            <SandBreadcrumbs
               items={[
                 { label: 'Home', href: '#' },
                 { label: 'Components', href: '#cards' },
@@ -25,13 +25,13 @@ export const NavigationDocs: React.FC = () => {
             <div className="sand-usage-item"><h4>When to Use</h4><p>Use them in documentation flows, dashboards, or nested tools where context matters.</p></div>
             <div className="sand-usage-item"><h4>How to Use</h4><p>Only include meaningful levels and keep the current page as the final non-link item.</p></div>
           </div>
-          <CodeTabs
+          <SandCodeTabs
             tabs={[
               {
                 name: 'React (TS)',
-                code: `import { Breadcrumbs } from '@sandurtech/sandui';
+                code: `import { SandBreadcrumbs } from '@sandurtech/sandui';
 
-<Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Library' }]} />`,
+<SandBreadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Library' }]} />`,
               },
             ]}
           />
@@ -41,9 +41,9 @@ export const NavigationDocs: React.FC = () => {
       <section id="pagination" className="docs-section">
         <h2 className="section-title">Pagination</h2>
         <div className="sand-comp-doc">
-          <div className="sand-comp-name">Paged Result Navigation</div>
+          <h3 className="sand-comp-name">Paged Result Navigation</h3>
           <div className="sand-preview-area sand-preview-area-stack">
-            <Pagination currentPage={currentPage} totalPages={totalPages} />
+            <SandPagination currentPage={currentPage} totalPages={totalPages} />
             <div className="docs-segmented-actions" role="group" aria-label="Pagination demo controls">
               {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
                 <button
@@ -65,13 +65,13 @@ export const NavigationDocs: React.FC = () => {
             <div className="sand-usage-item"><h4>When to Use</h4><p>Use it when a list is too long for a single page and users need direct page access.</p></div>
             <div className="sand-usage-item"><h4>How to Use</h4><p>Keep the current page visually distinct and pair previous and next controls with page numbers.</p></div>
           </div>
-          <CodeTabs
+          <SandCodeTabs
             tabs={[
               {
                 name: 'React (TS)',
-                code: `import { Pagination } from '@sandurtech/sandui';
+                code: `import { SandPagination } from '@sandurtech/sandui';
 
-<Pagination currentPage={3} totalPages={8} />`,
+<SandPagination currentPage={3} totalPages={8} />`,
               },
             ]}
           />

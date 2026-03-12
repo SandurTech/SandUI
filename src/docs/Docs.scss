@@ -283,6 +283,38 @@
   }
 }
 
+.docs-route-overline {
+  margin-bottom: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sand-accent);
+}
+
+.docs-route-description {
+  margin-top: 1rem;
+  max-width: 44rem;
+  font-size: 1rem;
+  color: var(--theme-text-muted);
+}
+
+.docs-page-content {
+  min-height: 40vh;
+}
+
+.docs-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--theme-border);
+  border-radius: var(--radius-md);
+  background: var(--theme-surface);
+  color: var(--theme-text-muted);
+  box-shadow: var(--shadow-sm);
+}
+
 .docs-section {
   margin-bottom: clamp(4.5rem, 8vw, 7rem);
   scroll-margin-top: 2rem;

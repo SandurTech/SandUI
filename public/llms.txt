@@ -1,0 +1,46 @@
+# SandUI LLM Index
+
+SandUI is a TypeScript UI Library of accessible React components for dashboards, SaaS products, microservices, and internal tools.
+
+## How to use
+
+- Install: `npm i @sandurtech/sandui`
+- Import from package entrypoint: `import { SandButton, SandModal, SandInputGroup } from '@sandurtech/sandui'`
+- Every component supports semantic HTML, forwarded refs, and package-ready composition.
+
+## Components
+
+- `SandButton`: Primary action component. Props: `variant` (`primary | secondary | outline | success | failed`) plus standard button attributes.
+- `SandInput`: Base text input. Props: standard input attributes plus `error`.
+- `SandInputGroup`: Labeled input wrapper. Props: `label`, `helperText`, `groupClassName`, and all `SandInput` props.
+- `SandCard`: Semantic content container. Props: `header`, `footer`, and article attributes.
+- `SandBadge`: Inline status label. Props: `variant` (`primary | secondary | success | failed`) and span attributes.
+- `SandDivider`: Semantic separator. Props: standard `hr` attributes.
+- `SandKBD`: Keyboard shortcut primitive. Props: standard `kbd` attributes.
+- `SandBreadcrumbs`: Hierarchical navigation. Props: `items` with `{ label, href? }` and nav attributes.
+- `SandPagination`: Paged navigation. Props: `currentPage`, `totalPages`, `onPageChange`, and nav attributes.
+- `SandCheckbox`: Checkbox control. Props: `label`, `description`, and input attributes.
+- `SandRadio`: Radio control with keyboard arrow navigation. Props: `label`, `description`, and input attributes.
+- `SandSwitch`: Switch control. Props: `label`, `description`, and input attributes.
+- `SandChoiceGroup`: Choice container. Props: `label` and div attributes.
+- `SandToast`: Live-region feedback message. Props: `heading`, `message`, `action`, `variant`.
+- `SandSnackbar`: Compact live-region feedback message. Props: `message`, `action`, `variant`, `heading?`.
+- `SandCodeBlock`: Code snippet viewer. Props: `code` and pre attributes.
+- `SandCodeTabs`: Keyboardable code tablist. Props: `tabs`, `defaultTab`, `onTabChange`, `className`.
+- `SandModal`: Accessible dialog. Props: `open`, `onClose`, `title`, `description`, `footer`, `closeOnOverlay`, `initialFocusRef`. Static subcomponents: `Header`, `Body`, `Footer`, `Title`, `Description`.
+- `SandContainer`, `SandHeader`, `SandToolLayout`, `SandToolPanel`, `SandResultPanel`, `SandMicroserviceLayout`: layout primitives for structured interfaces.
+
+## Documentation routes
+
+- `/`: Introduction
+- `/design-tokens`: Design Tokens
+- `/typography`: Typography
+- `/kbd`: SandKBD
+- `/buttons`: SandButton
+- `/inputs`: SandInput and SandInputGroup
+- `/cards`: SandCard
+- `/selection`: SandCheckbox, SandRadio, SandSwitch, SandChoiceGroup
+- `/navigation`: SandBreadcrumbs and SandPagination
+- `/feedback`: SandToast and SandSnackbar
+- `/modals`: SandModal
+- `/utilities`: SandBadge and SandDivider

@@ -1,37 +1,37 @@
 import React from 'react';
-import { Card, Button, CodeTabs } from '../../components';
+import { SandButton, SandCard, SandCodeTabs } from '../../components';
 
 export const CardDocs: React.FC = () => (
   <section id="cards" className="docs-section">
     <h2 className="section-title">Cards</h2>
     <div className="sand-comp-doc">
-      <div className="sand-comp-name">Standard Card</div>
+      <h3 className="sand-comp-name">Standard Card</h3>
 
       <div className="sand-preview-area">
-        <Card
+        <SandCard
           className="docs-project-card"
           header="Official Documentation"
           footer={
-            <Button variant="secondary" className="docs-inline-button">
+            <SandButton variant="secondary" className="docs-inline-button">
               <span className="material-symbols-rounded" aria-hidden="true">arrow_outward</span>
               Read More
-            </Button>
+            </SandButton>
           }
         >
           <p className="docs-body-copy">Explore the full potential of Sand UI in our microservice architecture.</p>
-        </Card>
-        <Card
+        </SandCard>
+        <SandCard
           className="docs-project-card"
           header="System Status"
           footer={
-            <Button variant="outline" className="docs-inline-button">
+            <SandButton variant="outline" className="docs-inline-button">
               <span className="material-symbols-rounded" aria-hidden="true">monitoring</span>
               Inspect
-            </Button>
+            </SandButton>
           }
         >
           <p className="docs-body-copy">Track deployment health, release readiness, and design adoption metrics from a single surface.</p>
-        </Card>
+        </SandCard>
       </div>
 
       <div className="sand-usage-grid">
@@ -45,23 +45,23 @@ export const CardDocs: React.FC = () => (
         </div>
         <div className="sand-usage-item">
           <h4>How to Use</h4>
-          <p>Use <code>&lt;Card&gt;</code> with optional <code>header</code> and <code>footer</code> props.</p>
+          <p>Use <code>&lt;SandCard&gt;</code> with optional <code>header</code> and <code>footer</code> props.</p>
         </div>
       </div>
 
-      <CodeTabs
+      <SandCodeTabs
         tabs={[
           {
             name: 'React (TS)',
-            code: `import { Card, Button } from '@sandurtech/sandui';
+            code: `import { SandCard, SandButton } from '@sandurtech/sandui';
 
-<Card header="Project Alpha">
+<SandCard header="Project Alpha">
   <p>Content goes here...</p>
-  <Button variant="secondary">
+  <SandButton variant="secondary">
     <span className="material-symbols-rounded" aria-hidden="true">visibility</span>
     View
-  </Button>
-</Card>`
+  </SandButton>
+</SandCard>`
           },
           {
             name: 'Install',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, CodeTabs, InputGroup, Modal, Badge } from '../../components';
+import { SandBadge, SandButton, SandCard, SandCodeTabs, SandInputGroup, SandModal } from '../../components';
 
 export const ModalDocs: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -9,67 +9,67 @@ export const ModalDocs: React.FC = () => {
       <h2 className="section-title">Modal Dialogs</h2>
 
       <div className="sand-comp-doc">
-        <div className="sand-comp-name">Interactive Dialog</div>
+        <h3 className="sand-comp-name">Interactive Dialog</h3>
         <div className="sand-preview-area sand-preview-area-stack">
           <div className="docs-live-panel">
             <div className="docs-live-row">
               <strong>Status</strong>
-              <Badge variant="success">Ready to publish</Badge>
+              <SandBadge variant="success">Ready to publish</SandBadge>
             </div>
             <p className="docs-body-copy">
               Open the modal to review content, change metadata, and confirm a publish action with standard SandUI controls.
             </p>
           </div>
-          <Button variant="primary" className="docs-inline-button" onClick={() => setOpen(true)}>
+          <SandButton variant="primary" className="docs-inline-button" onClick={() => setOpen(true)}>
             <span className="material-symbols-rounded" aria-hidden="true">open_in_new</span>
             Open modal demo
-          </Button>
-          <Modal
+          </SandButton>
+          <SandModal
             open={open}
             onClose={() => setOpen(false)}
             title="Publish SandUI release"
             description="Review the final details before you publish the next documentation release."
             footer={
               <>
-                <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
-                <Button variant="success" onClick={() => setOpen(false)}>
+                <SandButton variant="outline" onClick={() => setOpen(false)}>Cancel</SandButton>
+                <SandButton variant="success" onClick={() => setOpen(false)}>
                   <span className="material-symbols-rounded" aria-hidden="true">rocket_launch</span>
                   Publish
-                </Button>
+                </SandButton>
               </>
             }
           >
             <div className="docs-modal-stack">
-              <InputGroup label="Release title" defaultValue="SandUI v0.3.0" />
-              <InputGroup label="Summary" defaultValue="Adds navigation, feedback, and selection primitives." />
-              <Card
+              <SandInputGroup label="Release title" defaultValue="SandUI v0.3.0" />
+              <SandInputGroup label="Summary" defaultValue="Adds navigation, feedback, and selection primitives." />
+              <SandCard
                 header="Included components"
-                footer={<Badge variant="primary">6 additions</Badge>}
+                footer={<SandBadge variant="primary">6 additions</SandBadge>}
               >
                 <p className="docs-body-copy">Checkboxes, radios, switches, breadcrumbs, pagination, toast, snackbar, and modal dialogs are included in this release.</p>
-              </Card>
+              </SandCard>
             </div>
-          </Modal>
+          </SandModal>
         </div>
         <div className="sand-usage-grid">
           <div className="sand-usage-item"><h4>Description</h4><p>Modal dialogs interrupt the current flow to focus attention on a contained task or confirmation.</p></div>
           <div className="sand-usage-item"><h4>When to Use</h4><p>Use a modal for short, high-attention tasks like review, confirmation, or lightweight editing.</p></div>
           <div className="sand-usage-item"><h4>How to Use</h4><p>Include a clear title, a concise description, and an explicit way to cancel or complete the action.</p></div>
         </div>
-        <CodeTabs
+        <SandCodeTabs
           tabs={[
             {
               name: 'React (TS)',
-              code: `import { Modal, Button } from '@sandurtech/sandui';
+              code: `import { SandModal, SandButton } from '@sandurtech/sandui';
 
-<Modal
+<SandModal
   open={open}
   onClose={() => setOpen(false)}
   title="Publish release"
-  footer={<Button variant="success">Publish</Button>}
+  footer={<SandButton variant="success">Publish</SandButton>}
 >
   Modal content
-</Modal>`,
+</SandModal>`,
             },
           ]}
         />

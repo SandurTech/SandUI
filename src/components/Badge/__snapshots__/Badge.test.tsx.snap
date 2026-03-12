@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandBadge > matches the default snapshot 1`] = `
+<span
+  class="_sand-badge_86b2aa _sand-badge-primary_86b2aa"
+>
+  Default badge
+</span>
+`;

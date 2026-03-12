@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandCard > matches the default snapshot 1`] = `
+<article
+  class="_sand-card_526f9d"
+>
+  <div
+    class="_sand-card-body_526f9d"
+  >
+    Body
+  </div>
+</article>
+`;

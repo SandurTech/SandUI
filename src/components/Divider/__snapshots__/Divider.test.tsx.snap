@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandDivider > matches the default snapshot 1`] = `
+<hr
+  class="_sand-divider_0145b9"
+/>
+`;

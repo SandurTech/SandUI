@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandCodeBlock > matches the default snapshot 1`] = `
+<pre
+  class="_sand-code-block_1d2da9"
+>
+  <button
+    aria-label="Copy code to clipboard"
+    class="_sand-copy-btn_1d2da9"
+    type="button"
+  >
+    Copy
+  </button>
+  <code>
+    const a = 1;
+  </code>
+</pre>
+`;

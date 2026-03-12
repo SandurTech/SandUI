@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Checkbox, ChoiceGroup, CodeTabs, Radio, Switch } from '../../components';
+import { SandCheckbox, SandChoiceGroup, SandCodeTabs, SandRadio, SandSwitch } from '../../components';
 
 export const SelectionDocs: React.FC = () => {
   const [checks, setChecks] = useState({
@@ -14,22 +14,22 @@ export const SelectionDocs: React.FC = () => {
       <section id="checkboxes" className="docs-section">
         <h2 className="section-title">Checkboxes</h2>
         <div className="sand-comp-doc">
-          <div className="sand-comp-name">Multi-Selection Choices</div>
+          <h3 className="sand-comp-name">Multi-Selection Choices</h3>
           <div className="sand-preview-area sand-preview-area-stack sand-preview-area-form">
-            <ChoiceGroup>
-              <Checkbox
+            <SandChoiceGroup>
+              <SandCheckbox
                 label="Enable deployment checks"
                 description="Run pre-publish validation before release."
                 checked={checks.validation}
                 onChange={(event) => setChecks((current) => ({ ...current, validation: event.target.checked }))}
               />
-              <Checkbox
+              <SandCheckbox
                 label="Send release summary"
                 description="Post update details to the engineering channel."
                 checked={checks.summary}
                 onChange={(event) => setChecks((current) => ({ ...current, summary: event.target.checked }))}
               />
-            </ChoiceGroup>
+            </SandChoiceGroup>
             <div className="docs-live-panel">
               <div className="docs-live-row"><strong>Checks</strong><span>{checks.validation ? 'enabled' : 'disabled'}</span></div>
               <div className="docs-live-row"><strong>Summary</strong><span>{checks.summary ? 'send' : 'skip'}</span></div>
@@ -40,14 +40,14 @@ export const SelectionDocs: React.FC = () => {
             <div className="sand-usage-item"><h4>When to Use</h4><p>Use them when each option can be turned on or off without affecting the others.</p></div>
             <div className="sand-usage-item"><h4>How to Use</h4><p>Write labels as standalone decisions and use helper text only when a state needs context.</p></div>
           </div>
-          <CodeTabs
+          <SandCodeTabs
             tabs={[
               {
                 name: 'React (TS)',
-                code: `import { Checkbox } from '@sandurtech/sandui';
+                code: `import { SandCheckbox } from '@sandurtech/sandui';
 
-<Checkbox label="Enable notifications" defaultChecked />
-<Checkbox label="Send release summary" />`,
+<SandCheckbox label="Enable notifications" defaultChecked />
+<SandCheckbox label="Send release summary" />`,
               },
             ]}
           />
@@ -57,24 +57,24 @@ export const SelectionDocs: React.FC = () => {
       <section id="radio-buttons" className="docs-section">
         <h2 className="section-title">Radio Buttons</h2>
         <div className="sand-comp-doc">
-          <div className="sand-comp-name">Single-Choice Selection</div>
+          <h3 className="sand-comp-name">Single-Choice Selection</h3>
           <div className="sand-preview-area sand-preview-area-stack sand-preview-area-form">
-            <ChoiceGroup>
-              <Radio
+            <SandChoiceGroup>
+              <SandRadio
                 name="environment"
                 label="Production"
                 description="Deploy to the live environment."
                 checked={environment === 'production'}
                 onChange={() => setEnvironment('production')}
               />
-              <Radio
+              <SandRadio
                 name="environment"
                 label="Staging"
                 description="Ship to the preview environment first."
                 checked={environment === 'staging'}
                 onChange={() => setEnvironment('staging')}
               />
-            </ChoiceGroup>
+            </SandChoiceGroup>
             <div className="docs-live-panel">
               <div className="docs-live-row"><strong>Environment</strong><span>{environment}</span></div>
             </div>
@@ -84,14 +84,14 @@ export const SelectionDocs: React.FC = () => {
             <div className="sand-usage-item"><h4>When to Use</h4><p>Use radios when users must commit to one mode, destination, or state from a small list.</p></div>
             <div className="sand-usage-item"><h4>How to Use</h4><p>Keep the option count short and make the labels directly comparable.</p></div>
           </div>
-          <CodeTabs
+          <SandCodeTabs
             tabs={[
               {
                 name: 'React (TS)',
-                code: `import { Radio } from '@sandurtech/sandui';
+                code: `import { SandRadio } from '@sandurtech/sandui';
 
-<Radio name="mode" label="Production" />
-<Radio name="mode" label="Staging" />`,
+<SandRadio name="mode" label="Production" />
+<SandRadio name="mode" label="Staging" />`,
               },
             ]}
           />
@@ -101,16 +101,16 @@ export const SelectionDocs: React.FC = () => {
       <section id="switches" className="docs-section">
         <h2 className="section-title">Switches</h2>
         <div className="sand-comp-doc">
-          <div className="sand-comp-name">Instant On or Off Controls</div>
+          <h3 className="sand-comp-name">Instant On or Off Controls</h3>
           <div className="sand-preview-area sand-preview-area-stack sand-preview-area-form">
-            <ChoiceGroup>
-              <Switch
+            <SandChoiceGroup>
+              <SandSwitch
                 label="Maintenance mode"
                 description="Temporarily disable external write actions."
                 checked={checks.maintenance}
                 onChange={(event) => setChecks((current) => ({ ...current, maintenance: event.target.checked }))}
               />
-            </ChoiceGroup>
+            </SandChoiceGroup>
             <div className="docs-live-panel">
               <div className="docs-live-row"><strong>Maintenance</strong><span>{checks.maintenance ? 'on' : 'off'}</span></div>
             </div>
@@ -120,13 +120,13 @@ export const SelectionDocs: React.FC = () => {
             <div className="sand-usage-item"><h4>When to Use</h4><p>Use switches for immediate preferences or system controls that do not require form submission.</p></div>
             <div className="sand-usage-item"><h4>How to Use</h4><p>Phrase the label so the enabled state reads naturally, for example “Maintenance mode”.</p></div>
           </div>
-          <CodeTabs
+          <SandCodeTabs
             tabs={[
               {
                 name: 'React (TS)',
-                code: `import { Switch } from '@sandurtech/sandui';
+                code: `import { SandSwitch } from '@sandurtech/sandui';
 
-<Switch label="Maintenance mode" />`,
+<SandSwitch label="Maintenance mode" />`,
               },
             ]}
           />

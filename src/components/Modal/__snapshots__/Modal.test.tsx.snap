@@ -1,0 +1,50 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SandModal > matches the default snapshot 1`] = `
+<div
+  class="_sand-modal-root_43e8b9"
+>
+  <button
+    aria-label="Close dialog"
+    class="_sand-modal-backdrop_43e8b9"
+    type="button"
+  />
+  <div
+    aria-labelledby="_r_2_"
+    aria-modal="true"
+    class="_sand-modal-panel_43e8b9"
+    role="dialog"
+    tabindex="-1"
+  >
+    <div
+      class="_sand-modal-header_43e8b9"
+    >
+      <div>
+        <div
+          class="_sand-modal-title_43e8b9"
+          id="_r_2_"
+        >
+          Publish
+        </div>
+      </div>
+      <button
+        aria-label="Close dialog"
+        class="_sand-modal-close_43e8b9"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="material-symbols-rounded"
+        >
+          close
+        </span>
+      </button>
+    </div>
+    <div
+      class="_sand-modal-body_43e8b9"
+    >
+      Modal content
+    </div>
+  </div>
+</div>
+`;
