@@ -6,34 +6,39 @@ exports[`SandSelection > matches the default snapshot 1`] = `
   class="_sand-choice-group_441844"
   role="group"
 >
-  <label
-    class="_sand-choice-row_441844"
-    for="_r_4_"
-  >
-    <input
-      class="_sand-choice-input_441844"
-      id="_r_4_"
-      type="checkbox"
-    />
-    <span
-      aria-hidden="true"
-      class="_sand-choice-control_441844 _sand-checkbox_441844"
+  <div>
+    Selection
+  </div>
+  <div>
+    <label
+      class="_sand-choice-row_441844"
+      for="_r_6_"
     >
+      <input
+        class="_sand-choice-input_441844"
+        id="_r_6_"
+        type="checkbox"
+      />
       <span
-        class="_sand-checkbox-icon_441844 material-symbols-rounded"
+        aria-hidden="true"
+        class="_sand-choice-control_441844 _sand-checkbox_441844"
       >
-        check
+        <span
+          class="_sand-checkbox-icon_441844 material-symbols-rounded"
+        >
+          check
+        </span>
       </span>
-    </span>
-    <span
-      class="_sand-choice-content_441844"
-    >
       <span
-        class="_sand-choice-label_441844"
+        class="_sand-choice-content_441844"
       >
-        Email alerts
+        <span
+          class="_sand-choice-label_441844"
+        >
+          Email alerts
+        </span>
       </span>
-    </span>
-  </label>
+    </label>
+  </div>
 </div>
 `;

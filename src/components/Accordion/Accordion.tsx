@@ -1,4 +1,4 @@
-import { forwardRef, useState, useId, type ComponentPropsWithoutRef, type ReactNode } from 'react';
+import { forwardRef, useState, useId, Children, isValidElement, type ComponentPropsWithoutRef, type ReactNode } from 'react';
 import { SandIcon } from '../Icon/Icon';
 import { cn } from '../utils';
 import styles from './Accordion.module.scss';
@@ -34,13 +34,19 @@ export interface SandAccordionItem {
 }
 
 /**
+ * SandAccordionItem component for declarative definition of accordion items.
+ */
+export const SandAccordionItem = () => null;
+SandAccordionItem.displayName = 'SandAccordionItem';
+
+/**
  * Props for the SandAccordion component.
  */
-export interface SandAccordionProps extends ComponentPropsWithoutRef<'div'> {
+export interface SandAccordionProps extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {
   /** 
    * Array of accordion item descriptors to render.
    */
-  items: SandAccordionItem[];
+  items?: SandAccordionItem[];
   /** 
    * The ID of the item that should be initially expanded.
    * @default undefined
@@ -51,6 +57,10 @@ export interface SandAccordionProps extends ComponentPropsWithoutRef<'div'> {
    * @default false
    */
   allowMultiple?: boolean;
+  /**
+   * Declarative accordion items as children.
+   */
+  children?: ReactNode;
 }
 
 /**
@@ -68,23 +78,38 @@ export interface SandAccordionProps extends ComponentPropsWithoutRef<'div'> {
  *   ]} 
  * />
  * ```
+ * 
+ * @example
+ * ```tsx
+ * <SandAccordion defaultOpen="1">
+ *   <SandAccordionItem id="1" title="Settings" icon="settings" content={<SettingsForm />} />
+ * </SandAccordion>
+ * ```
  */
 export const SandAccordion = forwardRef<HTMLDivElement, SandAccordionProps>(function SandAccordion(
-  { items, defaultOpen, className, ...props },
+  { items = [], defaultOpen, className, children, ...props },
   ref,
 ) {
   const [openItem, setOpenItem] = useState<string | undefined>(defaultOpen);
   const baseId = useId();
 
+  const resolvedItems = [...items];
+  
+  Children.forEach(children, (child) => {
+    if (isValidElement(child) && child.type === SandAccordionItem) {
+      resolvedItems.push(child.props as SandAccordionItem);
+    }
+  });
+
   return (
     <div ref={ref} className={cn(styles.accordion, className)} {...props}>
-      {items.map((item) => {
+      {resolvedItems.map((item) => {
         const isOpen = openItem === item.id;
         const triggerId = `${baseId}-trigger-${item.id}`;
         const contentId = `${baseId}-content-${item.id}`;
 
         return (
-          <div key={item.id} className={styles.item} data-state={isOpen ? 'open' : 'closed'}>
+          <div key={item.id} className={cn(styles.item, isOpen && styles.itemOpen)} data-state={isOpen ? 'open' : 'closed'}>
             <button
               id={triggerId}
               type="button"
@@ -99,9 +124,6 @@ export const SandAccordion = forwardRef<HTMLDivElement, SandAccordionProps>(func
                 )}
                 <div className={styles.triggerText}>
                   <span className={styles.title}>{item.title}</span>
-                  {item.description && (
-                    <span className={styles.description}>{item.description}</span>
-                  )}
                 </div>
               </div>
               <SandIcon
@@ -111,13 +133,16 @@ export const SandAccordion = forwardRef<HTMLDivElement, SandAccordionProps>(func
                 aria-hidden="true"
               />
             </button>
-            <div 
+            <div
               id={contentId}
               aria-labelledby={triggerId}
-              className={cn(styles.content, isOpen && styles.contentOpen)} 
+              className={cn(styles.content, isOpen && styles.contentOpen)}
               role="region"
             >
-              <div className={styles.contentInner}>{item.content}</div>
+              <div className={styles.contentInner}>
+                {item.description && <p className={styles.descriptionFull}>{item.description}</p>}
+                {item.content}
+              </div>
             </div>
           </div>
         );

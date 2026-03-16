@@ -10,7 +10,7 @@ exports[`SandModal > matches the default snapshot 1`] = `
     type="button"
   />
   <div
-    aria-labelledby="_r_2_"
+    aria-labelledby="_r_4_"
     aria-modal="true"
     class="_sand-modal-panel_43e8b9"
     role="dialog"
@@ -22,7 +22,7 @@ exports[`SandModal > matches the default snapshot 1`] = `
       <div>
         <div
           class="_sand-modal-title_43e8b9"
-          id="_r_2_"
+          id="_r_4_"
         >
           Publish
         </div>

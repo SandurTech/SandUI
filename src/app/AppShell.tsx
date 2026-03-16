@@ -1,10 +1,10 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useRouterState } from '@tanstack/react-router';
 import './Docs.scss';
 import { navGroups, navItems } from './navigation';
 import { useAppShell } from './useAppShell';
 import { DocNavigation } from '../docs/components/DocNavigation';
-import { SandDrawer, SandIcon } from '../components';
+import { SandDrawer, SandIcon, SandKBD } from '../components';
 
 const logoSrc = `${import.meta.env.BASE_URL}SandurTech-Logo-SVG.svg`;
 
@@ -14,6 +14,19 @@ export function AppShell() {
     select: (state) => state.location.pathname,
   });
   const { theme, searchQuery, setSearchQuery, clearSearch, toggleTheme } = useAppShell();
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === '/' && document.activeElement?.tagName !== 'INPUT') {
+        event.preventDefault();
+        searchInputRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const normalizedQuery = searchQuery.trim().toLowerCase();
   const filteredGroups = navGroups
@@ -101,19 +114,33 @@ export function AppShell() {
       <a className="docs-skip-link" href="#main-content">Skip to content</a>
 
       <aside className="docs-sidebar">
-        <Link to="/" className="docs-logo">
-          <span className="docs-logo-mark">
-            <img src={logoSrc} alt="SandurTech logo" className="docs-logo-image" />
-          </span>
-          <span className="docs-logo-copy">
-            <span>Sand <span>UI</span></span>
-            <small>Component Catalog</small>
-          </span>
-        </Link>
+        <div className="docs-sidebar-header">
+          <Link to="/" className="docs-logo">
+            <span className="docs-logo-mark">
+              <img src={logoSrc} alt="SandurTech logo" className="docs-logo-image" />
+            </span>
+            <span className="docs-logo-copy">
+              <span>Sand <span>UI</span></span>
+              <small>Component Library</small>
+            </span>
+          </Link>
+
+          <button
+            className="sand-theme-btn sand-theme-btn-sm"
+            onClick={toggleTheme}
+            title="Toggle Theme"
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+          >
+            <span className="material-symbols-rounded" aria-hidden="true">
+              {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+            </span>
+          </button>
+        </div>
 
         <div className="docs-search">
           <span className="docs-search-icon material-symbols-rounded" aria-hidden="true">search</span>
           <input
+            ref={searchInputRef}
             type="search"
             className="docs-search-input"
             placeholder="Search pages, sections, keywords..."
@@ -130,6 +157,11 @@ export function AppShell() {
             >
               <span className="material-symbols-rounded" aria-hidden="true">close</span>
             </button>
+          )}
+          {!searchQuery && (
+            <span className="docs-search-shortcut">
+              <SandKBD>/</SandKBD>
+            </span>
           )}
         </div>
 
@@ -185,19 +217,6 @@ export function AppShell() {
               <p className="docs-route-overline">SandUI Library Catalogue</p>
               <h1 className="docs-title">{currentItem.label} <span>Reference</span></h1>
             </div>
-          </div>
-
-          <div className="docs-header-actions">
-            <button
-              className="sand-theme-btn"
-              onClick={toggleTheme}
-              title="Toggle Theme"
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-            >
-              <span className="material-symbols-rounded" aria-hidden="true">
-                {theme === 'dark' ? 'light_mode' : 'dark_mode'}
-              </span>
-            </button>
           </div>
         </header>
 

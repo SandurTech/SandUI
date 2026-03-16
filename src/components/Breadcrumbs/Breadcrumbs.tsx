@@ -1,4 +1,4 @@
-import { forwardRef, useMemo, type ComponentPropsWithoutRef, type ReactNode } from 'react';
+import { forwardRef, useMemo, Children, isValidElement, type ComponentPropsWithoutRef, type ReactNode } from 'react';
 import styles from './Breadcrumbs.module.scss';
 import { cn } from '../utils';
 
@@ -9,19 +9,37 @@ export interface SandBreadcrumbItem {
   href?: string;
 }
 
-export interface SandBreadcrumbsProps extends ComponentPropsWithoutRef<'nav'> {
+/**
+ * SandBreadcrumbItem component for declarative definition of breadcrumb items.
+ */
+export const SandBreadcrumbItem = () => null;
+SandBreadcrumbItem.displayName = 'SandBreadcrumbItem';
+
+export interface SandBreadcrumbsProps extends Omit<ComponentPropsWithoutRef<'nav'>, 'children'> {
   /** Ordered breadcrumb items displayed in the navigation trail. */
-  items: SandBreadcrumbItem[];
+  items?: SandBreadcrumbItem[];
+  /** Declarative breadcrumb items as children. */
+  children?: ReactNode;
 }
 
 export const SandBreadcrumbs = forwardRef<HTMLElement, SandBreadcrumbsProps>(function SandBreadcrumbs(
-  { items, className = '', 'aria-label': ariaLabel = 'Breadcrumb', ...props },
+  { items = [], className = '', 'aria-label': ariaLabel = 'Breadcrumb', children, ...props },
   ref,
 ) {
+  const resolvedItems = useMemo(() => {
+    const allItems = [...items];
+    Children.forEach(children, (child) => {
+      if (isValidElement(child) && child.type === SandBreadcrumbItem) {
+        allItems.push(child.props as SandBreadcrumbItem);
+      }
+    });
+    return allItems;
+  }, [items, children]);
+
   const renderedItems = useMemo(
     () =>
-      items.map((item, index) => {
-        const isCurrent = index === items.length - 1;
+      resolvedItems.map((item, index) => {
+        const isCurrent = index === resolvedItems.length - 1;
         return (
           <li key={`${String(item.label)}-${index}`} className={styles['sand-breadcrumb-item']}>
             {item.href && !isCurrent ? (
@@ -44,7 +62,7 @@ export const SandBreadcrumbs = forwardRef<HTMLElement, SandBreadcrumbsProps>(fun
           </li>
         );
       }),
-    [items],
+    [resolvedItems],
   );
 
   return (

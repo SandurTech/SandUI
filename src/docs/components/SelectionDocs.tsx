@@ -11,6 +11,46 @@ export const SelectionDocs: React.FC = () => {
 
   return (
     <>
+      <section id="choice-group" className="docs-section">
+        <h2 className="section-title">Choice Group</h2>
+        <div className="sand-comp-doc">
+          <h3 className="sand-comp-name">Declarative Option Groups</h3>
+          <p className="sand-comp-desc">
+            Use the <code>options</code> prop to render multiple choices efficiently.
+          </p>
+          <div className="sand-preview-area sand-preview-area-stack sand-preview-area-form">
+            <SandChoiceGroup
+              label="Select Environment"
+              type="radio"
+              value={environment}
+              onChange={setEnvironment}
+              options={[
+                { value: 'production', label: 'Production', description: 'Live traffic' },
+                { value: 'staging', label: 'Staging', description: 'Preview only' },
+                { value: 'development', label: 'Development', description: 'Local testing' },
+              ]}
+            />
+          </div>
+          <SandCodeTabs
+            items={[
+              {
+                name: 'React (TS)',
+                code: `import { SandChoiceGroup } from '@sandurtech/sandui';
+
+<SandChoiceGroup
+  label="Select Environment"
+  type="radio"
+  options={[
+    { value: 'prod', label: 'Production' },
+    { value: 'stage', label: 'Staging' }
+  ]}
+/>`,
+              },
+            ]}
+          />
+        </div>
+      </section>
+
       <section id="checkboxes" className="docs-section">
         <h2 className="section-title">Checkboxes</h2>
         <div className="sand-comp-doc">

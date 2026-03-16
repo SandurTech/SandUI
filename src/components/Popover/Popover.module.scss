@@ -1,0 +1,14 @@
+.content {
+  position: absolute;
+  background-color: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+  padding: 1rem;
+  outline: none;
+  min-width: 200px;
+  
+  /* Initial simple positioning */
+  margin-top: 0.5rem;
+}

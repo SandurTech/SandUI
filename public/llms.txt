@@ -5,77 +5,81 @@ SandUI is a TypeScript UI Library of accessible React components for dashboards,
 ## How to use
 
 - Install: `npm i @sandurtech/sandui`
+- Icons: Include Google Material Symbols (Rounded) font in your app:
+  `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />`
 - Import from package entrypoint: `import { SandButton, SandModal, SandInputGroup } from '@sandurtech/sandui'`
 - Every component supports semantic HTML, forwarded refs, and package-ready composition.
 
 ## Components
 
-### Actions
+### Foundation & Layout
+- `SandThemeProvider`: Theme context provider with design tokens. Props: `defaultTheme`, `theme`, `tokens`, `root`.
+- `SandIconProvider`: Icon system provider for custom icon libraries. Props: `icons`, `renderIcon`.
+- `SandBox`: Box primitive for layout composition. Props: `as`, `className`, and HTML attributes.
+- `SandStack`: Flexbox stack layout. Props: `direction` (`row | column`), `gap`, `align`, `justify`, and div attributes.
+- `SandGrid`: CSS Grid layout. Props: `columns`, `gap`, `rows`, and div attributes.
+- `SandContainer`: Content container with max-width. Props: standard div attributes.
+- `SandHeader`: Header component. Props: standard header attributes.
+- `SandAppLayout`: Compound layout component with `.Sidebar` and `.Main` subcomponents.
+- `SandMicroserviceLayout`: Microservice layout with `.Sidebar`, `.Content`, and `.Main` subcomponents.
+
+### Typography
+- `SandTitle`: Heading component. Props: `level` (1-6), `as`, `className`, and heading attributes.
+- `SandText`: Text component. Props: `as`, `className`, and p/span attributes.
+- `SandCode`: Inline code component. Props: `className` and code attributes.
+- `SandKBD`: Keyboard shortcut primitive. Props: standard kbd attributes.
+
+### Actions & Inputs
 - `SandButton`: Primary action component. Props: `variant` (`primary | secondary | outline | success | failed`) plus standard button attributes.
-
-### Data Display
-- `SandCard`: Semantic content container. Props: `header`, `footer`, and article attributes.
-- `SandBadge`: Inline status label. Props: `variant` (`primary | secondary | success | failed`) and span attributes.
-- `SandDivider`: Semantic separator. Props: standard `hr` attributes.
-- `SandTable`: Tabular data display. Props: `columns`, `data`, `onRowClick`, and table attributes.
-- `SandTabs`: Tabbed content container. Props: `tabs`, `defaultTab`, `onTabChange`, and div attributes.
-- `SandAccordion`: Collapsible content sections with WAI-ARIA compliance. Props: `items` (Array of `{ id, title, content, description?, icon? }`), `defaultOpen`, `allowMultiple`, and standard div attributes.
-- `SandCodeBlock`: Code snippet viewer. Props: `code`, `language`, and pre attributes.
-- `SandCodeTabs`: Keyboardable code tablist. Props: `tabs`, `defaultTab`, `onTabChange`, `className`.
-- `SandProgress`: Progress indicator. Props: `value`, `max`, `label`, and div attributes.
-- `SandLoader`: Loading spinner. Props: `size`, `label`, and div attributes.
-- `SandSkeleton`: Placeholder loading shape. Props: `variant`, `width`, `height`, and div attributes.
-- `SandIcon`: Icon component. Props: `name`, `size`, `color`, and span attributes.
-
-### Forms
 - `SandInput`: Base text input. Props: standard input attributes plus `error`.
 - `SandInputGroup`: Labeled input wrapper. Props: `label`, `helperText`, `groupClassName`, and all `SandInput` props.
 - `SandFormGroup`: Form group wrapper. Props: `label`, `helperText`, `error`, and div attributes.
 - `SandCheckbox`: Checkbox control. Props: `label`, `description`, and input attributes.
 - `SandRadio`: Radio control with keyboard arrow navigation. Props: `label`, `description`, and input attributes.
 - `SandSwitch`: Switch control. Props: `label`, `description`, and input attributes.
-- `SandChoiceGroup`: Choice container. Props: `label` and div attributes.
+- `SandChoiceGroup`: Choice container with `options` prop support. Props: `label`, `options`, `type`, `value`, `onChange`.
 
-### Feedback
-- `SandToast`: Live-region feedback message. Props: `heading`, `message`, `action`, `variant`.
-- `SandSnackbar`: Compact live-region feedback message. Props: `message`, `action`, `variant`, `heading?`.
-- `SandAlert`: Alert banner. Props: `variant`, `icon`, `title`, `description`, and div attributes.
+### Data Display
+- `SandCard`: Semantic content container. Props: `header`, `footer`, and article attributes.
+- `SandBadge`: Inline status label. Props: `variant` (`primary | secondary | success | failed`) and span attributes.
+- `SandDivider`: Semantic separator. Props: standard hr attributes.
+- `SandTable`: Tabular data display. Props: `columns`, `data`, `onRowClick`, and table attributes.
+- `SandTabs`: Tabbed content container with compound API. Props: `tabs`, `defaultTab`, `onTabChange`, or children (`SandTabList`, `SandTab`, `SandTabPanel`).
+- `SandAccordion`: Collapsible content sections with WAI-ARIA compliance. Props: `items` (Array of `{ id, title, content, description?, icon? }`), `defaultOpen`, `allowMultiple`, or declarative `SandAccordionItem` children.
+- `SandCodeBlock`: Code snippet viewer. Props: `code`, `language`, and pre attributes.
+- `SandCodeTabs`: Keyboardable code tablist. Props: `items` or `tabs`, `defaultTab`, `onTabChange`, `className`.
+- `SandProgress`: Progress indicator. Props: `value`, `max`, `label`, and div attributes.
 
 ### Navigation
-- `SandBreadcrumbs`: Hierarchical navigation. Props: `items` with `{ label, href? }` and nav attributes.
+- `SandBreadcrumbs`: Hierarchical navigation. Props: `items` or declarative `SandBreadcrumbItem` children, and nav attributes.
 - `SandPagination`: Paged navigation. Props: `currentPage`, `totalPages`, `onPageChange`, and nav attributes.
-- `SandNavbar`: Navigation bar. Props: `items`, `logo`, `onItemClick`, and nav attributes.
-- `SandDrawer`: Side navigation drawer. Props: `open`, `onClose`, `position`, and aside attributes.
+- `SandNavbar`: Navigation bar. Props: `brand`, `items` or declarative `SandNavbarItem` children, `onMenuClick`, and nav attributes.
+- `SandDrawer`: Side navigation drawer. Props: `open`, `isOpen`, `onClose`, `title`, and div attributes.
+
+### Feedback & Status
+- `SandAlert`: Alert banner. Props: `variant`, `icon`, `title`, `description`, and div attributes.
+- `SandToast`: Live-region feedback message. Props: `heading`, `message`, `action`, `variant`.
+- `SandSnackbar`: Compact live-region feedback message. Props: `message`, `action`, `variant`, `heading?`.
+- `SandLoader`: Loading spinner. Props: `size`, `label`, and div attributes.
+- `SandSkeleton`: Placeholder loading shape. Props: `variant`, `width`, `height`, and div attributes.
+- `SandIcon`: Icon component with provider support. Props: `icon`, `size`, `fill`, and span attributes.
 
 ### Overlays
-- `SandModal`: Accessible dialog. Props: `open`, `onClose`, `title`, `description`, `footer`, `closeOnOverlay`, `initialFocusRef`. Static subcomponents: `Header`, `Body`, `Footer`, `Title`, `Description`.
+- `SandModal`: Accessible dialog with focus trap. Props: `open`, `isOpen`, `onClose`, `title`, `description`, `footer`, `initialFocusRef`. Static subcomponents: `Header`, `Body`, `Footer`, `Title`, `Description`.
+- `SandDialog`: Confirmation modal with built-in actions. Props: `confirmLabel`, `cancelLabel`, `onConfirm`, `confirmVariant`, plus SandModal props.
 - `SandTooltip`: Tooltip popup. Props: `content`, `position`, `delay`, and span attributes.
-
-### Layout
-- `SandContainer`, `SandHeader`, `SandToolLayout`, `SandToolPanel`, `SandResultPanel`: Layout primitives for structured interfaces.
-- `SandBox`: Box primitive for layout composition. Props: `as`, `className`, and HTML attributes.
-- `SandGrid`: CSS Grid layout. Props: `columns`, `gap`, `rows`, and div attributes.
-- `SandStack`: Flexbox stack layout. Props: `direction`, `gap`, `align`, `justify`, and div attributes.
-
-### Typography
-- `SandTitle`: Heading component. Props: `level`, `as`, `className`, and heading attributes.
-- `SandText`: Text component. Props: `as`, `className`, and p/span attributes.
-- `SandCode`: Inline code component. Props: `className` and code attributes.
-
-### Utilities
-- `SandKBD`: Keyboard shortcut primitive. Props: standard `kbd` attributes.
 
 ## Documentation routes
 
 - `/`: Introduction
 - `/design-tokens`: Design Tokens
 - `/typography`: Typography
-- `/layout`: Layout Components (Container, Header, ToolLayout, ToolPanel, ResultPanel, Box, Grid, Stack)
+- `/layout`: Layout Components (ThemeProvider, IconProvider, Box, Stack, Grid, Container, Header, AppLayout, MicroserviceLayout)
 - `/kbd`: SandKBD
 - `/buttons`: SandButton
-- `/inputs`: SandInput, SandInputGroup, SandFormGroup
+- `/inputs`: SandInput, SandInputGroup, SandFormGroup, SandChoiceGroup
 - `/cards`: SandCard
-- `/selection`: SandCheckbox, SandRadio, SandSwitch, SandChoiceGroup
+- `/selection`: SandCheckbox, SandRadio, SandSwitch
 - `/navigation`: SandBreadcrumbs, SandPagination, SandNavbar, SandDrawer
 - `/table`: SandTable
 - `/tabs`: SandTabs
@@ -83,6 +87,6 @@ SandUI is a TypeScript UI Library of accessible React components for dashboards,
 - `/code`: SandCodeBlock, SandCodeTabs
 - `/status`: SandBadge, SandDivider, SandProgress, SandLoader, SandSkeleton, SandIcon
 - `/notifications`: SandToast, SandSnackbar, SandAlert
-- `/modals`: SandModal
+- `/modals`: SandModal, SandDialog
 - `/overlays`: SandTooltip
 - `/utilities`: Utility Components

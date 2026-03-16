@@ -35,6 +35,47 @@ export const UtilitiesDocs: React.FC = () => (
     </div>
 
     <div className="sand-comp-doc">
+      <h3 className="sand-comp-name">Icon Configuration</h3>
+      <p className="sand-comp-desc">
+        Use <code>SandIconProvider</code> to remap internal icons or use a completely different icon library like Lucide.
+      </p>
+      <SandCodeTabs
+        items={[
+          {
+            name: 'Remapping',
+            code: `import { SandIconProvider } from '@sandurtech/sandui';\nimport { Home, Settings } from 'lucide-react';\n\nconst iconMap = {\n  home: Home,\n  settings: Settings,\n};\n\n<SandIconProvider icons={iconMap}>\n  <App />\n</SandIconProvider>`,
+          },
+          {
+            name: 'Custom Renderer',
+            code: `import { SandIconProvider } from '@sandurtech/sandui';\n\n<SandIconProvider renderIcon={(name, props) => <i className={\`fa-\${name}\`} />}>\n  <App />\n</SandIconProvider>`,
+          },
+        ]}
+      />
+    </div>
+
+    <div className="sand-comp-doc">
+      <h3 className="sand-comp-name">SandChip / SandTag</h3>
+      <p className="sand-comp-desc">Compact elements for tags, attributes, or statuses.</p>
+      <div className="sand-preview-area sand-preview-area-stack">
+        <div style={{ display: 'flex', gap: 'var(--sand-space-2)', flexWrap: 'wrap' }}>
+          <SandChip variant="primary">Primary</SandChip>
+          <SandChip variant="secondary">Secondary</SandChip>
+          <SandChip variant="outline" icon="verified">Verified</SandChip>
+          <SandChip variant="success">Active</SandChip>
+          <SandChip variant="error" onClose={() => alert('Close clicked')}>Dismissible</SandChip>
+        </div>
+      </div>
+      <SandCodeTabs
+        items={[
+          {
+            name: 'React (TS)',
+            code: `import { SandChip, SandTag } from '@sandurtech/sandui';\n\n<SandChip variant="success">Active</SandChip>\n<SandTag icon="settings">System</SandTag>`,
+          },
+        ]}
+      />
+    </div>
+
+    <div className="sand-comp-doc">
       <h3 className="sand-comp-name">Dividers</h3>
       <div className="sand-preview-area sand-preview-area-stack">
         <p className="docs-meta-copy">Content Above</p>
@@ -47,8 +88,43 @@ export const UtilitiesDocs: React.FC = () => (
         <div className="sand-usage-item"><h4>How to Use</h4><p>Use the <code>&lt;SandDivider /&gt;</code> component.</p></div>
       </div>
       <SandCodeTabs
-        tabs={[{ name: 'React (TS)', code: `<SandDivider />` }]}
+        items={[{ name: 'React (TS)', code: `<SandDivider />` }]}
       />
     </div>
+
+    <div className="sand-comp-doc">
+      <h3 className="sand-comp-name">State Hooks</h3>
+      <p className="sand-comp-desc">
+        Reusable logic for managing common UI states like visibility, breakpoints, and controlled values.
+      </p>
+      <SandCodeTabs
+        items={[
+          {
+            name: 'useDisclosure',
+            code: `import { useDisclosure, SandModal, SandButton } from '@sandurtech/sandui';
+
+    function Example() {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    return (
+    <>
+      <SandButton onClick={onOpen}>Open Modal</SandButton>
+      <SandModal open={isOpen} onClose={onClose}>...</SandModal>
+    </>
+    );
+    }`,
+          },
+          {
+            name: 'useBreakpoint',
+            code: `import { useBreakpoint } from '@sandurtech/sandui';
+
+    function Example() {
+    const breakpoint = useBreakpoint(); // 'base' | 'sm' | 'md' | 'lg' | 'xl'
+    return <div>Current: {breakpoint}</div>;
+    }`,
+          },
+        ]}
+      />
+    </div>
+
   </section>
 );

@@ -20,6 +20,8 @@
 - 📘 **TypeScript First**: Full IntelliSense support with comprehensive JSDoc documentation.
 - 🎨 **Modern Aesthetics**: Premium, high-performance UI primitives tailored for SaaS and dashboards.
 - 📱 **Fully Responsive**: Mobile-optimized layouts and documentation.
+- 🔌 **Composable API**: Declarative component composition with compound components.
+- 🎯 **Icon System**: Custom icon provider supporting Lucide, Radix, and other libraries.
 
 ## 🚀 Quick Start
 
@@ -27,6 +29,20 @@
 
 ```bash
 npm install @sandurtech/sandui
+```
+
+### Icon Dependency
+
+SandUI uses **Google Material Symbols (Rounded)** for all internal icons. To ensure icons render correctly, you must include the following link in your `index.html` or import it in your CSS:
+
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+```
+
+Or in your CSS:
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 ```
 
 ### Usage
@@ -59,13 +75,15 @@ SandUI provides a growing set of modular components categorized for efficiency:
 
 | Category | Primitives |
 | :--- | :--- |
-| **Foundation** | `SandThemeProvider`, `SandBox`, `SandStack`, `SandGrid` |
+| **Foundation** | `SandThemeProvider`, `SandIconProvider`, `SandBox`, `SandStack`, `SandGrid` |
+| **Layout** | `SandContainer`, `SandHeader`, `SandAppLayout`, `SandMicroserviceLayout` |
 | **Typography** | `SandTitle`, `SandText`, `SandCode`, `SandKBD` |
-| **Form Controls** | `SandInput`, `SandInputGroup`, `SandCheckbox`, `SandRadio`, `SandSwitch` |
-| **Data Display** | `SandTable`, `SandTabs`, `SandAccordion`, `SandCard`, `SandBadge` |
-| **Feedback** | `SandAlert`, `SandToast`, `SandSnackbar`, `SandLoader`, `SandProgress` |
+| **Form Controls** | `SandInput`, `SandInputGroup`, `SandCheckbox`, `SandRadio`, `SandSwitch`, `SandChoiceGroup` |
+| **Data Display** | `SandTable`, `SandTabs`, `SandAccordion`, `SandCard`, `SandBadge`, `SandDivider` |
+| **Feedback** | `SandAlert`, `SandToast`, `SandSnackbar`, `SandLoader`, `SandProgress`, `SandSkeleton` |
 | **Navigation** | `SandNavbar`, `SandDrawer`, `SandBreadcrumbs`, `SandPagination` |
-| **Overlays** | `SandModal`, `SandTooltip`, `SandIcon` |
+| **Overlays** | `SandModal`, `SandDialog`, `SandTooltip` |
+| **Icons** | `SandIcon` (with custom provider support) |
 
 ## 📖 Documentation
 

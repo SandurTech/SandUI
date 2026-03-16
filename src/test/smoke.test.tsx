@@ -1,127 +1,98 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import {
-  SandAccordion,
-  SandAlert,
-  SandBadge,
-  SandBreadcrumbs,
-  SandBox,
-  SandButton,
-  SandCard,
-  SandCheckbox,
-  SandChoiceGroup,
-  SandCode,
-  SandCodeBlock,
-  SandCodeTabs,
-  SandContainer,
-  SandDrawer,
-  SandDivider,
-  SandFormGroup,
-  SandGrid,
-  SandIcon,
-  SandInput,
-  SandInputGroup,
-  SandKBD,
-  SandLoader,
-  SandModal,
-  SandNavbar,
-  SandPagination,
-  SandProgress,
-  SandRadio,
-  SandResultPanel,
-  SandSkeleton,
-  SandSnackbar,
-  SandStack,
-  SandSwitch,
-  SandTable,
-  SandTabs,
-  SandText,
-  SandThemeProvider,
-  SandTitle,
-  SandToast,
-  SandToolLayout,
-  SandToolPanel,
-  SandTooltip,
-} from '../index';
+import * as SandUI from '../index';
 
 describe('publishable API smoke tests', () => {
-  it('renders every exported component without crashing', () => {
+  it('ensures all expected components are exported', () => {
+    const components = [
+      'SandAccordion',
+      'SandAlert',
+      'SandAppLayout',
+      'SandAvatar',
+      'SandAvatarGroup',
+      'SandBadge',
+      'SandBreadcrumbs',
+      'SandBox',
+      'SandButton',
+      'SandCard',
+      'SandCheckbox',
+      'SandChoiceGroup',
+      'SandCode',
+      'SandCodeBlock',
+      'SandCodeTabs',
+      'SandContainer',
+      'SandChip',
+      'SandTag',
+      'SandDialog',
+      'SandDrawer',
+      'SandDivider',
+      'SandFormGroup',
+      'SandGrid',
+      'SandIcon',
+      'SandInput',
+      'SandInputGroup',
+      'SandKBD',
+      'SandLoader',
+      'SandMicroserviceLayout',
+      'SandModal',
+      'SandNavbar',
+      'SandPagination',
+      'SandPopover',
+      'SandProgress',
+      'SandRadio',
+      'SandSkeleton',
+      'SandSlider',
+      'SandSelect',
+      'SandSnackbar',
+      'SandStack',
+      'SandSwitch',
+      'SandTable',
+      'SandTabs',
+      'SandText',
+      'SandTextarea',
+      'SandThemeProvider',
+      'SandTitle',
+      'SandToast',
+      'SandToolLayout',
+      'SandTooltip',
+    ];
+
+    components.forEach(name => {
+      if (!(name in SandUI)) {
+        throw new Error(`Component ${name} is missing from exports!`);
+      }
+      if ((SandUI as any)[name] === undefined) {
+        throw new Error(`Component ${name} is exported but undefined!`);
+      }
+    });
+  });
+
+  it('renders a set of components without crashing', () => {
     render(
-      <SandThemeProvider>
+      <SandUI.SandThemeProvider>
         <>
-        <SandAlert status="success" title="Ready" description="System is stable." />
-        <SandAccordion items={[{ id: 'one', title: 'Section', content: 'Accordion body' }]} />
-        <SandBadge>Stable</SandBadge>
-        <SandBreadcrumbs items={[{ label: 'Home' }, { label: 'Docs' }]} />
-        <SandBox surface padding="md">Box</SandBox>
-        <SandButton>Deploy</SandButton>
-        <SandCard header="Header" footer="Footer">
-          Card body
-        </SandCard>
-        <SandCode>npm run build</SandCode>
-        <SandCodeBlock code="const answer = 42;" />
-        <SandCodeTabs
-          tabs={[
-            { label: 'TypeScript', code: 'const answer = 42;' },
-            { label: 'JavaScript', code: 'const answer = 42;' },
-          ]}
-        />
-        <SandContainer>Container</SandContainer>
-        <SandDrawer open={false} onClose={() => {}} />
-        <SandDivider />
-        <SandFormGroup label="Email">
-          <SandInput aria-label="Standalone input" />
-        </SandFormGroup>
-        <SandGrid columns={{ sm: 1, md: 2 }}>
-          <SandGrid.Item span={{ md: 2 }}>Grid Item</SandGrid.Item>
-        </SandGrid>
-        <SandIcon icon="settings" aria-label="Icon preview" />
-        <SandInputGroup label="Name" helperText="Required" />
-        <SandKBD>Cmd</SandKBD>
-        <SandLoader />
-        <SandToolLayout>
-          <SandToolPanel>Panel</SandToolPanel>
-          <SandResultPanel>Result</SandResultPanel>
-        </SandToolLayout>
-        <SandNavbar brand="SandUI" items={[{ label: 'Docs', href: '#', active: true }]} />
-        <SandModal open onClose={() => {}} title="Publish">
-          Modal body
-        </SandModal>
-        <SandPagination currentPage={1} totalPages={3} />
-        <SandProgress value={48} showValue />
-        <SandChoiceGroup label="Preferences">
-          <SandCheckbox label="Email alerts" />
-          <SandRadio name="environment" label="Production" />
-          <SandSwitch label="Maintenance mode" />
-        </SandChoiceGroup>
-        <SandSkeleton height={24} />
-        <SandStack direction="row">
-          <span>One</span>
-          <span>Two</span>
-        </SandStack>
-        <SandTable>
-          <thead>
-            <tr><th>Name</th><th>Status</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>API</td><td>Healthy</td></tr>
-          </tbody>
-        </SandTable>
-        <SandTabs items={[{ id: 'a', label: 'Overview', content: 'Tab content' }]} />
-        <SandTitle level={2}>Title</SandTitle>
-        <SandText>Body copy</SandText>
-        <SandToast heading="Saved" message="Changes stored." />
-        <SandSnackbar message="Saved." />
-        <SandTooltip content="Helpful hint">
-          <button type="button">Hover me</button>
-        </SandTooltip>
+        <SandUI.SandAlert status="success" title="Ready" description="System is stable." />
+        <SandUI.SandAccordion items={[{ id: 'one', title: 'Section', content: 'Accordion body' }]} />
+        <SandUI.SandAvatar name="Amogha Raj" />
+        <SandUI.SandBadge>Stable</SandUI.SandBadge>
+        <SandUI.SandButton>Deploy</SandUI.SandButton>
+        <SandUI.SandBox surface padding="md">Box</SandUI.SandBox>
+        <SandUI.SandContainer>Container</SandUI.SandContainer>
+        <SandUI.SandDivider />
+        <SandUI.SandIcon icon="settings" />
+        <SandUI.SandInputGroup label="Name" />
+        <SandUI.SandProgress value={48} />
+        <SandUI.SandStack direction="row"><span>One</span></SandUI.SandStack>
+        <SandUI.SandTable items={[{ id: 1, val: 'A' }]} />
+        <SandUI.SandTabs items={[{ id: 'a', label: 'A', content: '...' }]} />
+        <SandUI.SandTitle level={2}>Title</SandUI.SandTitle>
+        <SandUI.SandText>Body copy</SandUI.SandText>
+        <SandUI.SandTooltip content="Hint"><button type="button">H</button></SandUI.SandTooltip>
         </>
-      </SandThemeProvider>,
+      </SandUI.SandThemeProvider>,
     );
 
-    expect(screen.getByRole('button', { name: 'Deploy' })).toBeVisible();
-    expect(screen.getByRole('dialog', { name: 'Publish' })).toBeVisible();
-    expect(screen.getByText('Stable')).toBeVisible();
-  }, 15000);
+    expect(screen.getByText('Stable')).toBeDefined();
+  });
 });

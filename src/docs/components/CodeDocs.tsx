@@ -17,17 +17,17 @@ export const CodeDocs: React.FC = () => (
       <h3 className="sand-comp-name">SandCodeTabs</h3>
       <div className="sand-preview-area sand-preview-area-stack">
         <SandCodeTabs
-          tabs={[
+          items={[
             { name: 'Bash', code: 'npm install @sandurtech/sandui' },
             { name: 'Yarn', code: 'yarn add @sandurtech/sandui' },
           ]}
         />
       </div>
       <SandCodeTabs
-        tabs={[
+        items={[
           {
             name: 'React (TS)',
-            code: `import { SandCodeTabs } from '@sandurtech/sandui';\n\n<SandCodeTabs tabs={[{ name: 'npm', code: 'npm i' }, { name: 'yarn', code: 'yarn add' }]} />`,
+            code: `import { SandCodeTabs } from '@sandurtech/sandui';\n\n<SandCodeTabs items={[{ name: 'npm', code: 'npm i' }, { name: 'yarn', code: 'yarn add' }]} />`,
           },
         ]}
       />

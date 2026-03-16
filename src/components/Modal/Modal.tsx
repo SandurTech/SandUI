@@ -12,7 +12,10 @@ import {
   type RefObject,
 } from 'react';
 import styles from './Modal.module.scss';
-import { cn, getFocusableElements } from '../utils';
+import { cn } from '../utils';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
+import { SandButton } from '../Button/Button';
+import { SandStack } from '../Stack/Stack';
 
 interface SandModalContextValue {
   titleId: string;
@@ -33,7 +36,9 @@ function useSandModalContext() {
 
 export interface SandModalProps extends Omit<ComponentPropsWithoutRef<'div'>, 'title'> {
   /** Controls whether the modal is rendered. */
-  open: boolean;
+  open?: boolean;
+  /** Alias for open. */
+  isOpen?: boolean;
   /** Called when the modal should close. */
   onClose: () => void;
   /** Optional title rendered inside the modal header. */
@@ -99,6 +104,7 @@ SandModalDescription.displayName = 'SandModal.Description';
 const SandModalBase = forwardRef<HTMLDivElement, SandModalProps>(function SandModal(
   {
     open,
+    isOpen,
     onClose,
     title,
     description,
@@ -111,11 +117,11 @@ const SandModalBase = forwardRef<HTMLDivElement, SandModalProps>(function SandMo
   },
   ref,
 ) {
+  const resolvedOpen = open ?? isOpen ?? false;
   const titleId = useId();
   const descriptionId = useId();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-  const lastActiveElementRef = useRef<HTMLElement | null>(null);
 
   const modalContextValue = useMemo(
     () => ({ titleId, descriptionId }),
@@ -128,71 +134,44 @@ const SandModalBase = forwardRef<HTMLDivElement, SandModalProps>(function SandMo
       if (typeof ref === 'function') {
         ref(node);
       } else if (ref) {
-        ref.current = node;
+        (ref as any).current = node;
       }
     },
     [ref],
   );
 
+  useFocusTrap(panelRef, { 
+    enabled: resolvedOpen, 
+    initialFocusRef: initialFocusRef || closeButtonRef 
+  });
+
   const handleKeyDown = useCallback(
-    (event: KeyboardEvent) => {
+    (event: React.KeyboardEvent) => {
       if (event.key === 'Escape') {
         event.preventDefault();
         onClose();
-        return;
-      }
-
-      if (event.key !== 'Tab' || !panelRef.current) {
-        return;
-      }
-
-      const focusableElements = getFocusableElements(panelRef.current);
-      if (focusableElements.length === 0) {
-        event.preventDefault();
-        panelRef.current.focus();
-        return;
-      }
-
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-      const activeElement = document.activeElement;
-
-      if (event.shiftKey && activeElement === firstElement) {
-        event.preventDefault();
-        lastElement.focus();
-      } else if (!event.shiftKey && activeElement === lastElement) {
-        event.preventDefault();
-        firstElement.focus();
       }
     },
     [onClose],
   );
 
   useEffect(() => {
-    if (!open) {
-      lastActiveElementRef.current?.focus();
-      return;
-    }
+    if (!resolvedOpen) return;
 
-    lastActiveElementRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    const nextFocusTarget = initialFocusRef?.current ?? closeButtonRef.current ?? panelRef.current;
-    nextFocusTarget?.focus();
-
-    window.addEventListener('keydown', handleKeyDown);
+    
     return () => {
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleKeyDown, initialFocusRef, open]);
+  }, [resolvedOpen]);
 
-  if (!open) {
+  if (!resolvedOpen) {
     return null;
   }
 
   return (
-    <div className={styles['sand-modal-root']}>
+    <div className={styles['sand-modal-root']} onKeyDown={handleKeyDown}>
       <button
         type="button"
         className={styles['sand-modal-backdrop']}
@@ -251,3 +230,41 @@ export const SandModal = Object.assign(SandModalBase, {
   Title: SandModalTitle,
   Description: SandModalDescription,
 }) as SandModalComponent;
+
+export interface SandDialogProps extends SandModalProps {
+  /** Text for the confirmation button. */
+  confirmLabel?: string;
+  /** Text for the cancel button. */
+  cancelLabel?: string;
+  /** Called when the confirmation button is clicked. */
+  onConfirm?: () => void;
+  /** Visual variant of the confirmation button. */
+  confirmVariant?: 'primary' | 'failed' | 'success';
+}
+
+/**
+ * Specialized confirmation modal with built-in action buttons.
+ */
+export function SandDialog({ 
+  onConfirm, 
+  onClose, 
+  confirmLabel = 'Confirm', 
+  cancelLabel = 'Cancel', 
+  confirmVariant = 'primary',
+  footer,
+  children,
+  ...props 
+}: SandDialogProps) {
+  const dialogFooter = footer || (
+    <SandStack direction="row" gap="sm" justify="flex-end">
+      <SandButton variant="outline" onClick={onClose}>{cancelLabel}</SandButton>
+      <SandButton variant={confirmVariant} onClick={onConfirm}>{confirmLabel}</SandButton>
+    </SandStack>
+  );
+
+  return (
+    <SandModal onClose={onClose} footer={dialogFooter} {...props}>
+      {children}
+    </SandModal>
+  );
+}

@@ -6,13 +6,13 @@ import {
   SandGrid,
   SandHeader,
   SandIcon,
+  SandAppLayout,
+  SandMicroserviceLayout,
   SandResultPanel,
   SandStack,
   SandText,
   SandThemeProvider,
   SandTitle,
-  SandToolLayout,
-  SandToolPanel,
 } from '../../components';
 
 export const LayoutDocs: React.FC = () => (
@@ -31,7 +31,7 @@ export const LayoutDocs: React.FC = () => (
           </SandThemeProvider>
         </div>
         <SandCodeTabs
-          tabs={[
+          items={[
             {
               name: 'React (TS)',
               code: `import { SandThemeProvider } from '@sandurtech/sandui';
@@ -56,7 +56,7 @@ export const LayoutDocs: React.FC = () => (
           </SandStack>
         </div>
         <SandCodeTabs
-          tabs={[
+          items={[
             {
               name: 'React (TS)',
               code: `import { SandBox, SandStack } from '@sandurtech/sandui';
@@ -95,7 +95,7 @@ export const LayoutDocs: React.FC = () => (
           </SandGrid>
         </div>
         <SandCodeTabs
-          tabs={[
+          items={[
             {
               name: 'React (TS)',
               code: `import { SandGrid, SandIcon } from '@sandurtech/sandui';
@@ -121,52 +121,94 @@ export const LayoutDocs: React.FC = () => (
             Max-width container for page content.
           </SandContainer>
         </div>
-        <SandCodeTabs tabs={[{ name: 'React (TS)', code: `import { SandContainer } from '@sandurtech/sandui';\n\n<SandContainer>Page content</SandContainer>` }]} />
+        <SandCodeTabs items={[{ name: 'React (TS)', code: `import { SandContainer } from '@sandurtech/sandui';\n\n<SandContainer>Page content</SandContainer>` }]} />
       </div>
 
       <div className="sand-comp-doc">
-        <h3 className="sand-comp-name">Tool Layout</h3>
+        <h3 className="sand-comp-name">App Layout</h3>
         <p className="sand-comp-desc">
-          Composable structural elements to build complex application shells, admin dashboards, and IDE-like interfaces.
+          Generic structural elements to build application shells, admin dashboards, and IDE-like interfaces.
         </p>
         <div className="sand-preview-area sand-preview-area-stack">
           <div style={{ border: '1px solid var(--theme-border)', borderRadius: 'var(--radius-md)', overflow: 'hidden', minHeight: '300px', display: 'flex', flexDirection: 'column' }}>
             <SandHeader style={{ padding: 'var(--sand-space-3)', background: 'var(--theme-surface-variant)' }}>
               <strong>Application Header</strong>
             </SandHeader>
-            <SandToolLayout style={{ flex: 1 }}>
-              <SandToolPanel style={{ padding: 'var(--sand-space-3)', borderRight: '1px solid var(--theme-border)', minWidth: '160px' }}>
-                Side Panel / Controls
-              </SandToolPanel>
-              <SandResultPanel style={{ padding: 'var(--sand-space-3)', flex: 1, borderLeft: '1px solid var(--theme-border)' }}>
-                Main Content / Result Area
-              </SandResultPanel>
-            </SandToolLayout>
+            <SandAppLayout style={{ flex: 1 }}>
+              <SandAppLayout.Sidebar style={{ padding: 'var(--sand-space-3)', borderRight: '1px solid var(--theme-border)', minWidth: '160px' }}>
+                Sidebar / Navigation
+              </SandAppLayout.Sidebar>
+              <SandAppLayout.Main style={{ padding: 'var(--sand-space-3)', flex: 1, borderLeft: '1px solid var(--theme-border)' }}>
+                Main Content Area
+              </SandAppLayout.Main>
+            </SandAppLayout>
           </div>
         </div>
         <div className="sand-usage-grid">
-          <div className="sand-usage-item"><h4>SandHeader</h4><p>Top-level navigation or toolbar container for an application layout.</p></div>
-          <div className="sand-usage-item"><h4>SandToolLayout</h4><p>A flex container that manages the horizontal relationship between side panels and main content.</p></div>
-          <div className="sand-usage-item"><h4>SandToolPanel & SandResultPanel</h4><p>Semantic regions for configuration sidebars and the primary output area.</p></div>
+          <div className="sand-usage-item"><h4>SandHeader</h4><p>Top-level header for global navigation.</p></div>
+          <div className="sand-usage-item"><h4>SandAppLayout</h4><p>Container managing the relationship between sidebar and main content.</p></div>
+          <div className="sand-usage-item"><h4>SandAppLayout.Sidebar & Main</h4><p>Semantic regions for navigation and primary content.</p></div>
         </div>
         <SandCodeTabs
-          tabs={[
+          items={[
             {
               name: 'React (TS)',
               code: `import {
   SandHeader,
-  SandToolLayout,
-  SandToolPanel,
-  SandResultPanel
+  SandAppLayout
 } from '@sandurtech/sandui';
 
 <div className="app-root">
   <SandHeader>...</SandHeader>
-  <SandToolLayout>
-    <SandToolPanel>...</SandToolPanel>
-    <SandResultPanel>...</SandResultPanel>
-  </SandToolLayout>
+  <SandAppLayout>
+    <SandAppLayout.Sidebar>...</SandAppLayout.Sidebar>
+    <SandAppLayout.Main>...</SandAppLayout.Main>
+  </SandAppLayout>
 </div>`,
+            },
+          ]}
+        />
+      </div>
+
+      <div className="sand-comp-doc">
+        <h3 className="sand-comp-name">Microservice Layout</h3>
+        <p className="sand-comp-desc">
+          A high-performance layout pattern for SaaS platforms and microservices, featuring a sticky sidebar and flexible content area.
+        </p>
+        <div className="sand-preview-area">
+          <div style={{ border: '1px solid var(--theme-border)', borderRadius: 'var(--radius-md)', overflow: 'hidden', height: '300px', display: 'flex', background: 'var(--theme-surface)' }}>
+            <SandMicroserviceLayout>
+              <SandMicroserviceLayout.Sidebar style={{ padding: 'var(--sand-space-4)', borderRight: '1px solid var(--theme-border)', width: '120px' }}>
+                <SandText size="sm">Sidebar</SandText>
+              </SandMicroserviceLayout.Sidebar>
+              <SandMicroserviceLayout.Content>
+                <SandHeader style={{ padding: 'var(--sand-space-3)', borderBottom: '1px solid var(--theme-border)' }}>
+                  <SandText size="sm" style={{ fontWeight: 600 }}>Service Header</SandText>
+                </SandHeader>
+                <SandMicroserviceLayout.Main style={{ padding: 'var(--sand-space-4)' }}>
+                  <SandText size="sm">Main Content Area</SandText>
+                </SandMicroserviceLayout.Main>
+              </SandMicroserviceLayout.Content>
+            </SandMicroserviceLayout>
+          </div>
+        </div>
+        <SandCodeTabs
+          items={[
+            {
+              name: 'React (TS)',
+              code: `import { SandMicroserviceLayout } from '@sandurtech/sandui';
+
+<SandMicroserviceLayout>
+  <SandMicroserviceLayout.Sidebar>
+    {/* Navigation / Service Switcher */}
+  </SandMicroserviceLayout.Sidebar>
+  <SandMicroserviceLayout.Content>
+    <SandHeader>...</SandHeader>
+    <SandMicroserviceLayout.Main>
+      {/* Route Content */}
+    </SandMicroserviceLayout.Main>
+  </SandMicroserviceLayout.Content>
+</SandMicroserviceLayout>`,
             },
           ]}
         />

@@ -26,9 +26,20 @@ export const TableDocs: React.FC = () => (
       <div className="sand-usage-grid">
         <div className="sand-usage-item"><h4>Description</h4><p>Tables display sets of data across rows and columns.</p></div>
         <div className="sand-usage-item"><h4>When to Use</h4><p>Use for structured data sets, logs, or resource lists.</p></div>
-        <div className="sand-usage-item"><h4>How to Use</h4><p>Use <code>SandTable</code> with standard <code>thead</code> and <code>tbody</code> children.</p></div>
+        <div className="sand-usage-item"><h4>How to Use</h4><p>Use <code>SandTable</code> with standard <code>thead</code> and <code>tbody</code> children, or pass an array to the <code>items</code> prop for automatic row rendering.</p></div>
       </div>
-      <SandCodeTabs tabs={[{ name: 'React (TS)', code: `import { SandTable } from '@sandurtech/sandui';\n\n<SandTable striped stickyHeader>\n  <thead>\n    <tr><th>Header</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>Data</td></tr>\n  </tbody>\n</SandTable>` }]} />
+      <SandCodeTabs
+        items={[
+          {
+            name: 'Declarative',
+            code: `import { SandTable } from '@sandurtech/sandui';\n\n<SandTable striped items={[{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }]} />`,
+          },
+          {
+            name: 'Semantic HTML',
+            code: `import { SandTable } from '@sandurtech/sandui';\n\n<SandTable striped stickyHeader>\n  <thead>\n    <tr><th>Header</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>Data</td></tr>\n  </tbody>\n</SandTable>`,
+          },
+        ]}
+      />
     </div>
   </section>
 );

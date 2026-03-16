@@ -22,32 +22,112 @@ export const SandHeader = forwardRef<HTMLElement, SandHeaderProps>(function Sand
 });
 SandHeader.displayName = 'SandHeader';
 
-export type SandToolLayoutProps = ComponentPropsWithoutRef<'div'>;
+/* --- App Layout (formerly Tool Layout) --- */
 
-export const SandToolLayout = forwardRef<HTMLDivElement, SandToolLayoutProps>(function SandToolLayout(
-  { className = '', ...props },
-  ref,
-) {
-  return <div ref={ref} className={cn(styles['sand-tool-layout'], className)} {...props} />;
-});
-SandToolLayout.displayName = 'SandToolLayout';
+export type SandAppLayoutProps = ComponentPropsWithoutRef<'div'>;
+export type SandAppLayoutSidebarProps = ComponentPropsWithoutRef<'aside'>;
+export type SandAppLayoutMainProps = ComponentPropsWithoutRef<'main'>;
 
-export type SandToolPanelProps = ComponentPropsWithoutRef<'aside'>;
+const SandAppLayoutSidebar = forwardRef<HTMLElement, SandAppLayoutSidebarProps>(
+  function SandAppLayoutSidebar({ className = '', ...props }, ref) {
+    return <aside ref={ref} className={cn(styles['sand-tool-panel'], className)} {...props} />;
+  }
+);
+SandAppLayoutSidebar.displayName = 'SandAppLayout.Sidebar';
 
-export const SandToolPanel = forwardRef<HTMLElement, SandToolPanelProps>(function SandToolPanel(
-  { className = '', ...props },
-  ref,
-) {
-  return <aside ref={ref} className={cn(styles['sand-tool-panel'], className)} {...props} />;
-});
-SandToolPanel.displayName = 'SandToolPanel';
+const SandAppLayoutMain = forwardRef<HTMLElement, SandAppLayoutMainProps>(
+  function SandAppLayoutMain({ className = '', ...props }, ref) {
+    return <main ref={ref} className={cn(styles['sand-result-panel'], className)} {...props} />;
+  }
+);
+SandAppLayoutMain.displayName = 'SandAppLayout.Main';
 
-export type SandResultPanelProps = ComponentPropsWithoutRef<'main'>;
+export const SandAppLayoutBase = forwardRef<HTMLDivElement, SandAppLayoutProps>(
+  function SandAppLayout({ className = '', ...props }, ref) {
+    return <div ref={ref} className={cn(styles['sand-tool-layout'], className)} {...props} />;
+  }
+);
 
-export const SandResultPanel = forwardRef<HTMLElement, SandResultPanelProps>(function SandResultPanel(
-  { className = '', ...props },
-  ref,
-) {
-  return <main ref={ref} className={cn(styles['sand-result-panel'], className)} {...props} />;
-});
-SandResultPanel.displayName = 'SandResultPanel';
+interface SandAppLayoutComponent
+  extends React.ForwardRefExoticComponent<SandAppLayoutProps & React.RefAttributes<HTMLDivElement>> {
+  Sidebar: typeof SandAppLayoutSidebar;
+  Main: typeof SandAppLayoutMain;
+}
+
+export const SandAppLayout = Object.assign(SandAppLayoutBase, {
+  Sidebar: SandAppLayoutSidebar,
+  Main: SandAppLayoutMain,
+}) as SandAppLayoutComponent;
+
+SandAppLayout.displayName = 'SandAppLayout';
+
+/** @deprecated Use SandAppLayout */
+export const SandToolLayout = SandAppLayout;
+/** @deprecated Use SandAppLayout.Sidebar */
+export const SandToolPanel = SandAppLayoutSidebar;
+/** @deprecated Use SandAppLayout.Main */
+export const SandResultPanel = SandAppLayoutMain;
+
+export type SandToolLayoutProps = SandAppLayoutProps;
+export type SandToolPanelProps = SandAppLayoutSidebarProps;
+export type SandResultPanelProps = SandAppLayoutMainProps;
+
+/* --- Microservice Layout --- */
+
+export type SandMicroserviceLayoutProps = ComponentPropsWithoutRef<'div'>;
+
+const SandMicroserviceSidebar = forwardRef<HTMLElement, ComponentPropsWithoutRef<'aside'>>(
+  function SandMicroserviceSidebar({ children, className = '', ...props }, ref) {
+    return (
+      <aside ref={ref} className={cn(styles['sand-microservice-sidebar'], className)} {...props}>
+        {children}
+      </aside>
+    );
+  }
+);
+SandMicroserviceSidebar.displayName = 'SandMicroserviceLayout.Sidebar';
+
+const SandMicroserviceContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
+  function SandMicroserviceContent({ children, className = '', ...props }, ref) {
+    return (
+      <div ref={ref} className={cn(styles['sand-microservice-content'], className)} {...props}>
+        {children}
+      </div>
+    );
+  }
+);
+SandMicroserviceContent.displayName = 'SandMicroserviceLayout.Content';
+
+const SandMicroserviceMain = forwardRef<HTMLElement, ComponentPropsWithoutRef<'main'>>(
+  function SandMicroserviceMain({ children, className = '', ...props }, ref) {
+    return (
+      <main ref={ref} className={cn(styles['sand-microservice-main'], className)} {...props}>
+        {children}
+      </main>
+    );
+  }
+);
+SandMicroserviceMain.displayName = 'SandMicroserviceLayout.Main';
+
+interface SandMicroserviceLayoutComponent
+  extends React.ForwardRefExoticComponent<SandMicroserviceLayoutProps & React.RefAttributes<HTMLDivElement>> {
+  Sidebar: typeof SandMicroserviceSidebar;
+  Content: typeof SandMicroserviceContent;
+  Main: typeof SandMicroserviceMain;
+}
+
+export const SandMicroserviceLayout = forwardRef<HTMLDivElement, SandMicroserviceLayoutProps>(
+  function SandMicroserviceLayout({ children, className = '', ...props }, ref) {
+    return (
+      <div ref={ref} className={cn(styles['sand-microservice-layout'], className)} {...props}>
+        {children}
+      </div>
+    );
+  }
+) as SandMicroserviceLayoutComponent;
+
+SandMicroserviceLayout.displayName = 'SandMicroserviceLayout';
+
+SandMicroserviceLayout.Sidebar = SandMicroserviceSidebar;
+SandMicroserviceLayout.Content = SandMicroserviceContent;
+SandMicroserviceLayout.Main = SandMicroserviceMain;

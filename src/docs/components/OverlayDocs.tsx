@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { SandButton, SandCodeTabs, SandDrawer, SandNavbar, SandTooltip } from '../../components';
+import { 
+  SandButton, 
+  SandCodeTabs, 
+  SandDrawer, 
+  SandNavbar, 
+  SandTooltip, 
+  SandPopover, 
+  SandStack, 
+  SandText 
+} from '../../components';
 
 export const OverlayDocs: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -24,34 +33,11 @@ export const OverlayDocs: React.FC = () => {
             onMenuClick={() => setOpen(true)}
           />
         </div>
-        <div className="sand-usage-grid u-mt-4">
-          <div className="sand-usage-item">
-            <h4>Best for</h4>
-            <p>Global app headers and consistent site-wide navigation.</p>
-          </div>
-          <div className="sand-usage-item">
-            <h4>Responsive</h4>
-            <p>Automatically hides links and shows a menu trigger on smaller screens.</p>
-          </div>
-          <div className="sand-usage-item">
-            <h4>Customizable</h4>
-            <p>Accepts custom children for secondary actions like theme toggles.</p>
-          </div>
-        </div>
         <SandCodeTabs
-          tabs={[
+          items={[
             {
               name: 'React (TS)',
-              code: `import { SandNavbar } from '@sandurtech/sandui';
-
-<SandNavbar
-  brand="MyApp"
-  items={[
-    { label: 'Home', href: '/', active: true },
-    { label: 'Docs', href: '/docs' }
-  ]}
-  onMenuClick={() => setDrawerOpen(true)}
-/>`,
+              code: `import { SandNavbar } from '@sandurtech/sandui';\n\n<SandNavbar brand=\"MyApp\" items={[{ label: 'Home', href: '/', active: true }]} onMenuClick={() => setOpen(true)} />`,
             },
           ]}
         />
@@ -69,27 +55,18 @@ export const OverlayDocs: React.FC = () => {
           </SandButton>
           
           <SandDrawer open={open} title="Navigation" onClose={() => setOpen(false)}>
-            <a href="#">Dashboard</a>
-            <a href="#">Analytics</a>
-            <a href="#">Settings</a>
-            <a href="#">Team</a>
+            <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <a href="#">Dashboard</a>
+              <a href="#">Analytics</a>
+              <a href="#">Settings</a>
+            </div>
           </SandDrawer>
         </div>
         <SandCodeTabs
-          tabs={[
+          items={[
             {
               name: 'React (TS)',
-              code: `import { SandDrawer } from '@sandurtech/sandui';
-
-const [open, setOpen] = useState(false);
-
-<SandDrawer 
-  open={open} 
-  title="Menu" 
-  onClose={() => setOpen(false)}
->
-  <nav>...</nav>
-</SandDrawer>`,
+              code: `import { SandDrawer } from '@sandurtech/sandui';\n\n<SandDrawer open={open} title=\"Menu\" onClose={() => setOpen(false)}>\n  <nav>...</nav>\n</SandDrawer>`,
             },
           ]}
         />
@@ -114,14 +91,37 @@ const [open, setOpen] = useState(false);
           </div>
         </div>
         <SandCodeTabs
-          tabs={[
+          items={[
             {
               name: 'React (TS)',
-              code: `import { SandTooltip, SandButton } from '@sandurtech/sandui';
+              code: `import { SandTooltip, SandButton } from '@sandurtech/sandui';\n\n<SandTooltip content=\"Helpful info\">\n  <SandButton>Hover Me</SandButton>\n</SandTooltip>`,
+            },
+          ]}
+        />
+      </div>
 
-<SandTooltip content="Helpful information">
-  <SandButton>Hover Me</SandButton>
-</SandTooltip>`,
+      <div className="sand-comp-doc">
+        <h3 className="sand-comp-name">SandPopover</h3>
+        <p className="sand-comp-desc">An anchored, non-modal overlay for displaying rich content.</p>
+        <div className="sand-preview-area">
+          <SandPopover>
+            <SandPopover.Trigger>
+              <SandButton variant="outline">Toggle Popover</SandButton>
+            </SandPopover.Trigger>
+            <SandPopover.Content>
+              <SandStack gap="sm">
+                <SandText size="sm" weight={600}>Popover Content</SandText>
+                <SandText size="sm">This is a non-modal anchored overlay that supports focus trapping and custom positioning.</SandText>
+                <SandButton size="sm">Action</SandButton>
+              </SandStack>
+            </SandPopover.Content>
+          </SandPopover>
+        </div>
+        <SandCodeTabs
+          items={[
+            {
+              name: 'React (TS)',
+              code: `import { SandPopover } from '@sandurtech/sandui';\n\n<SandPopover>\n  <SandPopover.Trigger>\n    <button>Open</button>\n  </SandPopover.Trigger>\n  <SandPopover.Content>\n    Rich content goes here...\n  </SandPopover.Content>\n</SandPopover>`,
             },
           ]}
         />

@@ -26,7 +26,7 @@ export const sandRadiusScale = {
 
 export type SandSpaceToken = keyof typeof sandSpaceScale;
 export type SandRadiusToken = keyof typeof sandRadiusScale;
-export type SandResponsiveValue<T> = T | Partial<Record<'sm' | 'md' | 'lg' | 'xl', T>>;
+export type SandResponsiveValue<T> = T | Partial<Record<'base' | 'sm' | 'md' | 'lg' | 'xl', T>>;
 
 export function resolveSpace(value?: SandSpaceToken | number | string) {
   if (value === undefined) {
@@ -72,15 +72,17 @@ export function withResponsiveCssVars<T extends string | number>(
     return style;
   }
 
-  if (typeof value !== 'object' || value === null || Array.isArray(value)) {
-    return withCssVar(style, `--${name}`, String(value));
-  }
-
   let nextStyle = style;
 
-  for (const [breakpoint, responsiveValue] of Object.entries(value)) {
-    if (responsiveValue !== undefined) {
-      nextStyle = withCssVar(nextStyle, `--${name}-${breakpoint}` as `--${string}`, String(responsiveValue));
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) {
+    return withCssVar(nextStyle, `--${name}`, String(value));
+  }
+
+  // Handle object with possible breakpoints
+  for (const [key, val] of Object.entries(value)) {
+    if (val !== undefined) {
+      const varName = key === 'base' ? `--${name}` : (`--${name}-${key}` as `--${string}`);
+      nextStyle = withCssVar(nextStyle, varName as `--${string}`, String(val));
     }
   }
 

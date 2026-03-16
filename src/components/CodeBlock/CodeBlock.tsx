@@ -48,8 +48,10 @@ export const SandCodeBlock = forwardRef<HTMLPreElement, SandCodeBlockProps>(func
 SandCodeBlock.displayName = 'SandCodeBlock';
 
 export interface SandCodeTabsProps {
-  /** Tab descriptors rendered in order within the tab list. */
-  tabs: { name: string; code: string }[];
+  /** Ordered list of code items/tabs to render. */
+  items?: { name: string; code: string }[];
+  /** @deprecated Use items instead */
+  tabs?: { name: string; code: string }[];
   /** Initially selected tab index. */
   defaultTab?: number;
   className?: string;
@@ -58,9 +60,10 @@ export interface SandCodeTabsProps {
 }
 
 export const SandCodeTabs = forwardRef<HTMLDivElement, SandCodeTabsProps>(function SandCodeTabs(
-  { tabs, defaultTab = 0, className = '', onTabChange },
+  { items, tabs, defaultTab = 0, className = '', onTabChange },
   ref,
 ) {
+  const resolvedItems = useMemo(() => items ?? tabs ?? [], [items, tabs]);
   const [activeTab, setActiveTab] = useState(defaultTab);
   const instanceId = useId();
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -74,12 +77,12 @@ export const SandCodeTabs = forwardRef<HTMLDivElement, SandCodeTabsProps>(functi
     [onTabChange],
   );
 
-  const activeCode = useMemo(() => tabs[activeTab]?.code ?? '', [activeTab, tabs]);
+  const activeCode = useMemo(() => resolvedItems[activeTab]?.code ?? '', [activeTab, resolvedItems]);
 
   return (
     <div ref={ref} className={cn(styles['sand-code-tabs'], className)}>
       <div className={styles['sand-tab-headers']} role="tablist" aria-label="Code examples">
-        {tabs.map((tab, index) => (
+        {resolvedItems.map((tab, index) => (
           <button
             key={index}
             ref={(element) => {
@@ -94,7 +97,7 @@ export const SandCodeTabs = forwardRef<HTMLDivElement, SandCodeTabsProps>(functi
             tabIndex={activeTab === index ? 0 : -1}
             onClick={() => selectTab(index)}
             onKeyDown={(event) =>
-              handleHorizontalArrowNavigation(event, index, tabs.length, (nextIndex) => selectTab(nextIndex))
+              handleHorizontalArrowNavigation(event, index, resolvedItems.length, (nextIndex) => selectTab(nextIndex))
             }
           >
             {tab.name}

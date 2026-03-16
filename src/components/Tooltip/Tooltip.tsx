@@ -11,13 +11,18 @@ interface SandTooltipChildProps {
 }
 
 export interface SandTooltipProps {
-  content: ReactNode;
+  /** The content to display inside the tooltip. */
+  content?: ReactNode;
+  /** Alias for content. */
+  title?: ReactNode;
   children: ReactElement<SandTooltipChildProps>;
 }
 
-export function SandTooltip({ content, children }: SandTooltipProps) {
+export function SandTooltip({ content, title, children }: SandTooltipProps) {
   const id = useId();
   const [position, setPosition] = useState<{ top: number; left: number } | null>(null);
+
+  const resolvedContent = content ?? title;
 
   if (!isValidElement(children)) {
     return null;
@@ -62,7 +67,7 @@ export function SandTooltip({ content, children }: SandTooltipProps) {
               className={styles.content}
               style={{ top: position.top, left: position.left, transform: 'translateX(-50%)' }}
             >
-              {content}
+              {resolvedContent}
             </div>,
             document.body,
           )

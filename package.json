@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sandurtech/sandui.git"
+    "url": "git+https://github.com/sandurtech/sandui.git"
   },
   "keywords": [
     "react",

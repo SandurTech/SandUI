@@ -15,9 +15,26 @@ export interface SandChoiceBaseProps extends Omit<ComponentPropsWithoutRef<'inpu
   description?: ReactNode;
 }
 
-export interface SandChoiceGroupProps extends ComponentPropsWithoutRef<'div'> {
+export interface SandChoiceOption {
+  value: string;
+  label: ReactNode;
+  description?: ReactNode;
+  disabled?: boolean;
+}
+
+export interface SandChoiceGroupProps extends Omit<ComponentPropsWithoutRef<'div'>, 'onChange'> {
   /** Accessible name applied to the choice collection. */
   label?: ReactNode;
+  /** Ordered list of choice options to render. */
+  options?: SandChoiceOption[];
+  /** The selection type for all options in the group. */
+  type?: 'checkbox' | 'radio' | 'switch';
+  /** The name attribute applied to all inputs in the group (required for radio groups). */
+  name?: string;
+  /** Value of the selected option(s). */
+  value?: string | string[];
+  /** Called when any option selection state changes. */
+  onChange?: (value: string | string[]) => void;
 }
 
 const SandChoiceContent = ({ label, description }: { label: ReactNode; description?: ReactNode }) => (
@@ -99,9 +116,47 @@ export const SandSwitch = forwardRef<HTMLInputElement, SandChoiceBaseProps>(func
 SandSwitch.displayName = 'SandSwitch';
 
 export const SandChoiceGroup = forwardRef<HTMLDivElement, SandChoiceGroupProps>(function SandChoiceGroup(
-  { className = '', label, ...props },
+  { className = '', label, options = [], type = 'radio', name, value, onChange, children, ...props },
   ref,
 ) {
-  return <div ref={ref} role="group" aria-label={typeof label === 'string' ? label : undefined} className={cn(styles['sand-choice-group'], className)} {...props} />;
+  const groupName = useId();
+  const resolvedName = name ?? groupName;
+
+  const handleChange = (optionValue: string) => {
+    if (type === 'checkbox' || type === 'switch') {
+      const currentValues = Array.isArray(value) ? value : [];
+      const nextValues = currentValues.includes(optionValue)
+        ? currentValues.filter((v) => v !== optionValue)
+        : [...currentValues, optionValue];
+      onChange?.(nextValues);
+    } else {
+      onChange?.(optionValue);
+    }
+  };
+
+  return (
+    <div ref={ref} role="group" aria-label={typeof label === 'string' ? label : undefined} className={cn(styles['sand-choice-group'], className)} {...props}>
+      {label && <div className={styles['sand-choice-group-label']}>{label}</div>}
+      <div className={styles['sand-choice-group-content']}>
+        {options.map((option) => {
+          const isChecked = Array.isArray(value) ? value.includes(option.value) : value === option.value;
+          const commonProps = {
+            key: option.value,
+            name: resolvedName,
+            label: option.label,
+            description: option.description,
+            disabled: option.disabled,
+            checked: isChecked,
+            onChange: () => handleChange(option.value),
+          };
+
+          if (type === 'checkbox') return <SandCheckbox {...commonProps} />;
+          if (type === 'switch') return <SandSwitch {...commonProps} />;
+          return <SandRadio {...commonProps} />;
+        })}
+        {children}
+      </div>
+    </div>
+  );
 });
 SandChoiceGroup.displayName = 'SandChoiceGroup';

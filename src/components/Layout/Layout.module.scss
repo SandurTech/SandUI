@@ -45,6 +45,53 @@
   color: var(--theme-text-muted);
 }
 
+/* Microservice Layout */
+.sand-microservice-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--theme-background, var(--theme-surface));
+  width: 100%;
+}
+
+.sand-microservice-sidebar {
+  width: 280px;
+  border-right: 1px solid var(--theme-border);
+  background: var(--theme-surface);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.sand-microservice-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Prevent flex item from overflowing */
+}
+
+.sand-microservice-main {
+  padding: var(--sand-space-6, 2rem);
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .sand-microservice-layout {
+    flex-direction: column;
+  }
+
+  .sand-microservice-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--theme-border);
+  }
+}
+
 @media (max-width: 900px) {
   .sand-tool-layout {
     grid-template-columns: 1fr;

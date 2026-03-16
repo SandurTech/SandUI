@@ -13,12 +13,11 @@ export default defineConfig(({ command, mode }) => {
       react(),
       !isDocsTarget &&
         dts({
-          entryRoot: 'src',
-          include: ['src/index.ts', 'src/components'],
-          insertTypesEntry: true,
           outDir: 'dist',
-          rollupTypes: true,
-          tsconfigPath: './tsconfig.app.json',
+          entryRoot: 'src',
+          insertTypesEntry: true,
+          rollupTypes: false,
+          tsconfigPath: path.resolve(__dirname, './tsconfig.app.json'),
         }),
     ].filter(Boolean),
     resolve: {
